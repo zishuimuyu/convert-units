@@ -1,5 +1,6 @@
 package com.zishuimuyu.unitconvert.service;
 
+import com.zishuimuyu.unitconvert.builder.ConversionBuilder;
 import com.zishuimuyu.unitconvert.model.ConvertResult;
 import com.zishuimuyu.unitconvert.model.ToBestOptions;
 import com.zishuimuyu.unitconvert.model.UnitEnum;
@@ -106,14 +107,6 @@ public interface IUnitConversionService {
     IUnitConversionService from(BigDecimal value, UnitEnum fromUnit);
     
     /**
-     * 从已设置的源单位转换到目标单位（链式调用）
-     * 
-     * @param toUnit 目标单位
-     * @return 转换结果对象
-     */
-    ConvertResult<BigDecimal> to(UnitEnum toUnit);
-    
-    /**
      * 获取当前源单位可以转换到的所有可能单位
      * 
      * @param measure 可选的测量类型过滤器
@@ -138,4 +131,15 @@ public interface IUnitConversionService {
      * @return 单位详细信息，如果找不到则返回null
      */
     UnitDescription lookup(String unitName);
+    
+    /**
+     * 创建转换构建器
+     * 
+     * 提供流畅的API用于构建单位转换操作，线程安全
+     * 
+     * @param value 源数值
+     * @param fromUnit 源单位
+     * @return 转换构建器实例
+     */
+    ConversionBuilder buildConversion(BigDecimal value, UnitEnum fromUnit);
 }

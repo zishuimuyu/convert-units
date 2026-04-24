@@ -1,0 +1,387 @@
+package com.zishuimuyu.unitconvert.data;
+
+import com.zishuimuyu.unitconvert.model.UnitEnum;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ConversionFactors {
+    
+    private static final Map<UnitEnum, BigDecimal> TO_ANCHOR_FACTORS = new HashMap<>();
+    
+    static {
+        initializeFactors();
+    }
+    
+    private ConversionFactors() {
+    }
+    
+    public static BigDecimal getFactor(UnitEnum unit) {
+        return TO_ANCHOR_FACTORS.get(unit);
+    }
+    
+    public static boolean hasFactor(UnitEnum unit) {
+        return TO_ANCHOR_FACTORS.containsKey(unit);
+    }
+    
+    public static Map<UnitEnum, BigDecimal> getAllFactors() {
+        return new HashMap<>(TO_ANCHOR_FACTORS);
+    }
+    
+    private static void initializeFactors() {
+        initializeLengthFactors();
+        initializeMassFactors();
+        initializeVolumeFactors();
+        initializeAreaFactors();
+        initializeTimeFactors();
+        initializeTemperatureFactors();
+        initializeSpeedFactors();
+        initializeAccelerationFactors();
+        initializeAngleFactors();
+        initializePowerFactors();
+        initializePressureFactors();
+        initializeQuantityFactors();
+        initializeChargeFactors();
+        initializeCurrentFactors();
+        initializeVoltageFactors();
+        initializeDigitalStorageFactors();
+        initializeEnergyFactors();
+        initializeForceFactors();
+        initializeTorqueFactors();
+        initializeFrequencyFactors();
+        initializeIlluminanceFactors();
+        initializeApparentPowerFactors();
+        initializeConcentrationFactors();
+        initializePiecesFactors();
+        initializeReactivePowerFactors();
+        initializeReactiveEnergyFactors();
+        initializeMassFlowRateFactors();
+        initializePaceFactors();
+        initializeVolumeFlowRateFactors();
+    }
+    
+    private static void initializeLengthFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.NANOMETER, new BigDecimal("1e-9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.UM, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CM, new BigDecimal("1e-2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM, new BigDecimal("1e-1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KM, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MIL, new BigDecimal("1").divide(new BigDecimal("12000"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN, new BigDecimal("1").divide(new BigDecimal("12"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD, new BigDecimal("3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT_US, new BigDecimal("1200").divide(new BigDecimal("3937"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT, new BigDecimal("1").divide(new BigDecimal("3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FATHOM, new BigDecimal("6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MI, new BigDecimal("5280"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.NMI, new BigDecimal("1852"));
+    }
+    
+    private static void initializeMassFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.MCG, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MG, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.G, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KG, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MT, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.OZ, new BigDecimal("28.3495"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LB, new BigDecimal("453.592"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ST, new BigDecimal("6350.29"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.T, new BigDecimal("907185"));
+    }
+    
+    private static void initializeVolumeFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM3, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CM3, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM3, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ML, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CL, new BigDecimal("1").divide(new BigDecimal("100"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DL, new BigDecimal("1").divide(new BigDecimal("10"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.L, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KL, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ML_MEGA, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ML_GIGA, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M3, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KM3, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KRM, new BigDecimal("0.005"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TSK, new BigDecimal("0.015"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MSK, new BigDecimal("0.03"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KKP, new BigDecimal("0.15"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GLAS, new BigDecimal("0.2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KANNA, new BigDecimal("2.617"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TSP, new BigDecimal("1").divide(new BigDecimal("6"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TBS, new BigDecimal("1").divide(new BigDecimal("2"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN3, new BigDecimal("0.55411"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FLOZ, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CUP, new BigDecimal("8"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PNT, new BigDecimal("16"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.QT, new BigDecimal("32"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GAL, new BigDecimal("128"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT3, new BigDecimal("957.506"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD3, new BigDecimal("25852.7"));
+    }
+    
+    private static void initializeAreaFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM2, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CM2, new BigDecimal("1e-4"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M2, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.HA, new BigDecimal("1e4"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KM2, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN2, new BigDecimal("1").divide(new BigDecimal("144"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT2, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD2, new BigDecimal("9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MI2, new BigDecimal("27878400"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ACRE, new BigDecimal("43560"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ROD, new BigDecimal("272.25"));
+    }
+    
+    private static void initializeTimeFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.NS, new BigDecimal("1e-9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.US, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MU, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MS, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.S, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MIN, new BigDecimal("60"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.H, new BigDecimal("3600"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.D, new BigDecimal("86400"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.WEEK, new BigDecimal("604800"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MONTH, new BigDecimal("2629800"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.YEAR, new BigDecimal("31557600"));
+    }
+    
+    private static void initializeTemperatureFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.R, new BigDecimal("1"));
+    }
+    
+    private static void initializeSpeedFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.KM_H, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M_S, new BigDecimal("3.6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM_S, new BigDecimal("0.0036"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CM_S, new BigDecimal("0.036"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM_H, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KM_S, new BigDecimal("3600"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MPH, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KT, new BigDecimal("1.150779"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FPS, new BigDecimal("0.681818"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FPM, new BigDecimal("0.0113636"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN_H, new BigDecimal("1.578e-5"));
+    }
+    
+    private static void initializeAccelerationFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.G_FORCE, new BigDecimal("9.80665"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M_S2, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.G0, new BigDecimal("9.80665"));
+    }
+    
+    private static void initializeAngleFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.RAD, new BigDecimal("180").divide(new BigDecimal("3.141592653589793"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DEG, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ARCMIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ARCSEC, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GRAD, new BigDecimal("0.9"));
+    }
+    
+    private static void initializePowerFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.W, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MW, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KW, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MW_POWER, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GW, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PS, new BigDecimal("735.49875"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.HP, new BigDecimal("745.7"));
+    }
+    
+    private static void initializePressureFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.PA, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KPA, new BigDecimal("1000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MPA, new BigDecimal("1000000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.HPa, new BigDecimal("100"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GPA, new BigDecimal("1000000000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MBAR, new BigDecimal("0.1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.BAR, new BigDecimal("100000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORR, new BigDecimal("133.32236842105263"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MH2O, new BigDecimal("9806.65"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MMHG, new BigDecimal("133.322387415"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PSI, new BigDecimal("6894.757293168361"));
+    }
+    
+    private static void initializeQuantityFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.EA, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.SINGLE, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DOZEN, new BigDecimal("12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PCS, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PAIR, new BigDecimal("2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.SET, new BigDecimal("1"));
+    }
+    
+    private static void initializeChargeFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.COULOMB, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MC, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.UC, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.NC, new BigDecimal("1e-9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PC, new BigDecimal("1e-12"));
+    }
+    
+    private static void initializeCurrentFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.A, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MA, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.UA, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KA, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MA_CURRENT, new BigDecimal("1e6"));
+    }
+    
+    private static void initializeVoltageFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.V, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MV_VOLTAGE, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.UV, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KV, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MV_VOLTAGE_MEGA, new BigDecimal("1e6"));
+    }
+    
+    private static void initializeDigitalStorageFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.BIT, new BigDecimal("1").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KBIT, new BigDecimal("1000").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MBIT, new BigDecimal("1e6").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GBIT, new BigDecimal("1e9").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TBIT, new BigDecimal("1e12").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.BYTE, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KBYTE, new BigDecimal("1000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MBYTE, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GBYTE, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TBYTE, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KIBYTE, new BigDecimal("1024"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MIBYTE, new BigDecimal("1024").multiply(new BigDecimal("1024")));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GIBYTE, new BigDecimal("1024").multiply(new BigDecimal("1024")).multiply(new BigDecimal("1024")));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIBYTE, new BigDecimal("1024").multiply(new BigDecimal("1024")).multiply(new BigDecimal("1024")).multiply(new BigDecimal("1024")));
+    }
+    
+    private static void initializeEnergyFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.WS, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.WM, new BigDecimal("60"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.WH, new BigDecimal("3600"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MWH, new BigDecimal("3600"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KWH, new BigDecimal("3600000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MWH_MEGA, new BigDecimal("3.6e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GWH, new BigDecimal("3.6e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.J, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KJ, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MJ, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GJ, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KCAL, new BigDecimal("4184"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CAL, new BigDecimal("4.184"));
+    }
+    
+    private static void initializeForceFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.N, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KN, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LBF, new BigDecimal("4.44822"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KGF, new BigDecimal("9.80665"));
+    }
+    
+    private static void initializeTorqueFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.NM, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CNM, new BigDecimal("1e-2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DNM, new BigDecimal("1e-1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KGM, new BigDecimal("9.80665"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KG_CM, new BigDecimal("9.80665e-2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_FT, new BigDecimal("1.35582"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_IN, new BigDecimal("0.112985"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.OZF_IN, new BigDecimal("0.006377"));
+    }
+    
+    private static void initializeFrequencyFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.HZ, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KHZ, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MHZ, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GHZ, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.THZ, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.RPM, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DEG_S, new BigDecimal("1").divide(new BigDecimal("360"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.RAD_S, new BigDecimal("1").divide(new BigDecimal("6.283185307179586"), 10, RoundingMode.HALF_UP));
+    }
+    
+    private static void initializeIlluminanceFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.LX, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FOOTCANDLE, new BigDecimal("10.764"));
+    }
+    
+    private static void initializeApparentPowerFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.VA, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MVA, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KVA, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MVA_POWER, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GVA, new BigDecimal("1e9"));
+    }
+    
+    private static void initializeConcentrationFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.PPM, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PPB, new BigDecimal("1e-9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PPT, new BigDecimal("1e-12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PPQ, new BigDecimal("1e-15"));
+    }
+    
+    private static void initializePiecesFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.PCS_PIECES, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.BK_DOZ, new BigDecimal("12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CP, new BigDecimal("2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DOZ_DOZ, new BigDecimal("144"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DOZ, new BigDecimal("12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GR_GR, new BigDecimal("20736"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GROS, new BigDecimal("144"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.HALF_DOZEN, new BigDecimal("6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LONG_HUNDRED, new BigDecimal("120"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REAM, new BigDecimal("500"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.SCORES, new BigDecimal("20"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.SM_GR, new BigDecimal("120"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TRIO, new BigDecimal("3"));
+    }
+    
+    private static void initializeReactivePowerFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.VAR, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MVAR, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KVAR, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MVAR_POWER, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GVAR, new BigDecimal("1e9"));
+    }
+    
+    private static void initializeReactiveEnergyFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.VARH, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MVARH, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KVARH, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MVARH_POWER, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GVARH, new BigDecimal("1e9"));
+    }
+    
+    private static void initializeMassFlowRateFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.KG_PER_S, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KG_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KG_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MT_PER_H, new BigDecimal("1000").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LB_PER_S, new BigDecimal("0.453592"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LB_PER_H, new BigDecimal("0.453592").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+    }
+    
+    private static void initializePaceFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.S_PER_M, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MIN_PER_KM, new BigDecimal("60").divide(new BigDecimal("1000"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.S_PER_FT, new BigDecimal("1").divide(new BigDecimal("0.3048"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MIN_PER_MI, new BigDecimal("60").divide(new BigDecimal("1609.34"), 10, RoundingMode.HALF_UP));
+    }
+    
+    private static void initializeVolumeFlowRateFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_S, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM3_PER_S, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CM3_PER_S, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_S, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KM3_PER_S, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_MIN, new BigDecimal("1").divide(new BigDecimal("0.06"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_D, new BigDecimal("1").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_S, new BigDecimal("28.3168"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_MIN, new BigDecimal("28.3168").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+    }
+}
