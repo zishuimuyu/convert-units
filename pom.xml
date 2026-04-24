@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    单位转换SDK项目配置文件
+    
+    该项目是一个独立的单位转换库，提供了多种物理量单位之间的转换功能
+    支持自动配置并可被其他Spring Boot项目轻松集成
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Maven POM模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 项目坐标信息 -->
+    <groupId>com.zishuimuyu</groupId>                    <!-- 组织标识 -->
+    <artifactId>convert-units-sdk</artifactId>           <!-- 项目标识 -->
+    <version>2.0.0</version>                           <!-- 项目版本 -->
+    <packaging>jar</packaging>                          <!-- 打包方式 -->
+
+    <!-- 项目元数据 -->
+    <name>convert-units-sdk</name>                      <!-- 项目名称 -->
+    <description>单位转换SDK，可被其他Spring Boot项目依赖的库</description> <!-- 项目描述 -->
+    <url>https://github.com/zishuimuyu/convert-units-sdk</url> <!-- 项目主页 -->
+
+    <!-- 项目属性配置 -->
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>      <!-- 编译源码的Java版本 -->
+        <maven.compiler.target>1.8</maven.compiler.target>      <!-- 编译目标的Java版本 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>      <!-- 源码编码 -->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>      <!-- 报告输出编码 -->
+        
+        <!-- 框架版本管理 -->
+        <spring-boot.version>2.7.18</spring-boot.version>      <!-- Spring Boot框架版本 -->
+        <spring-framework.version>5.3.31</spring-framework.version>      <!-- Spring Framework版本 -->
+    </properties>
+
+    <!-- 依赖管理部分，定义依赖的版本 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot父级POM，导入Spring Boot的依赖管理 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 项目依赖定义 -->
+    <dependencies>
+        <!-- Spring Boot自动配置模块，用于实现自动配置功能 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        
+        <!-- Spring上下文模块，提供核心Spring功能如IoC容器等 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
+        
+        <!-- Spring Web模块，提供Web开发相关功能（可选） -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring-framework.version}</version>
+            <optional>true</optional>      <!-- 可选依赖，不会被传递到使用该库的项目中 -->
+        </dependency>
+        
+        <!-- Spring Boot测试模块，用于单元测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>      <!-- 测试范围依赖，仅在测试时使用 -->
+        </dependency>
+        
+        <!-- JUnit 5 API，用于编写测试 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>      <!-- 测试范围依赖 -->
+        </dependency>
+        
+        <!-- JUnit 5引擎，用于运行测试 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>      <!-- 测试范围依赖 -->
+        </dependency>
+    </dependencies>
+
+    <!-- 构建配置 -->
+    <build>
+        <plugins>
+            <!-- 编译插件，用于编译Java源代码 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>      <!-- 编译源码的Java版本 -->
+                    <target>1.8</target>      <!-- 编译目标的Java版本 -->
+                    <encoding>UTF-8</encoding>      <!-- 源码编码 -->
+                </configuration>
+            </plugin>
+            
+            <!-- 测试执行插件，用于运行单元测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+            
+            <!-- JAR打包插件，用于创建JAR文件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <!-- 在JAR文件的MANIFEST.MF中添加条目 -->
+                        <manifestEntries>
+                            <Implementation-Title>${project.name}</Implementation-Title>      <!-- 实现标题 -->
+                            <Implementation-Version>${project.version}</Implementation-Version>      <!-- 实现版本 -->
+                            <Implementation-Vendor>${project.groupId}</Implementation-Vendor>      <!-- 实现厂商 -->
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
