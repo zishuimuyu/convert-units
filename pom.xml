@@ -14,7 +14,7 @@
 
     <!-- 项目坐标信息 -->
     <groupId>com.zishuimuyu</groupId>                    <!-- 组织标识 -->
-    <artifactId>convert-units-sdk</artifactId>           <!-- 项目标识 -->
+    <artifactId>convert-units-java</artifactId>           <!-- 项目标识 -->
     <version>2.0.0</version>                           <!-- 项目版本 -->
     <packaging>jar</packaging>                          <!-- 打包方式 -->
 

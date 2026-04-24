@@ -127,4 +127,15 @@ public interface IUnitConversionService {
      * @return 测量类型列表
      */
     List<String> measures();
+    
+    /**
+     * 通过单位的缩写、单数或复数名称查询单位
+     * 
+     * 此方法支持通过单位的不同名称形式来查询单位信息，
+     * 包括缩写(abbr)、单数形式(singular)和复数形式(plural)
+     * 
+     * @param unitName 单位名称，可以是缩写、单数或复数形式
+     * @return 单位详细信息，如果找不到则返回null
+     */
+    UnitDescription lookup(String unitName);
 }

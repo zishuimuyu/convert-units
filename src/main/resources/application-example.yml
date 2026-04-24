@@ -1,0 +1,59 @@
+# 单位转换SDK配置示例文件
+# 
+# 此文件展示了如何配置单位转换服务的行为
+# 
+# @author 紫水木鱼
+# @version 1.0.0
+# @since 2026-04-24
+
+# ============================================
+# 单位转换配置
+# ============================================
+unitconvert:
+  # 是否启用部分加载模式
+  # true: 只加载指定的测量类型，减少内存占用
+  # false: 加载所有测量类型（默认）
+  partial-loading: false
+  
+  # 需要包含的测量类型列表（仅在partial-loading=true时生效）
+  # 可选值：length, mass, volume, temperature, time, area, speed, 
+  #          acceleration, angle, power, pressure, digital, energy, force,
+  #          torque, frequency, illuminance, apparentPower, partsPer,
+  #          pieces, reactivePower, reactiveEnergy, charge, current,
+  #          voltage, resistance, density, massFlowRate, volumeFlowRate, pace
+  included-measures:
+    - length
+    - mass
+    - volume
+    - temperature
+  
+  # 需要排除的单位缩写列表
+  # 支持排除特定的单位，不参与转换
+  excluded-units:
+    - nMi      # 排除海里单位
+    - fathom    # 排除英寻单位
+    - kanna     # 排除瑞典罐单位
+
+# ============================================
+# 使用示例
+# ============================================
+# 
+# 1. 默认配置（加载所有单位）
+#    直接使用IUnitConversionService即可
+#
+# 2. 部分加载配置
+#    设置 partial-loading: true
+#    在 included-measures 中指定需要的测量类型
+#
+# 3. 排除特定单位
+#    在 excluded-units 中指定要排除的单位缩写
+#
+# 4. 编程方式配置
+#    UnitConversionConfig config = new UnitConversionConfig.Builder()
+#        .partialLoading(true)
+#        .includeMeasures("length", "mass")
+#        .excludeUnits(UnitEnum.NMI, UnitEnum.FATHOM)
+#        .build();
+#    IUnitConversionService service = new UnitConversionServiceImpl(config);
+#
+# ============================================

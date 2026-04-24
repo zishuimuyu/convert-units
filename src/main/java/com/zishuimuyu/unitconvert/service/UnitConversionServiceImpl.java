@@ -1,5 +1,6 @@
 package com.zishuimuyu.unitconvert.service;
 
+import com.zishuimuyu.unitconvert.config.UnitConversionConfig;
 import com.zishuimuyu.unitconvert.model.ConvertResult;
 import com.zishuimuyu.unitconvert.model.ToBestOptions;
 import com.zishuimuyu.unitconvert.model.UnitDescription;
@@ -73,6 +74,29 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
      * 在to()方法中设置
      */
     private UnitEnum currentDestinationUnit;
+    
+    /**
+     * 单位转换配置
+     * 
+     * 用于控制单位转换服务的行为，如部分加载、单位排除等
+     */
+    private final UnitConversionConfig config;
+
+    /**
+     * 默认构造函数，使用默认配置
+     */
+    public UnitConversionServiceImpl() {
+        this(UnitConversionConfig.defaults());
+    }
+    
+    /**
+     * 带配置的构造函数
+     * 
+     * @param config 单位转换配置
+     */
+    public UnitConversionServiceImpl(UnitConversionConfig config) {
+        this.config = config != null ? config : UnitConversionConfig.defaults();
+    }
 
     /**
      * 静态初始化块，初始化转换因子
@@ -200,6 +224,7 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
         TO_ANCHOR_FACTORS.put(UnitEnum.DEG, new BigDecimal("1"));        // 度
         TO_ANCHOR_FACTORS.put(UnitEnum.ARCMIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP)); // 弧分
         TO_ANCHOR_FACTORS.put(UnitEnum.ARCSEC, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP)); // 弧秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.GRAD, new BigDecimal("0.9"));       // 梯度 (1 grad = 0.9 deg)
 
         // 功率单位 - 基准单位：瓦特
         TO_ANCHOR_FACTORS.put(UnitEnum.W, new BigDecimal("1"));          // 瓦特
@@ -244,11 +269,15 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
         TO_ANCHOR_FACTORS.put(UnitEnum.A, new BigDecimal("1"));          // 安培
         TO_ANCHOR_FACTORS.put(UnitEnum.MA, new BigDecimal("1e-3"));      // 毫安
         TO_ANCHOR_FACTORS.put(UnitEnum.UA, new BigDecimal("1e-6"));      // 微安
+        TO_ANCHOR_FACTORS.put(UnitEnum.KA, new BigDecimal("1e3"));       // 千安
+        TO_ANCHOR_FACTORS.put(UnitEnum.MA_CURRENT, new BigDecimal("1e6")); // 兆安
 
         // 电压单位 - 基准单位：伏特
         TO_ANCHOR_FACTORS.put(UnitEnum.V, new BigDecimal("1"));          // 伏特
         TO_ANCHOR_FACTORS.put(UnitEnum.MV_VOLTAGE, new BigDecimal("1e-3"));      // 毫伏
         TO_ANCHOR_FACTORS.put(UnitEnum.UV, new BigDecimal("1e-6"));      // 微伏
+        TO_ANCHOR_FACTORS.put(UnitEnum.KV, new BigDecimal("1e3"));       // 千伏
+        TO_ANCHOR_FACTORS.put(UnitEnum.MV_VOLTAGE_MEGA, new BigDecimal("1e6")); // 兆伏
 
         // 数字存储单位 - 基准单位：字节
         TO_ANCHOR_FACTORS.put(UnitEnum.BIT, new BigDecimal("1").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP)); // 比特
@@ -409,6 +438,11 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
         TO_ANCHOR_FACTORS.put(UnitEnum.GAL_PER_MIN, new BigDecimal("128").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP)); // 加仑/分钟 (128/60)
         TO_ANCHOR_FACTORS.put(UnitEnum.GAL_PER_H, new BigDecimal("128").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP)); // 加仑/小时 (128/3600)
         TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_S, new BigDecimal("957.506"));           // 立方英尺/秒 (957.506 dm3)
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_MIN, new BigDecimal("957.506").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP)); // 立方英尺/分钟
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_H, new BigDecimal("957.506").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP)); // 立方英尺/小时
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD3_PER_S, new BigDecimal("25852.7"));           // 立方码/秒 (25852.7 dm3)
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD3_PER_MIN, new BigDecimal("25852.7").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP)); // 立方码/分钟
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD3_PER_H, new BigDecimal("25852.7").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP)); // 立方码/小时
     }
     
     /**
@@ -540,6 +574,28 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
             throw new IllegalArgumentException("参数不能为空");
         }
 
+        // 检查源单位是否被排除
+        if (config.shouldExcludeUnit(fromUnit)) {
+            throw new IllegalArgumentException(
+                String.format("源单位 %s (%s) 已被配置排除", fromUnit.getAbbr(), fromUnit.getSingular())
+            );
+        }
+
+        // 检查目标单位是否被排除
+        if (config.shouldExcludeUnit(toUnit)) {
+            throw new IllegalArgumentException(
+                String.format("目标单位 %s (%s) 已被配置排除", toUnit.getAbbr(), toUnit.getSingular())
+            );
+        }
+
+        // 检查测量类型是否应该被加载（部分加载模式）
+        String measure = fromUnit.getMeasure();
+        if (!config.shouldLoadMeasure(measure)) {
+            throw new IllegalArgumentException(
+                String.format("测量类型 %s 未在配置中包含（部分加载模式）", measure)
+            );
+        }
+
         if (!canConvertBetween(fromUnit, toUnit)) {
             throw new IllegalArgumentException(
                 String.format("无法在不同测量类型之间转换：%s (%s) 和 %s (%s)", 
@@ -615,6 +671,21 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
             throw new IllegalArgumentException("参数不能为空");
         }
 
+        // 检查源单位是否被排除
+        if (config.shouldExcludeUnit(fromUnit)) {
+            throw new IllegalArgumentException(
+                String.format("源单位 %s (%s) 已被配置排除", fromUnit.getAbbr(), fromUnit.getSingular())
+            );
+        }
+
+        // 检查测量类型是否应该被加载（部分加载模式）
+        String measure = fromUnit.getMeasure();
+        if (!config.shouldLoadMeasure(measure)) {
+            throw new IllegalArgumentException(
+                String.format("测量类型 %s 未在配置中包含（部分加载模式）", measure)
+            );
+        }
+
         // 获取相同测量类型的所有单位
         List<UnitEnum> possibleUnits = getPossibleUnits(fromUnit.getMeasure());
 
@@ -629,13 +700,18 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
             : (isNegative ? new BigDecimal("-1") : new BigDecimal("1"));
 
         for (UnitEnum unit : possibleUnits) {
-            // 检查是否需要排除此单位
+            // 检查是否需要排除此单位（通过选项配置）
             if (options != null && options.getExclude() != null && options.getExclude().contains(unit)) {
                 continue;
             }
             
-            // 检查是否限制了单位系统
+            // 检查是否限制了单位系统（通过选项配置）
             if (options != null && options.getSystem() != null && !options.getSystem().equals(unit.getSystem())) {
+                continue;
+            }
+
+            // 检查单位是否被全局配置排除
+            if (config.shouldExcludeUnit(unit)) {
                 continue;
             }
 
@@ -691,6 +767,7 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
      * 获取指定测量类型下的所有可能单位
      * 
      * 根据提供的测量类型名称，返回该类型下所有支持的单位枚举
+     * 会根据配置过滤掉被排除的单位
      * 
      * @param measure 测量类型名称（如：length, mass, volume等）
      * @return 该测量类型下所有可能的单位列表
@@ -705,8 +782,12 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
         java.util.List<UnitEnum> result = new java.util.ArrayList<>();
         
         for (UnitEnum unit : UnitEnum.values()) {
+            // 检查测量类型是否匹配
             if (measure.equals(unit.getMeasure())) {
-                result.add(unit);
+                // 检查是否应该排除此单位
+                if (!config.shouldExcludeUnit(unit)) {
+                    result.add(unit);
+                }
             }
         }
         
@@ -717,6 +798,7 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
      * 获取所有支持的测量类型
      * 
      * 返回系统中所有支持的测量类型名称列表，如长度、质量、体积等
+     * 如果启用了部分加载模式，只返回配置中指定的测量类型
      * 
      * @return 所有支持的测量类型名称列表
      */
@@ -725,7 +807,11 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
         java.util.Set<String> measures = new java.util.HashSet<>();
         
         for (UnitEnum unit : UnitEnum.values()) {
-            measures.add(unit.getMeasure());
+            String measure = unit.getMeasure();
+            // 检查是否应该加载此测量类型
+            if (config.shouldLoadMeasure(measure)) {
+                measures.add(measure);
+            }
         }
         
         return new java.util.ArrayList<>(measures);
@@ -822,19 +908,31 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
     /**
      * 获取所有支持的单位
      * 
+     * 根据配置过滤，只返回未被排除的单位
+     * 
      * @return 所有支持的单位描述列表
      */
     @Override
     public List<UnitDescription> listAllUnits() {
         List<UnitDescription> allUnits = new ArrayList<>();
         for (UnitEnum unit : UnitEnum.values()) {
-            allUnits.add(describeUnit(unit));
+            // 检查测量类型是否应该被加载（部分加载模式）
+            if (!config.shouldLoadMeasure(unit.getMeasure())) {
+                continue;
+            }
+            
+            // 检查是否应该排除此单位
+            if (!config.shouldExcludeUnit(unit)) {
+                allUnits.add(describeUnit(unit));
+            }
         }
         return allUnits;
     }
 
     /**
      * 获取指定测量类型下的所有单位描述
+     * 
+     * 根据配置过滤，只返回未被排除的单位
      * 
      * @param measure 测量类型
      * @return 该测量类型下的所有单位描述
@@ -845,10 +943,18 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
             return new ArrayList<>();
         }
         
+        // 检查测量类型是否应该被加载（部分加载模式）
+        if (!config.shouldLoadMeasure(measure)) {
+            return new ArrayList<>();
+        }
+        
         List<UnitDescription> units = new ArrayList<>();
         for (UnitEnum unit : UnitEnum.values()) {
             if (measure.equals(unit.getMeasure())) {
-                units.add(describeUnit(unit));
+                // 检查是否应该排除此单位
+                if (!config.shouldExcludeUnit(unit)) {
+                    units.add(describeUnit(unit));
+                }
             }
         }
         return units;
@@ -922,9 +1028,19 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
         if (measure != null) {
             return getPossibleUnits(measure);
         } else {
-            // 返回所有可能的单位
+            // 返回所有可能的单位，但需要过滤排除的单位和不包含的测量类型
             List<UnitEnum> allUnits = new ArrayList<>();
             for (UnitEnum unit : UnitEnum.values()) {
+                // 检查单位是否被排除
+                if (config.shouldExcludeUnit(unit)) {
+                    continue;
+                }
+                
+                // 检查测量类型是否应该被加载（部分加载模式）
+                if (!config.shouldLoadMeasure(unit.getMeasure())) {
+                    continue;
+                }
+                
                 allUnits.add(unit);
             }
             return allUnits;
@@ -950,5 +1066,54 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
         this.currentValue = null;
         this.currentOriginUnit = null;
         this.currentDestinationUnit = null;
+    }
+    
+    /**
+     * 通过单位的缩写、单数或复数名称查询单位
+     * 
+     * 此方法支持通过单位的不同名称形式来查询单位信息，
+     * 包括缩写(abbr)、单数形式(singular)和复数形式(plural)
+     * 
+     * @param unitName 单位名称，可以是缩写、单数或复数形式
+     * @return 单位详细信息，如果找不到则返回null
+     */
+    @Override
+    public UnitDescription lookup(String unitName) {
+        if (unitName == null || unitName.trim().isEmpty()) {
+            return null;
+        }
+        
+        String trimmedName = unitName.trim();
+        
+        // 遍历所有单位，查找匹配的单位
+        for (UnitEnum unit : UnitEnum.values()) {
+            // 检查单位是否被排除
+            if (config.shouldExcludeUnit(unit)) {
+                continue;
+            }
+            
+            // 检查测量类型是否应该被加载（部分加载模式）
+            if (!config.shouldLoadMeasure(unit.getMeasure())) {
+                continue;
+            }
+            
+            // 检查缩写匹配（不区分大小写）
+            if (unit.getAbbr().equalsIgnoreCase(trimmedName)) {
+                return describeUnit(unit);
+            }
+            
+            // 检查单数形式匹配（不区分大小写）
+            if (unit.getSingular().equalsIgnoreCase(trimmedName)) {
+                return describeUnit(unit);
+            }
+            
+            // 检查复数形式匹配（不区分大小写）
+            if (unit.getPlural().equalsIgnoreCase(trimmedName)) {
+                return describeUnit(unit);
+            }
+        }
+        
+        // 未找到匹配的单位
+        return null;
     }
 }

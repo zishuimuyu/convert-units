@@ -142,4 +142,29 @@ public class ConvertResult<T> {
                 ", plural='" + plural + '\'' +
                 '}';
     }
+    
+    /**
+     * 提供友好的字符串表示，格式为 "数值 单位"
+     * 
+     * @return 友好的字符串表示
+     */
+    public String toFriendlyString() {
+        // 如果数值是整数，去掉小数部分；如果是小数，保留最多6位小数
+        String formattedValue;
+        if (val instanceof BigDecimal) {
+            BigDecimal bd = (BigDecimal) val;
+            // 检查是否为整数
+            if (bd.scale() <= 0 || bd.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) == 0) {
+                formattedValue = bd.toBigInteger().toString();
+            } else {
+                // 保留最多6位小数，去掉末尾的零
+                formattedValue = bd.setScale(6, java.math.RoundingMode.HALF_UP)
+                    .stripTrailingZeros()
+                    .toPlainString();
+            }
+        } else {
+            formattedValue = val.toString();
+        }
+        return formattedValue + " " + unit;
+    }
 }

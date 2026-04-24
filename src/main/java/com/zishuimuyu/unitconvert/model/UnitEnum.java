@@ -122,6 +122,7 @@ public enum UnitEnum {
     // 角度单位
     RAD("rad", "angle", "metric", "弧度", "弧度"),
     DEG("deg", "angle", "metric", "度", "度"),
+    GRAD("grad", "angle", "metric", "梯度", "梯度"),
     ARCMIN("arcmin", "angle", "metric", "弧分", "弧分"),
     ARCSEC("arcsec", "angle", "metric", "弧秒", "弧秒"),
     
@@ -168,12 +169,16 @@ public enum UnitEnum {
     A("A", "current", "metric", "安培", "安培"),
     MA("mA", "current", "metric", "毫安", "毫安"),
     UA("μA", "current", "metric", "微安", "微安"),
-    
+    KA("kA", "current", "metric", "千安", "千安"),
+    MA_CURRENT("MA", "current", "metric", "兆安", "兆安"),
+
     // 电压单位
     V("V", "voltage", "metric", "伏特", "伏特"),
     MV_VOLTAGE("mV", "voltage", "metric", "毫伏", "毫伏"),
     UV("μV", "voltage", "metric", "微伏", "微伏"),
-    
+    KV("kV", "voltage", "metric", "千伏", "千伏"),
+    MV_VOLTAGE_MEGA("MV", "voltage", "metric", "兆伏", "兆伏"),
+
     // 数字存储单位
     BIT("bit", "digital", "binary", "比特", "比特"),
     KBIT("kbit", "digital", "binary", "千比特", "千比特"),
@@ -332,7 +337,13 @@ public enum UnitEnum {
     GAL_PER_S("gal/s", "volumeFlowRate", "imperial", "加仑/秒", "加仑/秒"),
     GAL_PER_MIN("gal/min", "volumeFlowRate", "imperial", "加仑/分钟", "加仑/分钟"),
     GAL_PER_H("gal/h", "volumeFlowRate", "imperial", "加仑/小时", "加仑/小时"),
-    FT3_PER_S("ft3/s", "volumeFlowRate", "imperial", "立方英尺/秒", "立方英尺/秒");
+    FT3_PER_S("ft3/s", "volumeFlowRate", "imperial", "立方英尺/秒", "立方英尺/秒"),
+    FT3_PER_MIN("ft3/min", "volumeFlowRate", "imperial", "立方英尺/分钟", "立方英尺/分钟"),
+    FT3_PER_H("ft3/h", "volumeFlowRate", "imperial", "立方英尺/小时", "立方英尺/小时"),
+    YD3_PER_S("yd3/s", "volumeFlowRate", "imperial", "立方码/秒", "立方码/秒"),
+    YD3_PER_MIN("yd3/min", "volumeFlowRate", "imperial", "立方码/分钟", "立方码/分钟"),
+    YD3_PER_H("yd3/h", "volumeFlowRate", "imperial", "立方码/小时", "立方码/小时"),
+    ;
     
     private final String abbr;       // 单位缩写
     private final String measure;    // 测量类型
