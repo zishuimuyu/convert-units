@@ -1,6 +1,8 @@
 package com.zishuimuyu.unitconvert.demo;
 
 import com.zishuimuyu.unitconvert.builder.ConversionBuilder;
+import com.zishuimuyu.unitconvert.chain.ChainConversionContext;
+import com.zishuimuyu.unitconvert.model.ConvertResult;
 import com.zishuimuyu.unitconvert.model.UnitEnum;
 import com.zishuimuyu.unitconvert.service.UnitConversionServiceImpl;
 
@@ -43,11 +45,11 @@ public class Demo {
      */
     private static void basicConversionDemo(UnitConversionServiceImpl service) {
         System.out.println("1. 基本转换演示:");
-        com.zishuimuyu.unitconvert.model.ConvertResult<BigDecimal> result = service.convert(new BigDecimal("1"), UnitEnum.M, UnitEnum.CM);
-        System.out.println("   1米 = " + result.getVal() + " " + result.getUnit());
+        ConvertResult<BigDecimal> result = service.convert(new BigDecimal("1"), UnitEnum.M, UnitEnum.CM);
+        System.out.println("   1米 = " + result.getFormattedValue() + " " + result.getUnit());
         
         result = service.convert(new BigDecimal("100"), UnitEnum.CM, UnitEnum.M);
-        System.out.println("   100厘米 = " + result.getVal() + " " + result.getUnit());
+        System.out.println("   100厘米 = " + result.getFormattedValue() + " " + result.getUnit());
         System.out.println();
     }
     
@@ -56,10 +58,10 @@ public class Demo {
      */
     private static void chainedCallDemo(UnitConversionServiceImpl service) {
         System.out.println("2. 链式调用演示:");
-        com.zishuimuyu.unitconvert.chain.ChainConversionContext context = 
-            new com.zishuimuyu.unitconvert.chain.ChainConversionContext(service, new BigDecimal("1"), UnitEnum.KM);
-        com.zishuimuyu.unitconvert.model.ConvertResult<BigDecimal> result = context.to(UnitEnum.M);
-        System.out.println("   1千米 = " + result.getVal() + " " + result.getUnit());
+        ChainConversionContext context =
+            new ChainConversionContext(service, new BigDecimal("1"), UnitEnum.KM);
+        ConvertResult<BigDecimal> result = context.to(UnitEnum.M);
+        System.out.println("   1千米 = " + result.getFormattedValue() + " " + result.getUnit());
         System.out.println();
     }
     
@@ -69,8 +71,8 @@ public class Demo {
     private static void builderPatternDemo(UnitConversionServiceImpl service) {
         System.out.println("3. 构建器模式演示:");
         ConversionBuilder builder = service.buildConversion(new BigDecimal("1"), UnitEnum.KM);
-        com.zishuimuyu.unitconvert.model.ConvertResult<BigDecimal> result = builder.to(UnitEnum.MI); // 英里
-        System.out.println("   1千米 = " + result.getVal() + " " + result.getUnit());
+        ConvertResult<BigDecimal> result = builder.to(UnitEnum.MI); // 英里
+        System.out.println("   1千米 = " + result.getFormattedValue() + " " + result.getUnit());
         System.out.println();
     }
     
@@ -79,14 +81,14 @@ public class Demo {
      */
     private static void temperatureConversionDemo(UnitConversionServiceImpl service) {
         System.out.println("4. 温度转换演示:");
-        com.zishuimuyu.unitconvert.model.ConvertResult<BigDecimal> result = service.convert(new BigDecimal("0"), UnitEnum.C, UnitEnum.F);
-        System.out.println("   0°C = " + result.getVal() + "°F");
+        ConvertResult<BigDecimal> result = service.convert(new BigDecimal("0"), UnitEnum.C, UnitEnum.F);
+        System.out.println("   0°C = " + result.getFormattedValue() + "°F");
         
         result = service.convert(new BigDecimal("32"), UnitEnum.F, UnitEnum.C);
-        System.out.println("   32°F = " + result.getVal() + "°C");
+        System.out.println("   32°F = " + result.getFormattedValue() + "°C");
         
         result = service.convert(new BigDecimal("0"), UnitEnum.C, UnitEnum.K);
-        System.out.println("   0°C = " + result.getVal() + "K");
+        System.out.println("   0°C = " + result.getFormattedValue() + "K");
         System.out.println();
     }
     
@@ -96,11 +98,11 @@ public class Demo {
     private static void strategyPatternDemo(UnitConversionServiceImpl service) {
         System.out.println("5. 策略模式演示:");
         // 演示不同类型的转换使用不同的策略
-        com.zishuimuyu.unitconvert.model.ConvertResult<BigDecimal> result = service.convert(new BigDecimal("1"), UnitEnum.M, UnitEnum.FT);
-        System.out.println("   1米 = " + result.getVal() + " 英尺 (使用标准转换策略)");
+        ConvertResult<BigDecimal> result = service.convert(new BigDecimal("1"), UnitEnum.M, UnitEnum.FT);
+        System.out.println("   1米 = " + result.getFormattedValue() + " 英尺 (使用标准转换策略)");
         
         result = service.convert(new BigDecimal("100"), UnitEnum.C, UnitEnum.F);
-        System.out.println("   100°C = " + result.getVal() + "°F (使用温度转换策略)");
+        System.out.println("   100°C = " + result.getFormattedValue() + "°F (使用温度转换策略)");
         System.out.println();
     }
 }

@@ -18,7 +18,7 @@ public class ConvertResult<T> {
     /**
      * 转换后的数值
      */
-    private T val;
+    private T value;
     
     /**
      * 目标单位的缩写
@@ -44,13 +44,13 @@ public class ConvertResult<T> {
     /**
      * 带参数的构造函数
      * 
-     * @param val 转换后的数值
+     * @param value 转换后的数值
      * @param unit 目标单位的缩写
      * @param singular 目标单位的单数形式名称
      * @param plural 目标单位的复数形式名称
      */
-    public ConvertResult(T val, String unit, String singular, String plural) {
-        this.val = val;
+    public ConvertResult(T value, String unit, String singular, String plural) {
+        this.value = value;
         this.unit = unit;
         this.singular = singular;
         this.plural = plural;
@@ -61,17 +61,17 @@ public class ConvertResult<T> {
      * 
      * @return 转换后的数值
      */
-    public T getVal() {
-        return val;
+    public T getValue() {
+        return value;
     }
 
     /**
      * 设置转换后的数值
      * 
-     * @param val 转换后的数值
+     * @param value 转换后的数值
      */
-    public void setVal(T val) {
-        this.val = val;
+    public void setVal(T value) {
+        this.value = value;
     }
 
     /**
@@ -136,7 +136,7 @@ public class ConvertResult<T> {
     @Override
     public String toString() {
         return "ConvertResult{" +
-                "val=" + val +
+                "value=" + value +
                 ", unit='" + unit + '\'' +
                 ", singular='" + singular + '\'' +
                 ", plural='" + plural + '\'' +
@@ -149,22 +149,20 @@ public class ConvertResult<T> {
      * @return 友好的字符串表示
      */
     public String toFriendlyString() {
-        // 如果数值是整数，去掉小数部分；如果是小数，保留最多6位小数
-        String formattedValue;
-        if (val instanceof BigDecimal) {
-            BigDecimal bd = (BigDecimal) val;
-            // 检查是否为整数
-            if (bd.scale() <= 0 || bd.remainder(BigDecimal.ONE).compareTo(BigDecimal.ZERO) == 0) {
-                formattedValue = bd.toBigInteger().toString();
-            } else {
-                // 保留最多6位小数，去掉末尾的零
-                formattedValue = bd.setScale(6, java.math.RoundingMode.HALF_UP)
-                    .stripTrailingZeros()
-                    .toPlainString();
-            }
-        } else {
-            formattedValue = val.toString();
+        return getFormattedValue() + " " + unit;
+    }
+
+    /**
+     * 获取格式化后的数值字符串，避免科学计数法
+     * 
+     * @return 格式化后的数值字符串
+     */
+    public String getFormattedValue() {
+        if (value instanceof BigDecimal) {
+            BigDecimal bd = (BigDecimal) value;
+            // 使用 toPlainString() 避免科学计数法
+            return bd.stripTrailingZeros().toPlainString();
         }
-        return formattedValue + " " + unit;
+        return value.toString();
     }
 }

@@ -78,7 +78,7 @@ public class OptimizedDemo {
         for (int i = 0; i < 5; i++) {
             final int index = i;
             futures[i] = service.convertAsync(BigDecimal.valueOf(i + 1), UnitEnum.M, UnitEnum.CM)
-                .thenAccept(result -> System.out.printf("异步转换 %d米 = %.2f厘米\n", index + 1, result.getVal()));
+                .thenAccept(result -> System.out.printf("异步转换 %d米 = %s厘米\n", index + 1, result.getFormattedValue()));
         }
 
         // 等待所有异步操作完成
@@ -105,7 +105,7 @@ public class OptimizedDemo {
             service.convertBatch(values, UnitEnum.KM, UnitEnum.M);
 
         for (int i = 0; i < results.size(); i++) {
-            System.out.printf("%.0f公里 = %.2f米\n", values.get(i), results.get(i).getVal());
+            System.out.printf("%.0f公里 = %s米\n", values.get(i), results.get(i).getFormattedValue());
         }
         System.out.println();
     }
@@ -129,10 +129,10 @@ public class OptimizedDemo {
 
         for (int i = 0; i < results.size(); i++) {
             ExtendedUnitConversionService.ValueUnitPair pair = pairs.get(i);
-            System.out.printf("%.3f%s = %.2f%s\n", 
+            System.out.printf("%.3f%s = %s%s\n", 
                 pair.getValue(), 
                 pair.getFromUnit().getAbbr(),
-                results.get(i).getVal(),
+                results.get(i).getFormattedValue(),
                 results.get(i).getUnit());
         }
         System.out.println();

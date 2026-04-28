@@ -57,7 +57,7 @@ class UnitConversionServiceTest {
     void testLengthConversion() {
         // 测试米到厘米的转换：1米应该等于100厘米
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.M, UnitEnum.CM);
-        System.out.println(result.getVal());
+        System.out.println(result.getFormattedValue());
         assertEquals(0, new BigDecimal("100").compareTo(result.getVal()), "1米应该等于100厘米");
         assertEquals("cm", result.getUnit(), "目标单位应该是厘米");
 

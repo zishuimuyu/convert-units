@@ -49,7 +49,7 @@ public class ConversionResultFormatter {
             return "null";
         }
         
-        BigDecimal value = result.getVal();
+        BigDecimal value = result.getValue();
         BigDecimal scaledValue = value.setScale(scale, roundingMode);
         
         if (customPattern != null) {

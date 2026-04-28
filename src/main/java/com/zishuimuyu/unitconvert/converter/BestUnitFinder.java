@@ -153,7 +153,7 @@ public class BestUnitFinder {
         for (UnitEnum unit : candidates) {
             try {
                 ConvertResult<BigDecimal> result = conversionService.convert(value, fromUnit, unit);
-                BigDecimal absoluteValue = result.getVal().abs();
+                BigDecimal absoluteValue = result.getValue().abs();
                 
                 if (unit.equals(fromUnit)) {
                     fromUnitResult = result;
@@ -176,7 +176,7 @@ public class BestUnitFinder {
         
         // 选择最接近目标值的单位，如果没有明确的最优选择，则选择最小的合理值
         return suitableResults.stream()
-            .min(Comparator.comparing(r -> absDifference(r.getVal(), targetValue)))
+            .min(Comparator.comparing(r -> absDifference(r.getValue(), targetValue)))
             .orElse(suitableResults.get(0));
     }
     
