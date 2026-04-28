@@ -73,6 +73,7 @@ class UnitConversionServiceTest {
         // 测试千米到米的转换：1千米应该等于1000米
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.KM, UnitEnum.M);
         assertEquals(0, new BigDecimal("1000").compareTo(result.getVal()), "1千米应该等于1000米");
+        System.out.println(result.getVal());
     }
 
     /**

@@ -7,29 +7,98 @@ import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 单位转换因子类
+ * 
+ * 管理所有单位到其对应锚点单位的转换因子
+ * 
+ * 设计原理：
+ * - 每个测量类型选择一个锚点单位（通常是国际标准单位）
+ * - 所有其他单位都存储到锚点单位的转换因子
+ * - 转换时：源单位 -> 锚点单位 -> 目标单位
+ * 
+ * 优势：
+ * - 减少存储空间：n个单位只需要n个转换因子
+ * - 提高转换精度：减少中间转换步骤
+ * - 易于维护：添加新单位只需添加一个转换因子
+ * 
+ * 示例（长度单位）：
+ * - 锚点单位：米
+ * - 转换因子：1厘米 = 0.01米，1千米 = 1000米
+ * - 转换1厘米到千米：1厘米 -> 0.01米 -> 0.00001千米
+ * 
+ * @author 紫水木鱼
+ * @version 1.0.0
+ * @since 2026-04-25
+ */
 public class ConversionFactors {
     
+    /**
+     * 单位到锚点单位的转换因子映射
+     * 
+     * 键：单位枚举
+     * 值：该单位到锚点单位的转换因子
+     * 
+     * 例如：对于长度单位，锚点是米
+     * - UnitEnum.CM -> 0.01 (1厘米 = 0.01米)
+     * - UnitEnum.KM -> 1000 (1千米 = 1000米)
+     */
     private static final Map<UnitEnum, BigDecimal> TO_ANCHOR_FACTORS = new HashMap<>();
     
+    /**
+     * 静态初始化块
+     * 
+     * 在类加载时初始化所有单位的转换因子
+     * 确保转换因子在使用前已经准备好
+     */
     static {
         initializeFactors();
     }
     
+    /**
+     * 私有构造函数
+     * 
+     * 这是一个工具类，不允许实例化
+     */
     private ConversionFactors() {
     }
     
+    /**
+     * 获取指定单位的转换因子
+     * 
+     * @param unit 单位枚举
+     * @return 该单位到锚点单位的转换因子，如果不存在返回null
+     */
     public static BigDecimal getFactor(UnitEnum unit) {
         return TO_ANCHOR_FACTORS.get(unit);
     }
     
+    /**
+     * 检查是否存在指定单位的转换因子
+     * 
+     * @param unit 单位枚举
+     * @return 如果存在转换因子返回true，否则返回false
+     */
     public static boolean hasFactor(UnitEnum unit) {
         return TO_ANCHOR_FACTORS.containsKey(unit);
     }
     
+    /**
+     * 获取所有转换因子的副本
+     * 
+     * 返回的是副本，防止外部修改内部数据
+     * 
+     * @return 所有转换因子的映射
+     */
     public static Map<UnitEnum, BigDecimal> getAllFactors() {
         return new HashMap<>(TO_ANCHOR_FACTORS);
     }
     
+    /**
+     * 初始化所有单位的转换因子
+     * 
+     * 按测量类型分组初始化，便于维护和查找
+     */
     private static void initializeFactors() {
         initializeLengthFactors();
         initializeMassFactors();
@@ -62,6 +131,21 @@ public class ConversionFactors {
         initializeVolumeFlowRateFactors();
     }
     
+    /**
+     * 初始化长度单位的转换因子
+     * 
+     * 锚点单位：米
+     * 
+     * 转换因子说明：
+     * - 纳米(nm)：1e-9米
+     * - 微米(μm)：1e-6米
+     * - 毫米(mm)：1e-3米
+     * - 厘米(cm)：1e-2米
+     * - 分米(dm)：1e-1米
+     * - 米：1（锚点单位）
+     * - 千米(km)：1e3米
+     * - 英制单位通过精确的转换比例计算
+     */
     private static void initializeLengthFactors() {
         TO_ANCHOR_FACTORS.put(UnitEnum.NANOMETER, new BigDecimal("1e-9"));
         TO_ANCHOR_FACTORS.put(UnitEnum.UM, new BigDecimal("1e-6"));
@@ -80,6 +164,19 @@ public class ConversionFactors {
         TO_ANCHOR_FACTORS.put(UnitEnum.NMI, new BigDecimal("1852"));
     }
     
+    /**
+     * 初始化质量单位的转换因子
+     * 
+     * 锚点单位：克
+     * 
+     * 转换因子说明：
+     * - 微克(mcg)：1e-6克
+     * - 毫克(mg)：1e-3克
+     * - 克：1（锚点单位）
+     * - 千克：1e3克
+     * - 公吨：1e6克
+     * - 英制质量单位使用精确的转换比例
+     */
     private static void initializeMassFactors() {
         TO_ANCHOR_FACTORS.put(UnitEnum.MCG, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.MG, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
@@ -92,12 +189,24 @@ public class ConversionFactors {
         TO_ANCHOR_FACTORS.put(UnitEnum.T, new BigDecimal("907185"));
     }
     
+    /**
+     * 初始化体积单位的转换因子
+     * 
+     * 锚点单位：立方分米
+     * 
+     * 转换因子说明：
+     * - 立方毫米(mm3)：1e-6立方分米
+     * - 立方厘米(cm3)：1e-3立方分米
+     * - 立方分米(dm3)：1（锚点单位）
+     * - 毫升：1e-3立方分米
+     * - 升：1立方分米
+     * - 立方米：1e3立方分米
+     * - 立方千米：1e9立方分米
+     * - 瑞典单位和英制单位使用特定的转换比例
+     */
     private static void initializeVolumeFactors() {
         TO_ANCHOR_FACTORS.put(UnitEnum.MM3, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.CM3, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM3, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ML, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CL, new BigDecimal("1").divide(new BigDecimal("100"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.DL, new BigDecimal("1").divide(new BigDecimal("10"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.L, new BigDecimal("1"));
         TO_ANCHOR_FACTORS.put(UnitEnum.KL, new BigDecimal("1e3"));

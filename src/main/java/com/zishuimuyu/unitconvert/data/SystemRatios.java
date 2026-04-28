@@ -7,18 +7,50 @@ import java.util.Map;
 
 /**
  * 系统间转换比率管理类
- * 
+ * <P>
  * 管理不同单位系统之间的转换比率
- * 主要用于处理不同系统（如公制/英制）之间的单位转换
- * 
+ * <P>
+ * 功能列表：
+ * <ul>
+ *   <li>提供统一的系统间转换比率存储</li>
+ *   <li>按测量类型管理转换比率</li>
+ *   <li>支持快速查找和获取系统间转换比率</li>
+ *   <li>维护不同系统间的数学关系</li>
+ * </ul>
+ * <P>
  * 设计原理：
- * - 每个测量类型（measureType）可以有多个单位系统
- * - 系统间转换比率用于将一个系统的锚点单位转换为另一个系统的锚点单位
- * - 在当前实现中，同一测量类型的所有系统都使用相同的锚点单位，所以比率通常为1
- * 
+ * <ol>
+ *   <li>每个测量类型（measureType）可以有多个单位系统</li>
+ *   <li>系统间转换比率用于将一个系统的锚点单位转换为另一个系统的锚点单位</li>
+ *   <li>在当前实现中，同一测量类型的所有系统都使用相同的锚点单位，所以比率通常为1</li>
+ * </ol>
+ * <P>
+ * 优势：
+ * <ul>
+ *   <li>减少存储空间：按测量类型分组存储转换比率</li>
+ *   <li>提高转换精度：明确的系统间转换逻辑</li>
+ *   <li>易于维护：集中管理所有系统间转换比率</li>
+ * </ul>
+ * <P>
  * 使用场景：
- * - 当转换涉及不同系统间的单位时（如METRIC到IMPERIAL）
- * - 通过系统间比率实现跨系统转换
+ * <ol>
+ *   <li>当转换涉及不同系统间的单位时（如METRIC到IMPERIAL）</li>
+ *   <li>通过系统间比率实现跨系统转换</li>
+ *   <li>需要精确控制不同系统间的转换逻辑</li>
+ * </ol>
+ * <P>
+ * 使用示例：
+ * <pre>
+ * // 获取压力单位的系统间转换比率
+ * BigDecimal ratio = SystemRatios.getRatio("pressure", "metric_to_imperial");
+ * 
+ * // 检查是否存在特定的转换比率
+ * boolean hasRatio = SystemRatios.hasRatio("pressure", "metric_to_imperial");
+ * 
+ * // 获取所有系统间转换比率
+ * Map<String, Map<String, BigDecimal>> allRatios = SystemRatios.getAllRatios();
+ * </pre>
+ * <P>
  * 
  * @author 紫水木鱼
  * @version 1.0.0
@@ -28,9 +60,14 @@ public class SystemRatios {
     
     /**
      * 存储系统间转换比率
-     * 
-     * 结构：measureType -> ratioKey -> ratioValue
-     * 例如：pressure -> "metric_to_imperial" -> BigDecimal.ONE
+     * <P>
+     * 详细描述字段的用途、取值范围或特殊含义
+     * <P>
+     * 用途：存储所有测量类型的系统间转换比率
+     * <P>
+     * 取值范围：键为测量类型字符串，值为比率键到比率值的映射
+     * <P>
+     * 特殊含义：结构为measureType -> ratioKey -> ratioValue，例如pressure -> "metric_to_imperial" -> BigDecimal.ONE
      */
     private static final Map<String, Map<String, BigDecimal>> SYSTEM_RATIOS = new HashMap<>();
     
@@ -40,12 +77,64 @@ public class SystemRatios {
     
     /**
      * 私有构造函数，防止实例化
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>私有构造函数阻止外部直接实例化此类</li>
+     *   <li>确保此类只能通过静态方法访问</li>
+     *   <li>符合工具类的设计模式</li>
+     * </ol>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private SystemRatios() {
     }
     
     /**
      * 获取指定测量类型和比率键的转换比率
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>根据测量类型从SYSTEM_RATIOS映射中获取对应的比率映射</li>
+     *   <li>如果测量类型不存在，则返回null</li>
+     *   <li>从比率映射中获取指定比率键对应的转换比率</li>
+     *   <li>返回找到的转换比率，如果不存在则返回null</li>
+     * </ol>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>measureType: 测量类型（如"pressure", "energy"等），用于确定比率组</li>
+     *   <li>ratioKey: 比率键（如"metric_to_imperial", "SI_to_nutrition"等），用于确定具体比率</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>成功: 返回对应的转换比率（BigDecimal类型）</li>
+     *   <li>失败: 返回null（当测量类型或比率键不存在时）</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>当measureType或ratioKey为null时，可能返回null</li>
+     *   <li>当指定的比率不存在时，返回null</li>
+     * </ul>
      * 
      * @param measureType 测量类型（如"pressure", "energy"等）
      * @param ratioKey 比率键（如"metric_to_imperial", "SI_to_nutrition"等）
@@ -61,6 +150,34 @@ public class SystemRatios {
     
     /**
      * 检查是否存在指定的转换比率
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>根据测量类型从SYSTEM_RATIOS映射中获取对应的比率映射</li>
+     *   <li>如果测量类型不存在，则返回false</li>
+     *   <li>检查比率映射中是否包含指定的比率键</li>
+     *   <li>返回检查结果（存在返回true，不存在返回false）</li>
+     * </ol>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>measureType: 测量类型，用于确定比率组</li>
+     *   <li>ratioKey: 比率键，用于确定要检查的具体比率</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>成功: 返回boolean值表示比率是否存在</li>
+     *   <li>失败: 返回false（当测量类型或比率键不存在时）</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>当measureType或ratioKey为null时，可能返回false</li>
+     *   <li>当指定的比率不存在时，返回false</li>
+     * </ul>
      * 
      * @param measureType 测量类型
      * @param ratioKey 比率键
@@ -76,6 +193,33 @@ public class SystemRatios {
     
     /**
      * 获取所有系统间转换比率的副本
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建一个新的HashMap作为结果容器</li>
+     *   <li>遍历SYSTEM_RATIOS中的所有条目</li>
+     *   <li>对每个条目的值（内部Map）进行深拷贝</li>
+     *   <li>将深拷贝后的条目放入结果容器</li>
+     *   <li>返回包含所有转换比率副本的结果容器</li>
+     * </ol>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>成功: 返回所有转换比率的深拷贝（Map<String, Map<String, BigDecimal>>类型）</li>
+     *   <li>失败: 不会失败，但可能返回空的Map</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      * 
      * @return 所有转换比率的深拷贝
      */
@@ -89,6 +233,30 @@ public class SystemRatios {
     
     /**
      * 初始化所有系统间转换比率
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>依次调用各个测量类型的系统间转换比率初始化方法</li>
+     *   <li>包括长度、面积、体积、质量、速度、压力、能量、力、扭矩、照度、步速和体积流量</li>
+     *   <li>确保所有测量类型的系统间转换比率都被正确初始化</li>
+     * </ol>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeSystemRatios() {
         initializeLengthSystemRatios();
@@ -107,9 +275,37 @@ public class SystemRatios {
     
     /**
      * 初始化长度单位系统间转换比率
-     * 
-     * metric_to_imperial: 1 米 = 39.3701 英寸
-     * imperial_to_metric: 1 英寸 = 2.54 厘米
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建长度单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将长度单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 1米 = 39.3701英寸，使用0.393701作为转换因子</li>
+     *   <li>imperial_to_metric: 1英寸 = 2.54厘米，使用2.54作为转换因子</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeLengthSystemRatios() {
         Map<String, BigDecimal> lengthRatios = new HashMap<>();
@@ -122,9 +318,37 @@ public class SystemRatios {
     
     /**
      * 初始化面积单位系统间转换比率
-     * 
-     * metric_to_imperial: 1 平方米 = 10.764 平方英尺
-     * imperial_to_metric: 1 平方英尺 = 0.092903 平方米
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建面积单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将面积单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 1平方米 = 10.764平方英尺，使用10.764作为转换因子</li>
+     *   <li>imperial_to_metric: 1平方英尺 = 0.092903平方米，使用0.092903作为转换因子</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeAreaSystemRatios() {
         Map<String, BigDecimal> areaRatios = new HashMap<>();
@@ -137,9 +361,37 @@ public class SystemRatios {
     
     /**
      * 初始化体积单位系统间转换比率
-     * 
-     * metric_to_imperial: 1 毫升 = 0.033814 液盎司
-     * imperial_to_metric: 1 液盎司 = 29.5735 毫升
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建体积单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将体积单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 1毫升 = 0.033814液盎司，使用33.814作为转换因子（实际上是1升=33.814液盎司）</li>
+     *   <li>imperial_to_metric: 1液盎司 = 29.5735毫升，使用0.0295735作为转换因子（实际上是1液盎司=29.5735毫升）</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeVolumeSystemRatios() {
         Map<String, BigDecimal> volumeRatios = new HashMap<>();
@@ -152,9 +404,37 @@ public class SystemRatios {
     
     /**
      * 初始化质量单位系统间转换比率
-     * 
-     * metric_to_imperial: 1 克 = 0.00220462 磅
-     * imperial_to_metric: 1 磅 = 453.592 克
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建质量单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将质量单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 1克 = 0.00220462磅，使用0.00220462作为转换因子</li>
+     *   <li>imperial_to_metric: 1磅 = 453.592克，使用453.592作为转换因子</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeMassSystemRatios() {
         Map<String, BigDecimal> massRatios = new HashMap<>();
@@ -167,9 +447,37 @@ public class SystemRatios {
     
     /**
      * 初始化速度单位系统间转换比率
-     * 
-     * metric_to_imperial: 1 公里/小时 = 0.621371 英里/小时
-     * imperial_to_metric: 1 英里/小时 = 1.60934 公里/小时
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建速度单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将速度单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 1公里/小时 = 0.621371英里/小时，使用0.621371作为转换因子</li>
+     *   <li>imperial_to_metric: 1英里/小时 = 1.60934公里/小时，使用1.60934作为转换因子</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeSpeedSystemRatios() {
         Map<String, BigDecimal> speedRatios = new HashMap<>();
@@ -182,8 +490,37 @@ public class SystemRatios {
     
     /**
      * 初始化压力单位系统间转换比率
-     * 
-     * 在当前实现中，所有压力单位都使用相同的锚点单位Pa，所以比率是1
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建压力单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将压力单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 在当前实现中，所有压力单位都使用相同的锚点单位Pa，所以比率为1</li>
+     *   <li>imperial_to_metric: 在当前实现中，所有压力单位都使用相同的锚点单位Pa，所以比率为1</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializePressureSystemRatios() {
         Map<String, BigDecimal> pressureRatios = new HashMap<>();
@@ -199,8 +536,37 @@ public class SystemRatios {
     
     /**
      * 初始化能量单位系统间转换比率
-     * 
-     * 在当前实现中，所有能量单位都使用相同的锚点单位J，所以比率是1
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建能量单位的系统间转换比率映射</li>
+     *   <li>设置SI到营养单位的转换比率（SI_to_nutrition）</li>
+     *   <li>设置营养单位到SI的转换比率（nutrition_to_SI）</li>
+     *   <li>将能量单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>SI_to_nutrition: 在当前实现中，所有能量单位都使用相同的锚点单位J，所以比率为1</li>
+     *   <li>nutrition_to_SI: 在当前实现中，所有能量单位都使用相同的锚点单位J，所以比率为1</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeEnergySystemRatios() {
         Map<String, BigDecimal> energyRatios = new HashMap<>();
@@ -216,8 +582,37 @@ public class SystemRatios {
     
     /**
      * 初始化力单位系统间转换比率
-     * 
-     * 在当前实现中，所有力单位都使用相同的锚点单位N，所以比率是1
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建力单位的系统间转换比率映射</li>
+     *   <li>设置SI到英制的转换比率（SI_to_imperial）</li>
+     *   <li>设置英制到SI的转换比率（imperial_to_SI）</li>
+     *   <li>将力单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>SI_to_imperial: 在当前实现中，所有力单位都使用相同的锚点单位N，所以比率为1</li>
+     *   <li>imperial_to_SI: 在当前实现中，所有力单位都使用相同的锚点单位N，所以比率为1</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeForceSystemRatios() {
         Map<String, BigDecimal> forceRatios = new HashMap<>();
@@ -233,8 +628,37 @@ public class SystemRatios {
     
     /**
      * 初始化扭矩单位系统间转换比率
-     * 
-     * 在当前实现中，所有扭矩单位都使用相同的锚点单位Nm，所以比率是1
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建扭矩单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将扭矩单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 在当前实现中，所有扭矩单位都使用相同的锚点单位Nm，所以比率为1</li>
+     *   <li>imperial_to_metric: 在当前实现中，所有扭矩单位都使用相同的锚点单位Nm，所以比率为1</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeTorqueSystemRatios() {
         Map<String, BigDecimal> torqueRatios = new HashMap<>();
@@ -250,8 +674,37 @@ public class SystemRatios {
     
     /**
      * 初始化照度单位系统间转换比率
-     * 
-     * 在当前实现中，所有照度单位都使用相同的锚点单位LX，所以比率是1
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建照度单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将照度单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 在当前实现中，所有照度单位都使用相同的锚点单位LX，所以比率为1</li>
+     *   <li>imperial_to_metric: 在当前实现中，所有照度单位都使用相同的锚点单位LX，所以比率为1</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeIlluminanceSystemRatios() {
         Map<String, BigDecimal> illuminanceRatios = new HashMap<>();
@@ -267,8 +720,37 @@ public class SystemRatios {
     
     /**
      * 初始化步速单位系统间转换比率
-     * 
-     * 在当前实现中，所有步速单位都使用相同的锚点单位S_PER_M，所以比率是1
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建步速单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将步速单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 在当前实现中，所有步速单位都使用相同的锚点单位S_PER_M，所以比率为1</li>
+     *   <li>imperial_to_metric: 在当前实现中，所有步速单位都使用相同的锚点单位S_PER_M，所以比率为1</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializePaceSystemRatios() {
         Map<String, BigDecimal> paceRatios = new HashMap<>();
@@ -284,9 +766,37 @@ public class SystemRatios {
     
     /**
      * 初始化体积流量单位系统间转换比率
-     * 
-     * metric_to_imperial: 1 dm³/s = 1/28.3168 ft³/s
-     * imperial_to_metric: 1 ft³/s = 28.3168 dm³/s
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建体积流量单位的系统间转换比率映射</li>
+     *   <li>计算公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>计算英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将体积流量单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric_to_imperial: 1 dm³/s = 1/28.3168 ft³/s，使用1/28.3168作为转换因子</li>
+     *   <li>imperial_to_metric: 1 ft³/s = 28.3168 dm³/s，使用28.3168作为转换因子</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
      */
     private static void initializeVolumeFlowRateSystemRatios() {
         Map<String, BigDecimal> volumeFlowRateRatios = new HashMap<>();
