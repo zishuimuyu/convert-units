@@ -137,31 +137,59 @@ public class ConversionFactors {
      * 锚点单位：米
      * 
      * 转换因子说明：
+     * - 幺米(ym)：1e-24米
+     * - 仄米(zm)：1e-21米
+     * - 阿米(am)：1e-18米
+     * - 飞米(fm)：1e-15米
+     * - 皮米(pm)：1e-12米
      * - 纳米(nm)：1e-9米
      * - 微米(μm)：1e-6米
+     * - 埃格斯特朗(Å)：1e-10米
      * - 毫米(mm)：1e-3米
      * - 厘米(cm)：1e-2米
      * - 分米(dm)：1e-1米
      * - 米：1（锚点单位）
      * - 千米(km)：1e3米
+     * - 兆米(Mm)：1e6米
+     * - 吉米(Gm)：1e9米
+     * - 手宽(hand)：0.1016米
+     * - 跋(fur)：201.168米
+     * - 天文单位(AU)：149,597,870,700米
+     * - 光年(ly)：9,460,730,472,580,800米
+     * - 秒差距(pc)：30,856,775,814,913,700米
+     * - 尧米(Ym)：1e24米
      * - 英制单位通过精确的转换比例计算
      */
     private static void initializeLengthFactors() {
+        TO_ANCHOR_FACTORS.put(UnitEnum.YM, new BigDecimal("1e-24"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ZM, new BigDecimal("1e-21"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AM, new BigDecimal("1e-18"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FM, new BigDecimal("1e-15"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PM, new BigDecimal("1e-12"));
         TO_ANCHOR_FACTORS.put(UnitEnum.NANOMETER, new BigDecimal("1e-9"));
         TO_ANCHOR_FACTORS.put(UnitEnum.UM, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ANGSTROM, new BigDecimal("1e-10"));
         TO_ANCHOR_FACTORS.put(UnitEnum.MM, new BigDecimal("1e-3"));
         TO_ANCHOR_FACTORS.put(UnitEnum.CM, new BigDecimal("1e-2"));
         TO_ANCHOR_FACTORS.put(UnitEnum.DM, new BigDecimal("1e-1"));
         TO_ANCHOR_FACTORS.put(UnitEnum.M, new BigDecimal("1"));
         TO_ANCHOR_FACTORS.put(UnitEnum.KM, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM_METRIC, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GM, new BigDecimal("1e9"));
         TO_ANCHOR_FACTORS.put(UnitEnum.MIL, new BigDecimal("1").divide(new BigDecimal("12000"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.IN, new BigDecimal("1").divide(new BigDecimal("12"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.YD, new BigDecimal("3"));
         TO_ANCHOR_FACTORS.put(UnitEnum.FT_US, new BigDecimal("1200").divide(new BigDecimal("3937"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.FT, new BigDecimal("1").divide(new BigDecimal("3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.HAND, new BigDecimal("0.1016"));
         TO_ANCHOR_FACTORS.put(UnitEnum.FATHOM, new BigDecimal("6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FUR, new BigDecimal("201.168"));
         TO_ANCHOR_FACTORS.put(UnitEnum.MI, new BigDecimal("5280"));
         TO_ANCHOR_FACTORS.put(UnitEnum.NMI, new BigDecimal("1852"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AU, new BigDecimal("149597870700"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LY, new BigDecimal("9460730472580800"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PARSEC, new BigDecimal("30856775814913700"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.YM_METRIC, new BigDecimal("1e24"));
     }
     
     /**
@@ -207,6 +235,9 @@ public class ConversionFactors {
     private static void initializeVolumeFactors() {
         TO_ANCHOR_FACTORS.put(UnitEnum.MM3, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.CM3, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM3, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ML, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CL, new BigDecimal("1").divide(new BigDecimal("100"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.DL, new BigDecimal("1").divide(new BigDecimal("10"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.L, new BigDecimal("1"));
         TO_ANCHOR_FACTORS.put(UnitEnum.KL, new BigDecimal("1e3"));
