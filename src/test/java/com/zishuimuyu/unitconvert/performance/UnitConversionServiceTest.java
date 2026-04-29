@@ -58,22 +58,22 @@ class UnitConversionServiceTest {
         // 测试米到厘米的转换：1米应该等于100厘米
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.M, UnitEnum.CM);
         System.out.println(result.getFormattedValue());
-        assertEquals(0, new BigDecimal("100").compareTo(result.getVal()), "1米应该等于100厘米");
+        assertEquals(0, new BigDecimal("100").compareTo(result.getValue()), "1米应该等于100厘米");
         assertEquals("cm", result.getUnit(), "目标单位应该是厘米");
 
         // 测试厘米到米的转换：100厘米应该等于1米
         result = conversionService.convert(new BigDecimal("100"), UnitEnum.CM, UnitEnum.M);
 
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "100厘米应该等于1米");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "100厘米应该等于1米");
 
         // 测试毫米到米的转换：1000毫米应该等于1米
         result = conversionService.convert(new BigDecimal("1000"), UnitEnum.MM, UnitEnum.M);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000毫米应该等于1米");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000毫米应该等于1米");
 
         // 测试千米到米的转换：1千米应该等于1000米
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.KM, UnitEnum.M);
-        assertEquals(0, new BigDecimal("1000").compareTo(result.getVal()), "1千米应该等于1000米");
-        System.out.println(result.getVal());
+        assertEquals(0, new BigDecimal("1000").compareTo(result.getValue()), "1千米应该等于1000米");
+        System.out.println(result.getValue());
     }
 
     /**
@@ -84,15 +84,15 @@ class UnitConversionServiceTest {
     void testMassConversion() {
         // 测试千克到克的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.KG, UnitEnum.G);
-        assertEquals(0, new BigDecimal("1000").compareTo(result.getVal()), "1千克应该等于1000克");
+        assertEquals(0, new BigDecimal("1000").compareTo(result.getValue()), "1千克应该等于1000克");
 
         // 测试克到千克的转换
         result = conversionService.convert(new BigDecimal("1000"), UnitEnum.G, UnitEnum.KG);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000克应该等于1千克");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000克应该等于1千克");
 
         // 测试新增的质量单位
         result = conversionService.convert(new BigDecimal("1000"), UnitEnum.MG, UnitEnum.G);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000毫克应该等于1克");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000毫克应该等于1克");
     }
 
     /**
@@ -103,56 +103,56 @@ class UnitConversionServiceTest {
     void testTemperatureConversion() {
         // 测试摄氏度到华氏度的转换 (0°C = 32°F)
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("0"), UnitEnum.C, UnitEnum.F);
-        assertEquals(0, new BigDecimal("32").compareTo(result.getVal()), "0摄氏度应该等于32华氏度");
+        assertEquals(0, new BigDecimal("32").compareTo(result.getValue()), "0摄氏度应该等于32华氏度");
 
         // 测试华氏度到摄氏度的转换 (32°F = 0°C)
         result = conversionService.convert(new BigDecimal("32"), UnitEnum.F, UnitEnum.C);
-        assertEquals(0, new BigDecimal("0").compareTo(result.getVal()), "32华氏度应该等于0摄氏度");
+        assertEquals(0, new BigDecimal("0").compareTo(result.getValue()), "32华氏度应该等于0摄氏度");
 
         // 测试摄氏度到开尔文的转换 (0°C = 273.15K)
         result = conversionService.convert(new BigDecimal("0"), UnitEnum.C, UnitEnum.K);
-        assertEquals(0, new BigDecimal("273.15").compareTo(result.getVal()), "0摄氏度应该等于273.15开尔文");
+        assertEquals(0, new BigDecimal("273.15").compareTo(result.getValue()), "0摄氏度应该等于273.15开尔文");
 
         // 测试兰金温标转换
         // 0°C = 32°F = 491.67°R
         result = conversionService.convert(new BigDecimal("0"), UnitEnum.C, UnitEnum.R);
         BigDecimal expectedRankine = new BigDecimal("491.67");
-        assertTrue(expectedRankine.subtract(result.getVal()).abs().compareTo(new BigDecimal("0.01")) < 0,
-                "0°C应该等于491.67°R，实际值：" + result.getVal());
+        assertTrue(expectedRankine.subtract(result.getValue()).abs().compareTo(new BigDecimal("0.01")) < 0,
+                "0°C应该等于491.67°R，实际值：" + result.getValue());
 
         // 32°F = 491.67°R
         result = conversionService.convert(new BigDecimal("32"), UnitEnum.F, UnitEnum.R);
-        assertTrue(expectedRankine.subtract(result.getVal()).abs().compareTo(new BigDecimal("0.01")) < 0,
-                "32°F应该等于491.67°R，实际值：" + result.getVal());
+        assertTrue(expectedRankine.subtract(result.getValue()).abs().compareTo(new BigDecimal("0.01")) < 0,
+                "32°F应该等于491.67°R，实际值：" + result.getValue());
 
         // 491.67°R = 32°F
         result = conversionService.convert(new BigDecimal("491.67"), UnitEnum.R, UnitEnum.F);
         BigDecimal expectedFahrenheit = new BigDecimal("32");
-        assertTrue(expectedFahrenheit.subtract(result.getVal()).abs().compareTo(new BigDecimal("0.01")) < 0,
-                "491.67°R应该等于32°F，实际值：" + result.getVal());
+        assertTrue(expectedFahrenheit.subtract(result.getValue()).abs().compareTo(new BigDecimal("0.01")) < 0,
+                "491.67°R应该等于32°F，实际值：" + result.getValue());
 
         // 测试新增的单位
         // 测试公制马力转换
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.PS, UnitEnum.W);
         BigDecimal expectedPS = new BigDecimal("735.49875");
-        assertTrue(expectedPS.subtract(result.getVal()).abs().compareTo(new BigDecimal("0.01")) < 0,
-                "1 PS应该等于735.49875 W，实际值：" + result.getVal());
+        assertTrue(expectedPS.subtract(result.getValue()).abs().compareTo(new BigDecimal("0.01")) < 0,
+                "1 PS应该等于735.49875 W，实际值：" + result.getValue());
 
         // 测试压力单位转换
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.BAR, UnitEnum.PSI);
         BigDecimal expectedBarToPsi = new BigDecimal("14.5038"); // 1 bar ≈ 14.5038 psi
-        assertTrue(expectedBarToPsi.subtract(result.getVal()).abs().compareTo(new BigDecimal("0.1")) < 0,
-                "1 bar应该约等于14.5038 psi，实际值：" + result.getVal());
+        assertTrue(expectedBarToPsi.subtract(result.getValue()).abs().compareTo(new BigDecimal("0.1")) < 0,
+                "1 bar应该约等于14.5038 psi，实际值：" + result.getValue());
 
         // 测试速度单位转换
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.KM_H, UnitEnum.MPH);
         BigDecimal expectedKmhToMph = new BigDecimal("0.621371"); // 1 km/h ≈ 0.621371 mph
-        assertTrue(expectedKmhToMph.subtract(result.getVal()).abs().compareTo(new BigDecimal("0.01")) < 0,
-                "1 km/h应该约等于0.621371 mph，实际值：" + result.getVal());
+        assertTrue(expectedKmhToMph.subtract(result.getValue()).abs().compareTo(new BigDecimal("0.01")) < 0,
+                "1 km/h应该约等于0.621371 mph，实际值：" + result.getValue());
 
         // 测试时间单位转换
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.US, UnitEnum.MU);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1 μs应该等于1 mu");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1 μs应该等于1 mu");
     }
 
     /**
@@ -167,12 +167,12 @@ class UnitConversionServiceTest {
         // 测试长度单位转换到最佳表示：1000毫米应该转换为米
         ConvertResult<BigDecimal> result = conversionService.convertToBest(new BigDecimal("1000"), UnitEnum.MM);
         assertEquals("m", result.getUnit(), "1000毫米应该转换为米");
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000毫米应该等于1米");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000毫米应该等于1米");
 
         // 测试小数值的最佳单位选择：0.001米应该转换为毫米
         result = conversionService.convertToBest(new BigDecimal("0.001"), UnitEnum.M);
         assertEquals("mm", result.getUnit(), "0.001米应该转换为毫米");
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "0.001米应该等于1毫米");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "0.001米应该等于1毫米");
     }
 
     /**
@@ -261,7 +261,7 @@ class UnitConversionServiceTest {
         // 测试链式调用: convert(1).from(M).to(CM)
         ChainConversionContext context = new ChainConversionContext(conversionService, new BigDecimal("1"), UnitEnum.M);
         ConvertResult<BigDecimal> result = context.to(UnitEnum.CM);
-        assertEquals(0, new BigDecimal("100").compareTo(result.getVal()), "1米应该等于100厘米");
+        assertEquals(0, new BigDecimal("100").compareTo(result.getValue()), "1米应该等于100厘米");
         assertEquals("cm", result.getUnit(), "目标单位应该是厘米");
     }
 
@@ -321,13 +321,13 @@ class UnitConversionServiceTest {
         ConvertResult<BigDecimal> result = conversionService.convertToBest(
                 new BigDecimal("1000"), UnitEnum.MM, options);
         assertEquals("m", result.getUnit(), "应该跳过被排除的单位，选择米");
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000毫米应该等于1米");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000毫米应该等于1米");
 
         // 测试自定义截止数值：设置截止值为100，10米应该保持为米
         ToBestOptions customCutoffOptions = ToBestOptions.withCutOffNumber(100.0);
         result = conversionService.convertToBest(
                 new BigDecimal("10"), UnitEnum.M, customCutoffOptions);
-        assertTrue(result.getVal().compareTo(new BigDecimal("100")) <= 0,
+        assertTrue(result.getValue().compareTo(new BigDecimal("100")) <= 0,
                 "转换结果应该小于截止值100");
 
         // 测试限制单位系统：只选择公制单位，不应该选择英制单位
@@ -355,7 +355,7 @@ class UnitConversionServiceTest {
         // 正常流程：from -> to
         ChainConversionContext context = new ChainConversionContext(conversionService, new BigDecimal("1"), UnitEnum.M);
         ConvertResult<BigDecimal> result = context.to(UnitEnum.CM);
-        assertEquals(0, new BigDecimal("100").compareTo(result.getVal()), "1米应该等于100厘米");
+        assertEquals(0, new BigDecimal("100").compareTo(result.getValue()), "1米应该等于100厘米");
     }
 
     /**
@@ -366,15 +366,15 @@ class UnitConversionServiceTest {
     void testVolumeConversion() {
         // 测试升到毫升的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.L, UnitEnum.ML);
-        assertEquals(0, new BigDecimal("1000").compareTo(result.getVal()), "1升应该等于1000毫升");
+        assertEquals(0, new BigDecimal("1000").compareTo(result.getValue()), "1升应该等于1000毫升");
 
         // 测试毫升到升的转换
         result = conversionService.convert(new BigDecimal("1000"), UnitEnum.ML, UnitEnum.L);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000毫升应该等于1升");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000毫升应该等于1升");
 
         // 测试新增的体积单位
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.M3, UnitEnum.L);
-        assertEquals(0, new BigDecimal("1000").compareTo(result.getVal()), "1立方米应该等于1000升");
+        assertEquals(0, new BigDecimal("1000").compareTo(result.getValue()), "1立方米应该等于1000升");
     }
 
     /**
@@ -385,15 +385,15 @@ class UnitConversionServiceTest {
     void testTimeConversion() {
         // 测试小时到分钟的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.H, UnitEnum.MIN);
-        assertEquals(0, new BigDecimal("60").compareTo(result.getVal()), "1小时应该等于60分钟");
+        assertEquals(0, new BigDecimal("60").compareTo(result.getValue()), "1小时应该等于60分钟");
 
         // 测试分钟到秒的转换
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.MIN, UnitEnum.S);
-        assertEquals(0, new BigDecimal("60").compareTo(result.getVal()), "1分钟应该等于60秒");
+        assertEquals(0, new BigDecimal("60").compareTo(result.getValue()), "1分钟应该等于60秒");
 
         // 测试新增的时间单位
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.D, UnitEnum.H);
-        assertEquals(0, new BigDecimal("24").compareTo(result.getVal()), "1天应该等于24小时");
+        assertEquals(0, new BigDecimal("24").compareTo(result.getValue()), "1天应该等于24小时");
     }
 
     /**
@@ -403,11 +403,11 @@ class UnitConversionServiceTest {
     void testAreaConversion() {
         // 测试平方米到平方厘米的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.M2, UnitEnum.CM2);
-        assertEquals(0, new BigDecimal("10000").compareTo(result.getVal()), "1平方米应该等于10000平方厘米");
+        assertEquals(0, new BigDecimal("10000").compareTo(result.getValue()), "1平方米应该等于10000平方厘米");
 
         // 测试平方千米到平方米的转换
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.KM2, UnitEnum.M2);
-        assertEquals(0, new BigDecimal("1000000").compareTo(result.getVal()), "1平方千米应该等于1000000平方米");
+        assertEquals(0, new BigDecimal("1000000").compareTo(result.getValue()), "1平方千米应该等于1000000平方米");
     }
 
     /**
@@ -418,7 +418,7 @@ class UnitConversionServiceTest {
         // 测试米/秒到千米/小时的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.M_S, UnitEnum.KM_H);
         // 1 m/s = 3.6 km/h
-        assertEquals(0, new BigDecimal("3.6").compareTo(result.getVal().setScale(1, RoundingMode.HALF_UP)), "1米/秒应该等于3.6千米/小时");
+        assertEquals(0, new BigDecimal("3.6").compareTo(result.getValue().setScale(1, RoundingMode.HALF_UP)), "1米/秒应该等于3.6千米/小时");
     }
 
     /**
@@ -428,7 +428,7 @@ class UnitConversionServiceTest {
     void testPowerConversion() {
         // 测试瓦特到千瓦的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1000"), UnitEnum.W, UnitEnum.KW);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000瓦应该等于1千瓦");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000瓦应该等于1千瓦");
     }
 
     /**
@@ -438,7 +438,7 @@ class UnitConversionServiceTest {
     void testPressureConversion() {
         // 测试帕斯卡到千帕的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1000"), UnitEnum.PA, UnitEnum.KPA);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000帕应该等于1千帕");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000帕应该等于1千帕");
     }
 
     /**
@@ -448,11 +448,11 @@ class UnitConversionServiceTest {
     void testDigitalConversion() {
         // 测试字节到千字节的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1000"), UnitEnum.BYTE, UnitEnum.KBYTE);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000字节应该等于1千字节");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000字节应该等于1千字节");
 
         // 测试比特到字节的转换
         result = conversionService.convert(new BigDecimal("8"), UnitEnum.BIT, UnitEnum.BYTE);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "8比特应该等于1字节");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "8比特应该等于1字节");
     }
 
 
@@ -463,7 +463,7 @@ class UnitConversionServiceTest {
     void testAccelerationConversion() {
         // 测试g-force到m/s2的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.G_FORCE, UnitEnum.M_S2);
-        assertEquals(0, new BigDecimal("9.80665").compareTo(result.getVal().setScale(5, RoundingMode.HALF_UP)), "1重力加速度应该等于9.80665米/秒²");
+        assertEquals(0, new BigDecimal("9.80665").compareTo(result.getValue().setScale(5, RoundingMode.HALF_UP)), "1重力加速度应该等于9.80665米/秒²");
     }
 
     /**
@@ -474,7 +474,7 @@ class UnitConversionServiceTest {
         // 测试焦耳到卡路里的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.J, UnitEnum.CAL);
         // 1焦耳 ≈ 0.239卡路里
-        assertEquals(0, new BigDecimal("0.239").compareTo(result.getVal().setScale(3, RoundingMode.HALF_UP)), "1焦耳应该约等于0.239卡路里");
+        assertEquals(0, new BigDecimal("0.239").compareTo(result.getValue().setScale(3, RoundingMode.HALF_UP)), "1焦耳应该约等于0.239卡路里");
     }
 
     /**
@@ -485,7 +485,7 @@ class UnitConversionServiceTest {
         // 测试牛顿到磅力的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.N, UnitEnum.LBF);
         // 1牛顿 ≈ 0.2248磅力
-        assertEquals(0, new BigDecimal("0.2248").compareTo(result.getVal().setScale(4, RoundingMode.HALF_UP)), "1牛顿应该约等于0.2248磅力");
+        assertEquals(0, new BigDecimal("0.2248").compareTo(result.getValue().setScale(4, RoundingMode.HALF_UP)), "1牛顿应该约等于0.2248磅力");
     }
 
     /**
@@ -496,7 +496,7 @@ class UnitConversionServiceTest {
         // 测试牛顿米到磅英尺的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.NM, UnitEnum.LBF_FT);
         // 1牛顿米 ≈ 0.7376磅英尺
-        assertEquals(0, new BigDecimal("0.7376").compareTo(result.getVal().setScale(4, RoundingMode.HALF_UP)), "1牛顿米应该约等于0.7376磅英尺");
+        assertEquals(0, new BigDecimal("0.7376").compareTo(result.getValue().setScale(4, RoundingMode.HALF_UP)), "1牛顿米应该约等于0.7376磅英尺");
     }
 
     /**
@@ -506,7 +506,7 @@ class UnitConversionServiceTest {
     void testFrequencyConversion() {
         // 测试赫兹到千赫兹的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1000"), UnitEnum.HZ, UnitEnum.KHZ);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000赫兹应该等于1千赫兹");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000赫兹应该等于1千赫兹");
     }
 
     /**
@@ -516,7 +516,7 @@ class UnitConversionServiceTest {
     void testIlluminanceConversion() {
         // 测试勒克斯到英尺烛光的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("10.764"), UnitEnum.LX, UnitEnum.FOOTCANDLE);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal().setScale(3, RoundingMode.HALF_UP)), "10.764勒克斯应该约等于1英尺烛光");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue().setScale(3, RoundingMode.HALF_UP)), "10.764勒克斯应该约等于1英尺烛光");
     }
 
     /**
@@ -526,7 +526,7 @@ class UnitConversionServiceTest {
     void testApparentPowerConversion() {
         // 测试伏安到千伏安的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1000"), UnitEnum.VA, UnitEnum.KVA);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000伏安应该等于1千伏安");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000伏安应该等于1千伏安");
     }
 
     /**
@@ -536,7 +536,7 @@ class UnitConversionServiceTest {
     void testPartsPerConversion() {
         // 测试百万分率到十亿分率的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.PPM, UnitEnum.PPB);
-        assertEquals(0, new BigDecimal("1000").compareTo(result.getVal()), "1百万分率应该等于1000十亿分率");
+        assertEquals(0, new BigDecimal("1000").compareTo(result.getValue()), "1百万分率应该等于1000十亿分率");
     }
 
     /**
@@ -546,19 +546,19 @@ class UnitConversionServiceTest {
     void testPiecesConversion() {
         // 测试件到dozen的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("24"), UnitEnum.PCS_PIECES, UnitEnum.DOZ);
-        assertEquals(0, new BigDecimal("2").compareTo(result.getVal()), "24件应该等于2dozen");
+        assertEquals(0, new BigDecimal("2").compareTo(result.getValue()), "24件应该等于2dozen");
 
         // 测试 dozen 到 个的转换 (each类型内部转换)
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.DOZEN, UnitEnum.EA);
-        assertEquals(0, new BigDecimal("12").compareTo(result.getVal()), "1 dozen应该等于12个");
+        assertEquals(0, new BigDecimal("12").compareTo(result.getValue()), "1 dozen应该等于12个");
 
         // 测试 ea 到 dozen 的转换 (each类型内部转换)
         result = conversionService.convert(new BigDecimal("12"), UnitEnum.EA, UnitEnum.DOZEN);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "12 个应该等于1 dozen");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "12 个应该等于1 dozen");
 
         // 测试 ea 到 single 的转换 (each类型内部转换)
         result = conversionService.convert(new BigDecimal("1"), UnitEnum.EA, UnitEnum.SINGLE);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1 个(ea)应该等于1 个(single)");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1 个(ea)应该等于1 个(single)");
     }
 
     /**
@@ -568,7 +568,7 @@ class UnitConversionServiceTest {
     void testReactivePowerConversion() {
         // 测试乏到千乏的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1000"), UnitEnum.VAR, UnitEnum.KVAR);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000乏应该等于1千乏");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000乏应该等于1千乏");
     }
 
     /**
@@ -578,7 +578,7 @@ class UnitConversionServiceTest {
     void testReactiveEnergyConversion() {
         // 测试乏时到千乏时的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1000"), UnitEnum.VARH, UnitEnum.KVARH);
-        assertEquals(0, new BigDecimal("1").compareTo(result.getVal()), "1000乏时应该等于1千乏时");
+        assertEquals(0, new BigDecimal("1").compareTo(result.getValue()), "1000乏时应该等于1千乏时");
     }
 
     /**
@@ -589,8 +589,8 @@ class UnitConversionServiceTest {
         // 测试千克/秒到千克/小时的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.KG_PER_S, UnitEnum.KG_PER_H);
         // 由于精度问题，允许小的误差范围
-        assertTrue(new BigDecimal("3600").subtract(result.getVal()).abs().compareTo(new BigDecimal("0.01")) < 0,
-                "1千克/秒应该约等于3600千克/小时，实际值：" + result.getVal());
+        assertTrue(new BigDecimal("3600").subtract(result.getValue()).abs().compareTo(new BigDecimal("0.01")) < 0,
+                "1千克/秒应该约等于3600千克/小时，实际值：" + result.getValue());
     }
 
     /**
@@ -601,8 +601,8 @@ class UnitConversionServiceTest {
         // 测试升/分钟到立方米/秒的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("60"), UnitEnum.L_PER_MIN, UnitEnum.M3_PER_S);
         // 由于精度问题，允许小的误差范围
-        assertTrue(new BigDecimal("0.001").subtract(result.getVal()).abs().compareTo(new BigDecimal("0.0001")) < 0,
-                "60升/分钟应该约等于0.001立方米/秒，实际值：" + result.getVal());
+        assertTrue(new BigDecimal("0.001").subtract(result.getValue()).abs().compareTo(new BigDecimal("0.0001")) < 0,
+                "60升/分钟应该约等于0.001立方米/秒，实际值：" + result.getValue());
     }
 
     /**
@@ -613,8 +613,8 @@ class UnitConversionServiceTest {
         // 测试分钟/公里到秒/米的转换
         ConvertResult<BigDecimal> result = conversionService.convert(new BigDecimal("1"), UnitEnum.MIN_PER_KM, UnitEnum.S_PER_M);
         // 1分钟/公里 = 0.06秒/米
-        assertTrue(new BigDecimal("0.06").subtract(result.getVal()).abs().compareTo(new BigDecimal("0.0001")) < 0,
-                "1分钟/公里应该约等于0.06秒/米，实际值：" + result.getVal());
+        assertTrue(new BigDecimal("0.06").subtract(result.getValue()).abs().compareTo(new BigDecimal("0.0001")) < 0,
+                "1分钟/公里应该约等于0.06秒/米，实际值：" + result.getValue());
     }
 
     /**
@@ -627,8 +627,8 @@ class UnitConversionServiceTest {
         // 1分钟/公里 = 1分钟/公里 * (1公里/0.621371英里) = 1/0.621371 分钟/英里 ≈ 1.609 分钟/英里
         // 根据JS实现的比率0.3048，计算结果应接近1.609
         BigDecimal expected = new BigDecimal("1.609");
-        assertTrue(expected.subtract(result.getVal()).abs().compareTo(new BigDecimal("0.1")) < 0,
-                "1分钟/公里应该约等于1.609分钟/英里，实际值：" + result.getVal());
+        assertTrue(expected.subtract(result.getValue()).abs().compareTo(new BigDecimal("0.1")) < 0,
+                "1分钟/公里应该约等于1.609分钟/英里，实际值：" + result.getValue());
     }
 
     /**
