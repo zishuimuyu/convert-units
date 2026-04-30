@@ -338,9 +338,14 @@ public class ConversionFactors {
     }
     
     private static void initializeAccelerationFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.G_FORCE, new BigDecimal("9.80665"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.M_S2, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.G0, new BigDecimal("9.80665"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M_S2, new BigDecimal("1"));              // 米/秒²: 作为metric系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.CM_S2, new BigDecimal("0.01"));          // 厘米/秒²: 0.01m/s² (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM_S2, new BigDecimal("0.001"));          // 毫米/秒²: 0.001m/s² (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN_S2, new BigDecimal("0.0254").divide(new BigDecimal("0.3048"), 10, java.math.RoundingMode.HALF_UP)); // 英寸/秒²: 相对ft/s²的比率 (0.0254/0.3048)
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT_S2, new BigDecimal("1"));              // 英尺/秒²: 作为imperial系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.G_FORCE, new BigDecimal("9.80665"));      // 重力加速度: 9.80665m/s² (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.G0, new BigDecimal("9.80665"));           // 标准重力: 9.80665m/s² (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.GAL_ACC, new BigDecimal("0.01"));             // 伽: 0.01m/s² (相对于metric锚点)
     }
     
     private static void initializeAngleFactors() {

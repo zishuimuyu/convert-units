@@ -193,6 +193,11 @@ public enum UnitEnum {
     G_FORCE("g-force", "acceleration", "metric", "重力加速度", "重力加速度"),
     M_S2("m/s2", "acceleration", "metric", "米每二次方秒", "米每二次方秒"),
     G0("g0", "acceleration", "metric", "标准重力", "标准重力"),
+    CM_S2("cm/s²", "acceleration", "metric", "厘米/秒²", "厘米/秒²"),    // 0.01m/s² CGS制加速度单位、精密工程
+    MM_S2("mm/s²", "acceleration", "metric", "毫米/秒²", "毫米/秒²"),    // 0.001m/s² 精密工程、微小加速度测量
+    IN_S2("in/s²", "acceleration", "imperial", "英寸/秒²", "英寸/秒²"),  // 0.0254m/s² 精密仪器、小型机械
+    FT_S2("ft/s²", "acceleration", "imperial", "英尺/秒²", "英尺/秒²"),  // 0.3048m/s² 美国工程、航空
+    GAL_ACC("Gal", "acceleration", "cgs", "伽", "伽"),                   // 0.01m/s² 地球物理学、地质勘探、地震学
     
     // 角度单位
     RAD("rad", "angle", "metric", "弧度", "弧度"),

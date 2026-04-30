@@ -272,6 +272,7 @@ public class SystemRatios {
         initializePaceSystemRatios();
         initializeVolumeFlowRateSystemRatios();
         initializeTimeSystemRatios();
+        initializeAccelerationSystemRatios();
         initializePowerSystemRatios();
     }
     
@@ -937,5 +938,65 @@ public class SystemRatios {
         timeRatios.put("chinese_to_imperial", new BigDecimal("1"));
         
         SYSTEM_RATIOS.put("time", timeRatios);
+    }
+    
+    /**
+     * 初始化加速度单位系统间转换比率
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建加速度单位的系统间转换比率映射</li>
+     *   <li>设置metric到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>设置metric到CGS的转换比率（metric_to_cgs）</li>
+     *   <li>设置CGS到公制的转换比率（cgs_to_metric）</li>
+     *   <li>将加速度单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric锚点单位是M_S2(1)，imperial锚点单位是FT_S2(1)</li>
+     *   <li>1 ft/s² = 0.3048 m/s²，所以转换比率为：</li>
+     *   <li>metric_to_imperial: 1 m/s² = ~3.28084 ft/s²</li>
+     *   <li>imperial_to_metric: 1 ft/s² = 0.3048 m/s²</li>
+     *   <li>cgs锚点单位是GAL(1)，与metric锚点单位M_S2(1)的关系：</li>
+     *   <li>1 m/s² = 100 Gal，所以转换比率为：</li>
+     *   <li>metric_to_cgs: 1 m/s² = 100 Gal</li>
+     *   <li>cgs_to_metric: 1 Gal = 0.01 m/s²</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
+     */
+    private static void initializeAccelerationSystemRatios() {
+        Map<String, BigDecimal> accelerationRatios = new HashMap<>();
+        
+        // metric与英制单位间的转换
+        // metric锚点单位是M_S2(1)，imperial锚点单位是FT_S2(1)
+        // 1 ft/s² = 0.3048 m/s²，所以转换比率为：
+        accelerationRatios.put("metric_to_imperial", new BigDecimal("1").divide(new BigDecimal("0.3048"), 10, RoundingMode.HALF_UP));  // 1 m/s² = ~3.28084 ft/s²
+        accelerationRatios.put("imperial_to_metric", new BigDecimal("0.3048"));  // 1 ft/s² = 0.3048 m/s²
+        
+        // metric与CGS单位间的转换
+        // metric锚点单位是M_S2(1)，cgs锚点单位是GAL_ACC(1)
+        // 1 m/s² = 100 Gal，所以转换比率为：
+        accelerationRatios.put("metric_to_cgs", new BigDecimal("100"));  // 1 m/s² = 100 Gal
+        accelerationRatios.put("cgs_to_metric", new BigDecimal("0.01"));  // 1 Gal = 0.01 m/s²
+        
+        SYSTEM_RATIOS.put("acceleration", accelerationRatios);
     }
 }
