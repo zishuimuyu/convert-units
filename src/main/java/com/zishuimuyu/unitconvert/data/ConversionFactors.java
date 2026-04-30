@@ -600,17 +600,56 @@ public class ConversionFactors {
     }
     
     private static void initializeVolumeFlowRateFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_S, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM3_PER_S, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CM3_PER_S, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_S, new BigDecimal("1")); // 锚点单位(=1 L/s)
+        
+        // metric volume flow rates
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM3_PER_S, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CM3_PER_S, new BigDecimal("1e-3"));
         TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_S, new BigDecimal("1e3"));
         TO_ANCHOR_FACTORS.put(UnitEnum.KM3_PER_S, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ML_PER_S, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CL_PER_S, new BigDecimal("1e-2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DL_PER_S, new BigDecimal("1e-1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_S, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_S, new BigDecimal("1e3"));
         TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_MIN, new BigDecimal("1").divide(new BigDecimal("0.06"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_D, new BigDecimal("1").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_A, new BigDecimal("1").divide(new BigDecimal("31536000"), 10, RoundingMode.HALF_UP)); // 365*24*3600
+        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_MIN, new BigDecimal("1e3").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_H, new BigDecimal("1e3").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_S, new BigDecimal("1e3"));
         TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_D, new BigDecimal("1").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_S, new BigDecimal("28.3168"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_A, new BigDecimal("1").divide(new BigDecimal("31536000"), 10, RoundingMode.HALF_UP)); // 365*24*3600
+        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_MIN, new BigDecimal("1e3").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_H, new BigDecimal("1e3").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_D, new BigDecimal("1e3").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_A, new BigDecimal("1e3").divide(new BigDecimal("31536000"), 10, RoundingMode.HALF_UP)); // 365*24*3600
+        
+        // imperial volume flow rates
+        TO_ANCHOR_FACTORS.put(UnitEnum.TSP_PER_S, new BigDecimal("0.00492892")); // 1 tsp = 4.92892 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.TBS_PER_S, new BigDecimal("0.0147868")); // 1 tbsp = 3 tsp = 14.7868 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN3_PER_S, new BigDecimal("0.0163871")); // 1 in³ = 16.3871 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN3_PER_MIN, new BigDecimal("0.0163871").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN3_PER_H, new BigDecimal("0.0163871").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FLOZ_PER_S, new BigDecimal("0.0295735")); // 1 fl oz = 29.5735 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.FLOZ_PER_MIN, new BigDecimal("0.0295735").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FLOZ_PER_H, new BigDecimal("0.0295735").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CUP_PER_S, new BigDecimal("0.236588")); // 1 cup = 8 fl oz = 236.588 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.PNT_PER_S, new BigDecimal("0.473176")); // 1 pint = 2 cups = 473.176 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.PNT_PER_MIN, new BigDecimal("0.473176").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PNT_PER_H, new BigDecimal("0.473176").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.QT_PER_S, new BigDecimal("0.946353")); // 1 quart = 2 pints = 946.353 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.GAL_PER_S, new BigDecimal("3.78541")); // 1 gallon = 4 quarts = 3785.41 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.GAL_PER_MIN, new BigDecimal("3.78541").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GAL_PER_H, new BigDecimal("3.78541").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_S, new BigDecimal("28.3168")); // 1 ft³ = 28.3168 L
         TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_MIN, new BigDecimal("28.3168").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_H, new BigDecimal("28.3168").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD3_PER_S, new BigDecimal("764.555")); // 1 yd³ = 27 ft³ = 764.555 L
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD3_PER_MIN, new BigDecimal("764.555").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD3_PER_H, new BigDecimal("764.555").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
     }
 }
