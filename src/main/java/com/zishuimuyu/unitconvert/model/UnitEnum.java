@@ -209,6 +209,18 @@ public enum UnitEnum {
     GW("GW", "power", "metric", "吉瓦", "吉瓦"),
     METRIC_HP("PS", "power", "metric", "公制马力", "公制马力"),
     HP("hp", "power", "imperial", "马力", "马力"),
+    PW("pW", "power", "metric", "皮瓦", "皮瓦"),                    // 10⁻¹²W 微电子、生物信号
+    NW("nW", "power", "metric", "纳瓦", "纳瓦"),                    // 10⁻⁹W 微电子、传感器
+    UW("uW", "power", "metric", "微瓦", "微瓦"),                   // 10⁻⁶W 微电子、射频信号
+    BtuPerS("Btu/s", "power", "imperial", "英热单位/秒", "英热单位/秒"), // 1055.06W 空调制冷
+    CAL_PER_S("cal/s", "power", "metric", "卡路里/秒", "卡路里/秒"),  // 4.184W 生物代谢、热交换
+    KCAL_PER_H("kcal/h", "power", "metric", "千卡/小时", "千卡/小时"), // 1.163W 制冷制热
+    BTU_PER_H("Btu/h", "power", "imperial", "英热单位/小时", "英热单位/小时"), // 0.2931W 空调制冷
+    KGF_M_PER_S("kgf·m/s", "power", "metric", "公斤力·米/秒", "公斤力·米/秒"), // 9.80665W 工程技术
+    FTLBF_PER_S("ft·lbf/s", "power", "imperial", "英尺·磅力/秒", "英尺·磅力/秒"), // 1.35582W 美国工程
+    FTLBF_PER_MIN("ft·lbf/min", "power", "imperial", "英尺·磅力/分钟", "英尺·磅力/分钟"), // 0.022597W 美国工程
+    ERG_PER_S("erg/s", "power", "cgs", "尔格/秒", "尔格/秒"),      // 10⁻⁷W 历史物理文献
+    TW("TW", "power", "metric", "太瓦", "太瓦"),                   // 10¹²W 一万亿瓦，国家电力、全球能源
     
     // 压力单位
     PA("Pa", "pressure", "metric", "帕斯卡", "帕斯卡"),

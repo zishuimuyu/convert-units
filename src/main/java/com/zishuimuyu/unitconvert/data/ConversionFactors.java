@@ -352,13 +352,25 @@ public class ConversionFactors {
     }
     
     private static void initializePowerFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.W, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MW, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KW, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MW_POWER, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GW, new BigDecimal("1e9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.METRIC_HP, new BigDecimal("735.49875"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.HP, new BigDecimal("745.7"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.W, new BigDecimal("1"));                  // 瓦特: 1W (基本单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.PW, new BigDecimal("1e-12"));            // 皮瓦: 10⁻¹²W
+        TO_ANCHOR_FACTORS.put(UnitEnum.NW, new BigDecimal("1e-9"));             // 纳瓦: 10⁻⁹W
+        TO_ANCHOR_FACTORS.put(UnitEnum.UW, new BigDecimal("1e-6"));             // 微瓦: 10⁻⁶W
+        TO_ANCHOR_FACTORS.put(UnitEnum.MW, new BigDecimal("1e-3"));             // 毫瓦: 10⁻³W
+        TO_ANCHOR_FACTORS.put(UnitEnum.KW, new BigDecimal("1e3"));              // 千瓦: 10³W
+        TO_ANCHOR_FACTORS.put(UnitEnum.MW_POWER, new BigDecimal("1e6"));        // 兆瓦: 10⁶W
+        TO_ANCHOR_FACTORS.put(UnitEnum.GW, new BigDecimal("1e9"));              // 吉瓦: 10⁹W
+        TO_ANCHOR_FACTORS.put(UnitEnum.TW, new BigDecimal("1e12"));             // 太瓦: 10¹²W
+        TO_ANCHOR_FACTORS.put(UnitEnum.METRIC_HP, new BigDecimal("735.5"));     // 公制马力: 735.5W
+        TO_ANCHOR_FACTORS.put(UnitEnum.HP, new BigDecimal("1"));                // 马力: 作为英制系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.BtuPerS, new BigDecimal("1055.06").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP)); // 英热单位/秒: 相对HP的比率 (1055.06/745.7)
+        TO_ANCHOR_FACTORS.put(UnitEnum.CAL_PER_S, new BigDecimal("4.184"));     // 卡路里/秒: 4.184W
+        TO_ANCHOR_FACTORS.put(UnitEnum.KCAL_PER_H, new BigDecimal("1.163"));    // 千卡/小时: 1.163W
+        TO_ANCHOR_FACTORS.put(UnitEnum.BTU_PER_H, new BigDecimal("0.2931").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP)); // 英热单位/小时: 相对HP的比率 (0.2931/745.7)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KGF_M_PER_S, new BigDecimal("9.80665")); // 公斤力·米/秒: 9.80665W
+        TO_ANCHOR_FACTORS.put(UnitEnum.FTLBF_PER_S, new BigDecimal("1.35582").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP)); // 英尺·磅力/秒: 相对HP的比率 (1.35582/745.7)
+        TO_ANCHOR_FACTORS.put(UnitEnum.FTLBF_PER_MIN, new BigDecimal("0.022597").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP)); // 英尺·磅力/分钟: 相对HP的比率 (0.022597/745.7)
+        TO_ANCHOR_FACTORS.put(UnitEnum.ERG_PER_S, new BigDecimal("1e-7"));      // 尔格/秒: 10⁻⁷W
     }
     
     private static void initializePressureFactors() {

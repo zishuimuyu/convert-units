@@ -272,6 +272,67 @@ public class SystemRatios {
         initializePaceSystemRatios();
         initializeVolumeFlowRateSystemRatios();
         initializeTimeSystemRatios();
+        initializePowerSystemRatios();
+    }
+    
+    /**
+     * 初始化功率单位系统间转换比率
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建功率单位的系统间转换比率映射</li>
+     *   <li>设置metric到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>设置metric到CGS的转换比率（metric_to_cgs）</li>
+     *   <li>设置CGS到公制的转换比率（cgs_to_metric）</li>
+     *   <li>将功率单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>metric锚点单位是W(1)，imperial锚点单位是HP(1)</li>
+     *   <li>1 HP = 745.7 W，所以转换比率为：</li>
+     *   <li>metric_to_imperial: 1 W = ~0.001341 HP</li>
+     *   <li>imperial_to_metric: 1 HP = 745.7 W</li>
+     *   <li>cgs锚点单位是ERG_PER_S(1)，与metric锚点单位W(1)的关系：</li>
+     *   <li>1 W = 10^7 erg/s，所以转换比率为：</li>
+     *   <li>metric_to_cgs: 1 W = 10000000 erg/s</li>
+     *   <li>cgs_to_metric: 1 erg/s = 0.0000001 W</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
+     */
+    private static void initializePowerSystemRatios() {
+        Map<String, BigDecimal> powerRatios = new HashMap<>();
+        
+        // metric与英制单位间的转换
+        // metric锚点单位是W(1)，imperial锚点单位是HP(1)
+        // 1 HP = 745.7 W，所以转换比率为：
+        powerRatios.put("metric_to_imperial", new BigDecimal("1").divide(new BigDecimal("745.7"), 10, RoundingMode.HALF_UP));  // 1 W = ~0.001341 HP
+        powerRatios.put("imperial_to_metric", new BigDecimal("745.7"));  // 1 HP = 745.7 W
+        
+        // metric与CGS单位间的转换
+        // metric锚点单位是W(1)，cgs锚点单位是ERG_PER_S(1)
+        // 1 W = 10^7 erg/s，所以转换比率为：
+        powerRatios.put("metric_to_cgs", new BigDecimal("1e7"));  // 1 W = 10000000 erg/s
+        powerRatios.put("cgs_to_metric", new BigDecimal("1e-7"));  // 1 erg/s = 0.0000001 W
+        
+        SYSTEM_RATIOS.put("power", powerRatios);
     }
     
     /**
