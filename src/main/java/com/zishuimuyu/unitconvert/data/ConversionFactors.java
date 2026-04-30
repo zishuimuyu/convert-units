@@ -362,17 +362,22 @@ public class ConversionFactors {
     }
     
     private static void initializePressureFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.PA, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KPA, new BigDecimal("1000"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MPA, new BigDecimal("1000000"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.HPa, new BigDecimal("100"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GPA, new BigDecimal("1000000000"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MBAR, new BigDecimal("0.1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.BAR, new BigDecimal("100000"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.TORR, new BigDecimal("133.32236842105263"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MH2O, new BigDecimal("9806.65"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MMHG, new BigDecimal("133.322387415"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PSI, new BigDecimal("6894.757293168361"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PA, new BigDecimal("1"));                 // 帕斯卡: 1Pa (基本单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.HPa, new BigDecimal("100"));              // 百帕: 10²Pa (一百帕)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KPA, new BigDecimal("1000"));             // 千帕: 10³Pa (一千帕)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MPA, new BigDecimal("1000000"));          // 兆帕: 10⁶Pa (一百万帕)
+        TO_ANCHOR_FACTORS.put(UnitEnum.GPA, new BigDecimal("1000000000"));       // 吉帕: 10⁹Pa
+        TO_ANCHOR_FACTORS.put(UnitEnum.MBAR, new BigDecimal("100"));             // 毫巴: 10²Pa (百帕)
+        TO_ANCHOR_FACTORS.put(UnitEnum.BAR, new BigDecimal("100000"));           // 巴: 10⁵Pa (十万帕)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MMHG, new BigDecimal("133.322"));        // 毫米汞柱: 133.322Pa
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORR, new BigDecimal("133.32236842105263")); // 托: (101325/760) Pa ≈ 133.322 Pa
+        TO_ANCHOR_FACTORS.put(UnitEnum.ATM, new BigDecimal("101325"));           // 标准大气压: 101325Pa
+        TO_ANCHOR_FACTORS.put(UnitEnum.KGF_PER_M2, new BigDecimal("9.80665"));  // 千克力/平方米: 9.80665Pa
+        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_PER_FT2, new BigDecimal("1").divide(new BigDecimal("144"), 10, java.math.RoundingMode.HALF_UP)); // 磅力/平方英尺: 1/144 psi (因为1 ft² = 144 in²)
+        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_PER_IN2, new BigDecimal("1"));        // 磅力/平方英寸: 作为英制系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.KSI, new BigDecimal("1000"));             // 千磅力/平方英寸: 1000 psi
+        TO_ANCHOR_FACTORS.put(UnitEnum.MH2O, new BigDecimal("9806.65"));        // 米水柱
+        TO_ANCHOR_FACTORS.put(UnitEnum.PSI, new BigDecimal("1"));                // psi (lbf/in²) 作为英制系统锚点单位
     }
     
     private static void initializeQuantityFactors() {

@@ -221,7 +221,12 @@ public enum UnitEnum {
     TORR("torr", "pressure", "metric", "托", "托"),
     MH2O("mH2O", "pressure", "metric", "米水柱", "米水柱"),
     MMHG("mmHg", "pressure", "metric", "毫米汞柱", "毫米汞柱"),
-    PSI("psi", "pressure", "imperial", "磅每平方英寸", "磅每平方英寸"),
+    ATM("atm", "pressure", "metric", "标准大气压", "标准大气压"),            // 101325Pa 科学标准、实验室
+    KGF_PER_M2("Kgf/m2", "pressure", "metric", "千克力/平方米", "千克力/平方米"), // 9.80665Pa 工程技术、老旧文献
+    LBF_PER_FT2("lbf/ft2", "pressure", "imperial", "磅力/平方英尺", "磅力/平方英尺"), // 47.8803Pa 美国工程标准
+    LBF_PER_IN2("lbf/in2", "pressure", "imperial", "磅力/平方英寸", "磅力/平方英寸"), // 6894.76Pa 工业、轮胎压力（等同于psi）
+    KSI("ksi", "pressure", "imperial", "千磅力/平方英寸", "千磅力/平方英寸"),       // ≈ 6.895×10⁶ Pa 材料工程、高强度钢
+    PSI("psi", "pressure", "imperial", "磅每平方英寸", "磅每平方英寸"),              // 磅力/平方英寸的别名
     
     // 数量单位 (each类型)
     EA("ea", "each", "metric", "每个", "每个"),
