@@ -131,6 +131,12 @@ public enum UnitEnum {
     R("R", "temperature", "imperial", "兰金温标", "兰金温标"),
     
     // 时间单位
+    YS("ys", "time", "metric", "幺秒", "幺秒"),
+    ZS("zs", "time", "metric", "仄秒", "仄秒"),
+    AS("as", "time", "metric", "阿秒", "阿秒"),
+    TP("tp", "time", "metric", "拍秒", "拍秒"),
+    FS("fs", "time", "metric", "飞秒", "飞秒"),
+    PS("ps", "time", "metric", "皮秒", "皮秒"),
     NS("ns", "time", "metric", "纳秒", "纳秒"),
     US("μs", "time", "metric", "微秒", "微秒"),
     MU("mu", "time", "metric", "微秒", "微秒"),
@@ -138,10 +144,18 @@ public enum UnitEnum {
     S("s", "time", "metric", "秒", "秒"),
     MIN("min", "time", "metric", "分钟", "分钟"),
     H("h", "time", "metric", "小时", "小时"),
-    D("d", "time", "metric", "天", "天"),
+    DAY("day", "time", "metric", "天", "天"),
     WEEK("week", "time", "metric", "周", "周"),
+    FORTNIGHT("fortnight", "time", "metric", "十四夜", "十四夜"),
+    KE("ke", "time", "metric", "刻", "刻"),
+    SHICHEN("shichen", "time", "chinese", "时辰", "时辰"),
+    LUNARMONTH("lunarMonth", "time", "chinese", "农历月", "农历月"),
     MONTH("month", "time", "metric", "月", "月"),
+    QUARTER("quarter", "time", "metric", "季度", "季度"),
     YEAR("year", "time", "metric", "年", "年"),
+    CENTURY("century", "time", "metric", "世纪", "世纪"),
+    MILLENNIUM("millennium", "time", "metric", "千年", "千年"),
+    MEGAANNUM("megaannum", "time", "metric", "百万年", "百万年"),
     
     // 面积单位
     MM2("mm2", "area", "metric", "平方毫米", "平方毫米"),
@@ -187,7 +201,7 @@ public enum UnitEnum {
     KW("kW", "power", "metric", "千瓦", "千瓦"),
     MW_POWER("MW", "power", "metric", "兆瓦", "兆瓦"),
     GW("GW", "power", "metric", "吉瓦", "吉瓦"),
-    PS("PS", "power", "metric", "公制马力", "公制马力"),
+    METRIC_HP("PS", "power", "metric", "公制马力", "公制马力"),
     HP("hp", "power", "imperial", "马力", "马力"),
     
     // 压力单位

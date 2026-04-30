@@ -271,6 +271,7 @@ public class SystemRatios {
         initializeIlluminanceSystemRatios();
         initializePaceSystemRatios();
         initializeVolumeFlowRateSystemRatios();
+        initializeTimeSystemRatios();
     }
     
     /**
@@ -804,5 +805,55 @@ public class SystemRatios {
         volumeFlowRateRatios.put("imperial_to_metric", new BigDecimal("28.3168").divide(new BigDecimal("1"), 10, RoundingMode.HALF_UP));
         
         SYSTEM_RATIOS.put("volumeFlowRate", volumeFlowRateRatios);
+    }
+    
+    /**
+     * 初始化时间单位系统间转换比率
+     * <P>
+     * 详细描述方法的功能、算法逻辑或业务流程
+     * <P>
+     * 处理逻辑：
+     * <ol>
+     *   <li>创建时间单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>设置公制到中国传统的转换比率（metric_to_chinese）</li>
+     *   <li>设置中国传统到公制的转换比率（chinese_to_metric）</li>
+     *   <li>将时间单位的转换比率映射添加到主映射中</li>
+     * </ol>
+     * <P>
+     * 转换因子说明：
+     * <ul>
+     *   <li>所有时间单位都基于统一锚点（秒），因此系统间比率应为1</li>
+     * </ul>
+     * <P>
+     * 参数说明：
+     * <ul>
+     *   <li>无参数</li>
+     * </ul>
+     * <P>
+     * 返回值说明：
+     * <ul>
+     *   <li>void: 无返回值</li>
+     * </ul>
+     * <P>
+     * 异常情况：
+     * <ul>
+     *   <li>无异常情况</li>
+     * </ul>
+     */
+    private static void initializeTimeSystemRatios() {
+        Map<String, BigDecimal> timeRatios = new HashMap<>();
+        
+        // 所有ConversionFactors都基于统一锚点单位（秒）
+        // 因此系统间比率应为1，如果锚点单位相同
+        timeRatios.put("metric_to_imperial", new BigDecimal("1"));
+        timeRatios.put("imperial_to_metric", new BigDecimal("1"));
+        timeRatios.put("metric_to_chinese", new BigDecimal("1"));
+        timeRatios.put("chinese_to_metric", new BigDecimal("1"));
+        timeRatios.put("imperial_to_chinese", new BigDecimal("1"));
+        timeRatios.put("chinese_to_imperial", new BigDecimal("1"));
+        
+        SYSTEM_RATIOS.put("time", timeRatios);
     }
 }

@@ -285,17 +285,36 @@ public class ConversionFactors {
     }
     
     private static void initializeTimeFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.NS, new BigDecimal("1e-9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.US, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MU, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MS, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.S, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MIN, new BigDecimal("60"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.H, new BigDecimal("3600"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.D, new BigDecimal("86400"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.WEEK, new BigDecimal("604800"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MONTH, new BigDecimal("2629800"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.YEAR, new BigDecimal("31557600"));
+        // 极短时间单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.YS, new BigDecimal("1e-24"));  // 1幺秒 = 10^-24秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.ZS, new BigDecimal("1e-21"));  // 1仄秒 = 10^-21秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.AS, new BigDecimal("1e-18"));  // 1阿秒 = 10^-18秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.TP, new BigDecimal("1e12"));   // 1拍秒 = 10^12秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.FS, new BigDecimal("1e-15"));  // 1飞秒 = 10^-15秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.PS, new BigDecimal("1e-12"));  // 1皮秒 = 10^-12秒
+        
+        // 短时间单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.NS, new BigDecimal("1e-9"));   // 1纳秒 = 10^-9秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.US, new BigDecimal("1e-6"));   // 1微秒 = 10^-6秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.MU, new BigDecimal("1e-6"));   // 1微秒 = 10^-6秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.MS, new BigDecimal("1e-3"));   // 1毫秒 = 10^-3秒
+        
+        // 基本时间单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.S, new BigDecimal("1"));       // 1秒 = 1秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.MIN, new BigDecimal("60"));    // 1分钟 = 60秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.H, new BigDecimal("3600"));    // 1小时 = 3600秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.DAY, new BigDecimal("86400")); // 1天 = 86400秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.WEEK, new BigDecimal("604800"));// 1周 = 604800秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORTNIGHT, new BigDecimal("1209600")); // 1十四夜 = 14天 = 1209600秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.KE, new BigDecimal("900"));    // 1刻 = 15分钟 = 900秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.SHICHEN, new BigDecimal("7200")); // 1时辰 = 2小时 = 7200秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.LUNARMONTH, new BigDecimal("2551443")); // 1农历月 ≈ 29.53天 ≈ 2551443秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.MONTH, new BigDecimal("2629800")); // 1月 ≈ 30.44天 ≈ 2629800秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.QUARTER, new BigDecimal("7889400")); // 1季度 ≈ 91.31天 ≈ 7889400秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.YEAR, new BigDecimal("31557600")); // 1年 ≈ 365.25天 ≈ 31557600秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.CENTURY, new BigDecimal("3155760000")); // 1世纪 = 100年 ≈ 3155760000秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.MILLENNIUM, new BigDecimal("31557600000")); // 1千年 = 1000年 ≈ 31557600000秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.MEGAANNUM, new BigDecimal("31557600000000")); // 1百万年 = 1000000年 ≈ 31557600000000秒
     }
     
     private static void initializeTemperatureFactors() {
@@ -336,7 +355,7 @@ public class ConversionFactors {
         TO_ANCHOR_FACTORS.put(UnitEnum.KW, new BigDecimal("1e3"));
         TO_ANCHOR_FACTORS.put(UnitEnum.MW_POWER, new BigDecimal("1e6"));
         TO_ANCHOR_FACTORS.put(UnitEnum.GW, new BigDecimal("1e9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PS, new BigDecimal("735.49875"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.METRIC_HP, new BigDecimal("735.49875"));
         TO_ANCHOR_FACTORS.put(UnitEnum.HP, new BigDecimal("745.7"));
     }
     
