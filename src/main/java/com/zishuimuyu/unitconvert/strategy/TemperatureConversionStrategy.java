@@ -281,12 +281,39 @@ public class TemperatureConversionStrategy implements ConversionStrategy {
             case K:
                 // 开尔文转摄氏度: C = K - 273.15
                 return value.subtract(new BigDecimal("273.15"));
-            case R:
-                // 兰金温标转摄氏度: 先转为华氏度(R - 459.67)，再转为摄氏度
-                BigDecimal fahrenheitValue = value.subtract(new BigDecimal("459.67"));
-                return fahrenheitValue.subtract(new BigDecimal("32"))
+            case RA:
+                // 兰金温标转摄氏度: C = (R - 491.67) × 5/9 或 C = (R - 459.67 - 32) × 5/9
+                return value.subtract(new BigDecimal("459.67"))
+                    .subtract(new BigDecimal("32"))
                     .multiply(new BigDecimal("5"))
                     .divide(new BigDecimal("9"), 10, RoundingMode.HALF_UP);
+            case RE:
+                // 列氏度转摄氏度: C = Re × 5/4
+                return value.multiply(new BigDecimal("5"))
+                    .divide(new BigDecimal("4"), 10, RoundingMode.HALF_UP);
+
+            case NEWTON_SCALE:
+                // 牛氏度转摄氏度: C = N × 100/33
+                return value.multiply(new BigDecimal("100"))
+                    .divide(new BigDecimal("33"), 10, RoundingMode.HALF_UP);
+            case WET_BULB:
+                // 湿球温度与摄氏度相同刻度
+                return value;
+            case DE:
+                // 德氏度转摄氏度: C = 100 - De × 2/3
+                return new BigDecimal("100").subtract(
+                    value.multiply(new BigDecimal("2"))
+                        .divide(new BigDecimal("3"), 10, RoundingMode.HALF_UP)
+                );
+            case PLANCK_TEMP:
+                // 普朗克温度转摄氏度: TP × 1.416784×10³² - 273.15
+                BigDecimal kelvinValue = value.multiply(new BigDecimal("1.416784e32"));
+                return kelvinValue.subtract(new BigDecimal("273.15"));
+            case RO:
+                // 罗氏度转摄氏度: C = (Rø - 7.5) × 40/21
+                return value.subtract(new BigDecimal("7.5"))
+                    .multiply(new BigDecimal("40"))
+                    .divide(new BigDecimal("21"), 10, RoundingMode.HALF_UP);
             default:
                 throw new UnitConversionException("未知的温度单位: " + fromUnit.getAbbr(), "UNKNOWN_TEMPERATURE_UNIT");
         }
@@ -348,12 +375,37 @@ public class TemperatureConversionStrategy implements ConversionStrategy {
             case K:
                 // 摄氏度转开尔文: K = C + 273.15
                 return celsiusValue.add(new BigDecimal("273.15"));
-            case R:
-                // 摄氏度转兰金温标: 先转为华氏度，然后再加上兰金温标的偏移量
-                BigDecimal fahrenheitValue = celsiusValue.multiply(new BigDecimal("9"))
+
+            case RE:
+                // 摄氏度转列氏度: Re = C × 4/5
+                return celsiusValue.multiply(new BigDecimal("4"))
+                    .divide(new BigDecimal("5"), 10, RoundingMode.HALF_UP);
+            case RO:
+                // 摄氏度转罗氏度: Rø = C × 21/40 + 7.5
+                return celsiusValue.multiply(new BigDecimal("21"))
+                    .divide(new BigDecimal("40"), 10, RoundingMode.HALF_UP)
+                    .add(new BigDecimal("7.5"));
+            case NEWTON_SCALE:
+                // 摄氏度转牛氏度: N = C × 33/100
+                return celsiusValue.multiply(new BigDecimal("33"))
+                    .divide(new BigDecimal("100"), 10, RoundingMode.HALF_UP);
+            case WET_BULB:
+                // 湿球温度与摄氏度相同刻度
+                return celsiusValue;
+            case DE:
+                // 摄氏度转德氏度: De = (100 - C) × 3/2
+                return new BigDecimal("100").subtract(celsiusValue)
+                    .multiply(new BigDecimal("3"))
+                    .divide(new BigDecimal("2"), 10, RoundingMode.HALF_UP);
+            case PLANCK_TEMP:
+                // 摄氏度转普朗克温度: (C + 273.15) / 1.416784×10³²
+                BigDecimal kelvinValue = celsiusValue.add(new BigDecimal("273.15"));
+                return kelvinValue.divide(new BigDecimal("1.416784e32"), 10, RoundingMode.HALF_UP);
+            case RA:
+                // 摄氏度转兰金温标: R = C × 9/5 + 491.67
+                return celsiusValue.multiply(new BigDecimal("9"))
                     .divide(new BigDecimal("5"), 10, RoundingMode.HALF_UP)
-                    .add(new BigDecimal("32"));
-                return fahrenheitValue.add(new BigDecimal("459.67"));
+                    .add(new BigDecimal("491.67"));
             default:
                 throw new UnitConversionException("未知的温度单位: " + toUnit.getAbbr(), "UNKNOWN_TEMPERATURE_UNIT");
         }

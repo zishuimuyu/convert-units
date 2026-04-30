@@ -128,7 +128,13 @@ public enum UnitEnum {
     C("C", "temperature", "metric", "摄氏度", "摄氏度"),
     F("F", "temperature", "imperial", "华氏度", "华氏度"),
     K("K", "temperature", "metric", "开尔文", "开尔文"),
-    R("R", "temperature", "imperial", "兰金温标", "兰金温标"),
+    RA("R", "temperature", "imperial", "兰金温标", "兰金温标"),  // 兰金温标 (Rankine)
+    RE("Re", "temperature", "metric", "列氏度", "列氏度"),  // 列氏度 (Réaumur)
+    RO("Rø", "temperature", "metric", "罗氏度", "罗氏度"),  // 罗氏度 (Rømer)
+    NEWTON_SCALE("N", "temperature", "metric", "牛氏度", "牛氏度"),   // 牛氏度 (Newton Scale)
+    WET_BULB("W", "temperature", "metric", "湿球温度", "湿球温度"), // 湿球温度 (Wet Bulb)
+    DE("De", "temperature", "metric", "德氏度", "德氏度"),  // 德氏度 (Delisle)
+    PLANCK_TEMP("TP", "temperature", "metric", "普朗克温度", "普朗克温度"), // 普朗克温度
     
     // 时间单位
     YS("ys", "time", "metric", "幺秒", "幺秒"),

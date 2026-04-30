@@ -318,7 +318,9 @@ public class ConversionFactors {
     }
     
     private static void initializeTemperatureFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.R, new BigDecimal("1"));
+        // 保留兰金温标，但使用RA（兰氏度）代替原来的R
+        // 注意：原来的R被重新定义为RA（兰氏度），所以不再需要此处的条目
+        // 温度转换由TemperatureConversionStrategy单独处理
     }
     
     private static void initializeSpeedFactors() {
