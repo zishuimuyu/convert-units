@@ -442,10 +442,20 @@ public class ConversionFactors {
     }
     
     private static void initializeForceFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.N, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KN, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.LBF, new BigDecimal("4.44822"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KGF, new BigDecimal("9.80665"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.UN, new BigDecimal("1e-6"));             // 微牛顿: 10⁻⁶N
+        TO_ANCHOR_FACTORS.put(UnitEnum.MN_FORCE, new BigDecimal("1e-3"));       // 毫牛顿: 10⁻³N
+        TO_ANCHOR_FACTORS.put(UnitEnum.DYN, new BigDecimal("1e-5"));            // 达因: 10⁻⁵N
+        TO_ANCHOR_FACTORS.put(UnitEnum.GF, new BigDecimal("9.80665e-3"));       // 克力: 9.80665×10⁻³N
+        TO_ANCHOR_FACTORS.put(UnitEnum.N, new BigDecimal("1"));                 // 牛顿: 1N (基本单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KN, new BigDecimal("1e3"));              // 千牛: 10³N
+        TO_ANCHOR_FACTORS.put(UnitEnum.MN_FORCE_MEGA, new BigDecimal("1e6"));   // 兆牛顿: 10⁶N
+        TO_ANCHOR_FACTORS.put(UnitEnum.LBF, new BigDecimal("1"));               // 磅力: 作为英制系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.KGF, new BigDecimal("9.80665"));         // 千克力: 9.80665N
+        TO_ANCHOR_FACTORS.put(UnitEnum.KIP, new BigDecimal("1000"));            // 千磅力: 1000lbf
+        TO_ANCHOR_FACTORS.put(UnitEnum.TF, new BigDecimal("1000"));             // 吨力: 1000kgf (近似)
+        TO_ANCHOR_FACTORS.put(UnitEnum.STF, new BigDecimal("2000"));            // 短吨力: 2000lbf
+        TO_ANCHOR_FACTORS.put(UnitEnum.USTF_FORCE, new BigDecimal("2000"));     // 美吨力: 2000lbf
+        TO_ANCHOR_FACTORS.put(UnitEnum.OZF, new BigDecimal("0.0625"));          // 盎司力: 1/16lbf
     }
     
     private static void initializeTorqueFactors() {
