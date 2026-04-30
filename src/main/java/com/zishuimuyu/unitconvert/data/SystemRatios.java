@@ -288,8 +288,8 @@ public class SystemRatios {
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>metric_to_imperial: 1米 = 39.3701英寸，使用0.393701作为转换因子</li>
-     *   <li>imperial_to_metric: 1英寸 = 2.54厘米，使用2.54作为转换因子</li>
+     *   <li>metric_to_imperial: 1米 = 39.3701英寸，使用39.3701作为转换因子</li>
+     *   <li>imperial_to_metric: 1英寸 = 0.0254米，使用0.0254作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -310,8 +310,8 @@ public class SystemRatios {
     private static void initializeLengthSystemRatios() {
         Map<String, BigDecimal> lengthRatios = new HashMap<>();
         
-        lengthRatios.put("metric_to_imperial", new BigDecimal("0.393701"));
-        lengthRatios.put("imperial_to_metric", new BigDecimal("2.54"));
+        lengthRatios.put("metric_to_imperial", new BigDecimal("39.3701"));
+        lengthRatios.put("imperial_to_metric", new BigDecimal("0.0254"));
         
         SYSTEM_RATIOS.put("length", lengthRatios);
     }
@@ -331,8 +331,8 @@ public class SystemRatios {
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>metric_to_imperial: 1平方米 = 10.764平方英尺，使用10.764作为转换因子</li>
-     *   <li>imperial_to_metric: 1平方英尺 = 0.092903平方米，使用0.092903作为转换因子</li>
+     *   <li>metric_to_imperial: 1平方米 = 1550平方英寸，使用1550作为转换因子</li>
+     *   <li>imperial_to_metric: 1平方英寸 = 0.00064516平方米，使用0.00064516作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -353,8 +353,8 @@ public class SystemRatios {
     private static void initializeAreaSystemRatios() {
         Map<String, BigDecimal> areaRatios = new HashMap<>();
         
-        areaRatios.put("metric_to_imperial", new BigDecimal("10.764"));
-        areaRatios.put("imperial_to_metric", new BigDecimal("0.092903"));
+        areaRatios.put("metric_to_imperial", new BigDecimal("1550"));
+        areaRatios.put("imperial_to_metric", new BigDecimal("0.00064516"));
         
         SYSTEM_RATIOS.put("area", areaRatios);
     }
@@ -374,8 +374,8 @@ public class SystemRatios {
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>metric_to_imperial: 1毫升 = 0.033814液盎司，使用33.814作为转换因子（实际上是1升=33.814液盎司）</li>
-     *   <li>imperial_to_metric: 1液盎司 = 29.5735毫升，使用0.0295735作为转换因子（实际上是1液盎司=29.5735毫升）</li>
+     *   <li>metric_to_imperial: 1立方分米 = 61.0237立方英寸，使用61.0237作为转换因子</li>
+     *   <li>imperial_to_metric: 1立方英寸 = 0.0163871立方分米，使用0.0163871作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -396,8 +396,8 @@ public class SystemRatios {
     private static void initializeVolumeSystemRatios() {
         Map<String, BigDecimal> volumeRatios = new HashMap<>();
         
-        volumeRatios.put("metric_to_imperial", new BigDecimal("33.814"));
-        volumeRatios.put("imperial_to_metric", new BigDecimal("0.0295735"));
+        volumeRatios.put("metric_to_imperial", new BigDecimal("61.0237"));
+        volumeRatios.put("imperial_to_metric", new BigDecimal("0.0163871"));
         
         SYSTEM_RATIOS.put("volume", volumeRatios);
     }
@@ -412,13 +412,21 @@ public class SystemRatios {
      *   <li>创建质量单位的系统间转换比率映射</li>
      *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
      *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>设置公制到中国单位的转换比率（metric_to_chinese）</li>
+     *   <li>设置中国单位到公制的转换比率（chinese_to_metric）</li>
+     *   <li>设置英制到中国单位的转换比率（imperial_to_chinese）</li>
+     *   <li>设置中国单位到英制的转换比率（chinese_to_imperial）</li>
      *   <li>将质量单位的转换比率映射添加到主映射中</li>
      * </ol>
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>metric_to_imperial: 1克 = 0.00220462磅，使用0.00220462作为转换因子</li>
-     *   <li>imperial_to_metric: 1磅 = 453.592克，使用453.592作为转换因子</li>
+     *   <li>metric_to_imperial: 1克锚点 = 0.00220462磅锚点，使用0.00220462作为转换因子</li>
+     *   <li>imperial_to_metric: 1磅锚点 = 453.592克锚点，使用453.592作为转换因子</li>
+     *   <li>metric_to_chinese: 1克锚点 = 0.002斤锚点(1/500)，使用0.002作为转换因子</li>
+     *   <li>chinese_to_metric: 1斤锚点 = 500克锚点，使用500作为转换因子</li>
+     *   <li>imperial_to_chinese: 1磅锚点 = 0.907184斤锚点，使用0.907184作为转换因子</li>
+     *   <li>chinese_to_imperial: 1斤锚点 = 1.10231磅锚点，使用1.10231作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -439,8 +447,14 @@ public class SystemRatios {
     private static void initializeMassSystemRatios() {
         Map<String, BigDecimal> massRatios = new HashMap<>();
         
-        massRatios.put("metric_to_imperial", new BigDecimal("0.00220462"));
-        massRatios.put("imperial_to_metric", new BigDecimal("453.592"));
+        // 所有ConversionFactors都基于统一锚点单位（克）
+        // 因此系统间比率应为1，如果锚点单位相同
+        massRatios.put("metric_to_imperial", new BigDecimal("1"));
+        massRatios.put("imperial_to_metric", new BigDecimal("1"));
+        massRatios.put("metric_to_chinese", new BigDecimal("1"));
+        massRatios.put("chinese_to_metric", new BigDecimal("1"));
+        massRatios.put("imperial_to_chinese", new BigDecimal("1"));
+        massRatios.put("chinese_to_imperial", new BigDecimal("1"));
         
         SYSTEM_RATIOS.put("mass", massRatios);
     }
@@ -460,8 +474,8 @@ public class SystemRatios {
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>metric_to_imperial: 1公里/小时 = 0.621371英里/小时，使用0.621371作为转换因子</li>
-     *   <li>imperial_to_metric: 1英里/小时 = 1.60934公里/小时，使用1.60934作为转换因子</li>
+     *   <li>metric_to_imperial: 1米/秒 = 3.28084英尺/秒，使用3.28084作为转换因子</li>
+     *   <li>imperial_to_metric: 1英尺/秒 = 0.3048米/秒，使用0.3048作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -482,8 +496,8 @@ public class SystemRatios {
     private static void initializeSpeedSystemRatios() {
         Map<String, BigDecimal> speedRatios = new HashMap<>();
         
-        speedRatios.put("metric_to_imperial", new BigDecimal("0.621371"));
-        speedRatios.put("imperial_to_metric", new BigDecimal("1.60934"));
+        speedRatios.put("metric_to_imperial", new BigDecimal("3.28084"));
+        speedRatios.put("imperial_to_metric", new BigDecimal("0.3048"));
         
         SYSTEM_RATIOS.put("speed", speedRatios);
     }
@@ -503,8 +517,8 @@ public class SystemRatios {
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>metric_to_imperial: 在当前实现中，所有压力单位都使用相同的锚点单位Pa，所以比率为1</li>
-     *   <li>imperial_to_metric: 在当前实现中，所有压力单位都使用相同的锚点单位Pa，所以比率为1</li>
+     *   <li>metric_to_imperial: 1帕斯卡 = 0.000145038磅/平方英寸，使用0.000145038作为转换因子</li>
+     *   <li>imperial_to_metric: 1磅/平方英寸 = 6894.76帕斯卡，使用6894.76作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -525,11 +539,8 @@ public class SystemRatios {
     private static void initializePressureSystemRatios() {
         Map<String, BigDecimal> pressureRatios = new HashMap<>();
         
-        // 压力单位：所有系统都使用相同的锚点单位PA
-        // metric_to_imperial: 1 metric锚点单位 = 1 imperial锚点单位 (因为都等于1 Pa)
-        pressureRatios.put("metric_to_imperial", BigDecimal.ONE);
-        // imperial_to_metric: 1 imperial锚点单位 = 1 metric锚点单位
-        pressureRatios.put("imperial_to_metric", BigDecimal.ONE);
+        pressureRatios.put("metric_to_imperial", new BigDecimal("0.000145038"));
+        pressureRatios.put("imperial_to_metric", new BigDecimal("6894.76"));
         
         SYSTEM_RATIOS.put("pressure", pressureRatios);
     }
@@ -543,14 +554,14 @@ public class SystemRatios {
      * <ol>
      *   <li>创建能量单位的系统间转换比率映射</li>
      *   <li>设置SI到营养单位的转换比率（SI_to_nutrition）</li>
-     *   <li>设置营养单位到SI的转换比率（nutrition_to_SI）</li>
+     *   <li>设置营养到SI单位的转换比率（nutrition_to_SI）</li>
      *   <li>将能量单位的转换比率映射添加到主映射中</li>
      * </ol>
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>SI_to_nutrition: 在当前实现中，所有能量单位都使用相同的锚点单位J，所以比率为1</li>
-     *   <li>nutrition_to_SI: 在当前实现中，所有能量单位都使用相同的锚点单位J，所以比率为1</li>
+     *   <li>SI_to_nutrition: 1焦耳 = 0.239006卡路里，使用0.239006作为转换因子</li>
+     *   <li>nutrition_to_SI: 1卡路里 = 4.184焦耳，使用4.184作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -571,11 +582,8 @@ public class SystemRatios {
     private static void initializeEnergySystemRatios() {
         Map<String, BigDecimal> energyRatios = new HashMap<>();
         
-        // 能量单位：所有系统都使用相同的锚点单位J
-        // SI_to_nutrition: 1 SI锚点单位 = 1 nutrition锚点单位 (因为都等于1 J)
-        energyRatios.put("SI_to_nutrition", BigDecimal.ONE);
-        // nutrition_to_SI: 1 nutrition锚点单位 = 1 SI锚点单位
-        energyRatios.put("nutrition_to_SI", BigDecimal.ONE);
+        energyRatios.put("SI_to_nutrition", new BigDecimal("0.239006"));
+        energyRatios.put("nutrition_to_SI", new BigDecimal("4.184"));
         
         SYSTEM_RATIOS.put("energy", energyRatios);
     }
@@ -589,14 +597,14 @@ public class SystemRatios {
      * <ol>
      *   <li>创建力单位的系统间转换比率映射</li>
      *   <li>设置SI到英制的转换比率（SI_to_imperial）</li>
-     *   <li>设置英制到SI的转换比率（imperial_to_SI）</li>
+     *   <li>设置英制到SI单位的转换比率（imperial_to_SI）</li>
      *   <li>将力单位的转换比率映射添加到主映射中</li>
      * </ol>
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>SI_to_imperial: 在当前实现中，所有力单位都使用相同的锚点单位N，所以比率为1</li>
-     *   <li>imperial_to_SI: 在当前实现中，所有力单位都使用相同的锚点单位N，所以比率为1</li>
+     *   <li>SI_to_imperial: 1牛顿 = 0.224809磅力，使用0.224809作为转换因子</li>
+     *   <li>imperial_to_SI: 1磅力 = 4.44822牛顿，使用4.44822作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -617,11 +625,8 @@ public class SystemRatios {
     private static void initializeForceSystemRatios() {
         Map<String, BigDecimal> forceRatios = new HashMap<>();
         
-        // 力单位：所有系统都使用相同的锚点单位N
-        // SI_to_imperial: 1 SI锚点单位 = 1 imperial锚点单位 (因为都等于1 N)
-        forceRatios.put("SI_to_imperial", BigDecimal.ONE);
-        // imperial_to_SI: 1 imperial锚点单位 = 1 SI锚点单位
-        forceRatios.put("imperial_to_SI", BigDecimal.ONE);
+        forceRatios.put("SI_to_imperial", new BigDecimal("0.224809"));
+        forceRatios.put("imperial_to_SI", new BigDecimal("4.44822"));
         
         SYSTEM_RATIOS.put("force", forceRatios);
     }
@@ -641,8 +646,8 @@ public class SystemRatios {
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>metric_to_imperial: 在当前实现中，所有扭矩单位都使用相同的锚点单位Nm，所以比率为1</li>
-     *   <li>imperial_to_metric: 在当前实现中，所有扭矩单位都使用相同的锚点单位Nm，所以比率为1</li>
+     *   <li>metric_to_imperial: 1牛顿米 = 8.85075磅英寸，使用8.85075作为转换因子</li>
+     *   <li>imperial_to_metric: 1磅英寸 = 0.112985牛顿米，使用0.112985作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -663,11 +668,8 @@ public class SystemRatios {
     private static void initializeTorqueSystemRatios() {
         Map<String, BigDecimal> torqueRatios = new HashMap<>();
         
-        // 扭矩单位：所有系统都使用相同的锚点单位Nm
-        // metric_to_imperial: 1 metric锚点单位 = 1 imperial锚点单位 (因为都等于1 Nm)
-        torqueRatios.put("metric_to_imperial", BigDecimal.ONE);
-        // imperial_to_metric: 1 imperial锚点单位 = 1 metric锚点单位
-        torqueRatios.put("imperial_to_metric", BigDecimal.ONE);
+        torqueRatios.put("metric_to_imperial", new BigDecimal("8.85075"));
+        torqueRatios.put("imperial_to_metric", new BigDecimal("0.112985"));
         
         SYSTEM_RATIOS.put("torque", torqueRatios);
     }
@@ -687,8 +689,8 @@ public class SystemRatios {
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>metric_to_imperial: 在当前实现中，所有照度单位都使用相同的锚点单位LX，所以比率为1</li>
-     *   <li>imperial_to_metric: 在当前实现中，所有照度单位都使用相同的锚点单位LX，所以比率为1</li>
+     *   <li>metric_to_imperial: 1勒克斯 = 0.092903英尺烛光，使用0.092903作为转换因子</li>
+     *   <li>imperial_to_metric: 1英尺烛光 = 10.7639勒克斯，使用10.7639作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -709,11 +711,8 @@ public class SystemRatios {
     private static void initializeIlluminanceSystemRatios() {
         Map<String, BigDecimal> illuminanceRatios = new HashMap<>();
         
-        // 照度单位：所有系统都使用相同的锚点单位LX
-        // metric_to_imperial: 1 metric锚点单位 = 1 imperial锚点单位 (因为都等于1 LX)
-        illuminanceRatios.put("metric_to_imperial", BigDecimal.ONE);
-        // imperial_to_metric: 1 imperial锚点单位 = 1 metric锚点单位
-        illuminanceRatios.put("imperial_to_metric", BigDecimal.ONE);
+        illuminanceRatios.put("metric_to_imperial", new BigDecimal("0.092903"));
+        illuminanceRatios.put("imperial_to_metric", new BigDecimal("10.7639"));
         
         SYSTEM_RATIOS.put("illuminance", illuminanceRatios);
     }
@@ -733,8 +732,8 @@ public class SystemRatios {
      * <P>
      * 转换因子说明：
      * <ul>
-     *   <li>metric_to_imperial: 在当前实现中，所有步速单位都使用相同的锚点单位S_PER_M，所以比率为1</li>
-     *   <li>imperial_to_metric: 在当前实现中，所有步速单位都使用相同的锚点单位S_PER_M，所以比率为1</li>
+     *   <li>metric_to_imperial: 1分钟/公里 = 1.60934分钟/英里，使用1.60934作为转换因子</li>
+     *   <li>imperial_to_metric: 1分钟/英里 = 0.621371分钟/公里，使用0.621371作为转换因子</li>
      * </ul>
      * <P>
      * 参数说明：
@@ -755,26 +754,23 @@ public class SystemRatios {
     private static void initializePaceSystemRatios() {
         Map<String, BigDecimal> paceRatios = new HashMap<>();
         
-        // 步速单位：所有系统都使用相同的锚点单位S_PER_M
-        // metric_to_imperial: 1 metric锚点单位 = 1 imperial锚点单位 (因为都等于1 S_PER_M)
-        paceRatios.put("metric_to_imperial", BigDecimal.ONE);
-        // imperial_to_metric: 1 imperial锚点单位 = 1 metric锚点单位
-        paceRatios.put("imperial_to_metric", BigDecimal.ONE);
+        paceRatios.put("metric_to_imperial", new BigDecimal("1.60934"));
+        paceRatios.put("imperial_to_metric", new BigDecimal("0.621371"));
         
         SYSTEM_RATIOS.put("pace", paceRatios);
     }
     
     /**
-     * 初始化体积流量单位系统间转换比率
+     * 初始化体积流量率单位系统间转换比率
      * <P>
      * 详细描述方法的功能、算法逻辑或业务流程
      * <P>
      * 处理逻辑：
      * <ol>
-     *   <li>创建体积流量单位的系统间转换比率映射</li>
-     *   <li>计算公制到英制的转换比率（metric_to_imperial）</li>
-     *   <li>计算英制到公制的转换比率（imperial_to_metric）</li>
-     *   <li>将体积流量单位的转换比率映射添加到主映射中</li>
+     *   <li>创建体积流量率单位的系统间转换比率映射</li>
+     *   <li>设置公制到英制的转换比率（metric_to_imperial）</li>
+     *   <li>设置英制到公制的转换比率（imperial_to_metric）</li>
+     *   <li>将体积流量率单位的转换比率映射添加到主映射中</li>
      * </ol>
      * <P>
      * 转换因子说明：

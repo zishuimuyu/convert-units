@@ -210,11 +210,18 @@ public class ConversionFactors {
         TO_ANCHOR_FACTORS.put(UnitEnum.MG, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
         TO_ANCHOR_FACTORS.put(UnitEnum.G, new BigDecimal("1"));
         TO_ANCHOR_FACTORS.put(UnitEnum.KG, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MT, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TONNE, new BigDecimal("1e6"));
         TO_ANCHOR_FACTORS.put(UnitEnum.OZ, new BigDecimal("28.3495"));
         TO_ANCHOR_FACTORS.put(UnitEnum.LB, new BigDecimal("453.592"));
         TO_ANCHOR_FACTORS.put(UnitEnum.ST, new BigDecimal("6350.29"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.T, new BigDecimal("907185"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.GR, new BigDecimal("0.0648"));  // 6.48×10⁻⁵ kg = 0.0648 g
+        TO_ANCHOR_FACTORS.put(UnitEnum.DR, new BigDecimal("1.77"));     // 1.77×10⁻³ kg = 1.77 g
+        TO_ANCHOR_FACTORS.put(UnitEnum.USTF, new BigDecimal("907185")); // 907.185 kg = 907185 g
+        TO_ANCHOR_FACTORS.put(UnitEnum.LT, new BigDecimal("1016047"));  // 1016.047 kg = 1016047 g
+        TO_ANCHOR_FACTORS.put(UnitEnum.QIAN, new BigDecimal("5.0"));    // 5.0×10⁻³ kg = 5.0 g
+        TO_ANCHOR_FACTORS.put(UnitEnum.LIANG, new BigDecimal("50.0"));   // 5.0×10⁻² kg = 50.0 g
+        TO_ANCHOR_FACTORS.put(UnitEnum.JIN, new BigDecimal("500.0"));   // 0.5 kg = 500.0 g
+        TO_ANCHOR_FACTORS.put(UnitEnum.DAN, new BigDecimal("50000.0")); // 50 kg = 50000 g
     }
     
     /**
