@@ -510,14 +510,14 @@ public class ConversionFactors {
     }
     
     private static void initializeTorqueFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.NM, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CNM, new BigDecimal("1e-2"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DNM, new BigDecimal("1e-1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KGM, new BigDecimal("9.80665"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KG_CM, new BigDecimal("9.80665e-2"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_FT, new BigDecimal("1.35582"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_IN, new BigDecimal("0.112985"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.OZF_IN, new BigDecimal("0.006377"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.NM, new BigDecimal("1"));              // 牛顿米: 作为metric系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.CNM, new BigDecimal("0.01"));          // 厘牛顿米: 10⁻² N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.DNM, new BigDecimal("0.1"));           // 分牛顿米: 10⁻¹ N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KGM, new BigDecimal("9.807"));         // 千克米: 9.807 N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KG_CM, new BigDecimal("0.098"));       // 千克厘米: 0.098 N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_FT, new BigDecimal("1.356"));      // 磅英尺: 1.356 N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_IN, new BigDecimal("0.113"));      // 磅英寸: 0.113 N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.OZF_IN, new BigDecimal("0.007062"));   // 盎司英寸: 0.007062 N·m (相对于锚点单位)
     }
     
     private static void initializeFrequencyFactors() {

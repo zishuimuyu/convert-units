@@ -752,8 +752,10 @@ public class SystemRatios {
     private static void initializeTorqueSystemRatios() {
         Map<String, BigDecimal> torqueRatios = new HashMap<>();
         
-        torqueRatios.put("metric_to_imperial", new BigDecimal("8.85075"));
-        torqueRatios.put("imperial_to_metric", new BigDecimal("0.112985"));
+        // 所有扭矩单位都基于统一锚点单位（牛顿米）
+        // 因此系统间比率应为1，如果锚点单位相同
+        torqueRatios.put("metric_to_imperial", new BigDecimal("1"));
+        torqueRatios.put("imperial_to_metric", new BigDecimal("1"));
         
         SYSTEM_RATIOS.put("torque", torqueRatios);
     }
