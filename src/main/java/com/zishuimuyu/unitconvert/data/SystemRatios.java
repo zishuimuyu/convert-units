@@ -583,8 +583,29 @@ public class SystemRatios {
     private static void initializeEnergySystemRatios() {
         Map<String, BigDecimal> energyRatios = new HashMap<>();
         
-        energyRatios.put("SI_to_nutrition", new BigDecimal("0.239006"));
-        energyRatios.put("nutrition_to_SI", new BigDecimal("4.184"));
+        // SI与营养学单位间的转换
+        // nutrition锚点单位是CAL(1)，SI锚点单位是J(1)
+        // 1 CAL = 4.184 J，所以转换比率为：
+        energyRatios.put("SI_to_nutrition", new BigDecimal("1").divide(new BigDecimal("4.184"), 10, RoundingMode.HALF_UP));  // 1 J = ~0.239 CAL
+        energyRatios.put("nutrition_to_SI", new BigDecimal("4.184"));  // 1 CAL = 4.184 J
+        
+        // SI与英制单位间的转换
+        // SI锚点单位是J(1)，imperial锚点单位是BTU(1)
+        // 1 BTU = 1055.06 J，所以转换比率为：
+        energyRatios.put("SI_to_imperial", new BigDecimal("1").divide(new BigDecimal("1055.06"), 10, RoundingMode.HALF_UP));  // 1 J = ~0.0009478 BTU
+        energyRatios.put("imperial_to_SI", new BigDecimal("1055.06"));  // 1 BTU = 1055.06 J
+        
+        // SI与CGS单位间的转换
+        // SI锚点单位是J(1)，cgs锚点单位是ERG(1)
+        // 1 J = 10^7 erg，所以转换比率为：
+        energyRatios.put("SI_to_cgs", new BigDecimal("1e7"));  // 1 SI锚点(J) = 10000000 cgs锚点(erg)
+        energyRatios.put("cgs_to_SI", new BigDecimal("1e-7"));  // 1 cgs锚点(erg) = 0.0000001 SI锚点(J)
+        
+        // SI与metric单位间的转换 (用于KGFM等单位)
+        // SI锚点单位是J(1)，metric锚点单位是KGFM(1)
+        // 1 KGFM = 9.80665 J，所以转换比率为：
+        energyRatios.put("SI_to_metric", new BigDecimal("1").divide(new BigDecimal("9.80665"), 10, RoundingMode.HALF_UP));  // 1 SI锚点(J) = ~0.102 metric锚点(KGFM)
+        energyRatios.put("metric_to_SI", new BigDecimal("9.80665"));  // 1 metric锚点(KGFM) = 9.80665 SI锚点(J)
         
         SYSTEM_RATIOS.put("energy", energyRatios);
     }

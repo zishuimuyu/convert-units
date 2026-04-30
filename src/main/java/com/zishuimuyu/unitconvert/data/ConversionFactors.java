@@ -438,12 +438,16 @@ public class ConversionFactors {
         TO_ANCHOR_FACTORS.put(UnitEnum.KWH, new BigDecimal("3600000"));
         TO_ANCHOR_FACTORS.put(UnitEnum.MWH_MEGA, new BigDecimal("3.6e9"));
         TO_ANCHOR_FACTORS.put(UnitEnum.GWH, new BigDecimal("3.6e12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.J, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KJ, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MJ, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GJ, new BigDecimal("1e9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KCAL, new BigDecimal("4184"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CAL, new BigDecimal("4.184"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.J, new BigDecimal("1"));                  // 焦耳: 1J (基本单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KJ, new BigDecimal("1e3"));               // 千焦: 10³J (一千焦)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MJ, new BigDecimal("1e6"));               // 兆焦: 10⁶J (一百万焦)
+        TO_ANCHOR_FACTORS.put(UnitEnum.GJ, new BigDecimal("1e9"));               // 吉焦: 10⁹J
+        TO_ANCHOR_FACTORS.put(UnitEnum.CAL, new BigDecimal("1"));                // 卡路里: 作为营养学系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.KCAL, new BigDecimal("1000"));            // 千卡: 1000 cal
+        TO_ANCHOR_FACTORS.put(UnitEnum.ERG, new BigDecimal("1"));                // 尔格: 作为CGS系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.FTLBF, new BigDecimal("1").divide(new BigDecimal("778.169"), 10, java.math.RoundingMode.HALF_UP)); // 英尺·磅力: 1/778.169 BTU (因为1 BTU = 778.169 ft·lbf)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KGFM, new BigDecimal("1"));                // 克力·米: 作为metric系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.BTU, new BigDecimal("1"));                // 英热单位: 作为英制系统锚点单位
     }
     
     private static void initializeForceFactors() {

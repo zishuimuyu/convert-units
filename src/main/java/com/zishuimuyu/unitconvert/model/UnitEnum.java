@@ -289,7 +289,11 @@ public enum UnitEnum {
     GJ("GJ", "energy", "SI", "吉焦", "吉焦"),
     KCAL("kcal", "energy", "nutrition", "千卡", "千卡"),
     CAL("cal", "energy", "nutrition", "卡路里", "卡路里"),
-
+    ERG("erg", "energy", "cgs", "尔格", "尔格"),              // 10⁻⁷J 历史物理文献、微观能量
+    FTLBF("ftlbf", "energy", "imperial", "英尺·磅力", "英尺·磅力"), // 1.35582J 美国工程、机械功
+    KGFM("Kgfm", "energy", "metric", "克力·米", "克力·米"),     // 9.80665J 工程技术、机械功
+    BTU("Btu", "energy", "imperial", "英热单位", "英热单位"),    // 1055.06J 空调制冷、能源计量
+    
     // 力单位
     UN("uN", "force", "SI", "微牛顿", "微牛顿"),           // 10⁻⁶N 微观粒子研究、纳米技术、生物分子力测量
     MN_FORCE("mN", "force", "SI", "毫牛顿", "毫牛顿"),      // 10⁻³N 精密仪器、微型机械、生物医学工程
