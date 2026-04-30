@@ -797,8 +797,8 @@ public class SystemRatios {
     private static void initializeIlluminanceSystemRatios() {
         Map<String, BigDecimal> illuminanceRatios = new HashMap<>();
         
-        illuminanceRatios.put("metric_to_imperial", new BigDecimal("0.092903"));
-        illuminanceRatios.put("imperial_to_metric", new BigDecimal("10.7639"));
+        illuminanceRatios.put("metric_to_imperial", BigDecimal.ONE);
+        illuminanceRatios.put("imperial_to_metric", BigDecimal.ONE);
         
         SYSTEM_RATIOS.put("illuminance", illuminanceRatios);
     }
