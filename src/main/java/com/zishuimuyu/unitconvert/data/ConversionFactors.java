@@ -324,17 +324,34 @@ public class ConversionFactors {
     }
     
     private static void initializeSpeedFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.KM_H, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.M_S, new BigDecimal("3.6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM_S, new BigDecimal("0.0036"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CM_S, new BigDecimal("0.036"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM_H, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KM_S, new BigDecimal("3600"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MPH, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KT, new BigDecimal("1.150779"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FPS, new BigDecimal("0.681818"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FPM, new BigDecimal("0.0113636"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN_H, new BigDecimal("1.578e-5"));
+        // 设置M_S为metric系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.M_S, new BigDecimal("1"));              // 米/秒: 作为metric系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM_S, new BigDecimal("0.001"));          // 毫米/秒: 0.001m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.CM_S, new BigDecimal("0.01"));           // 厘米/秒: 0.01m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.DM_S, new BigDecimal("0.1"));            // 分米/秒: 0.1m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.DAM_S, new BigDecimal("10"));            // 十米/秒: 10m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.HM_S, new BigDecimal("100"));             // 百米/秒: 100m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KM_S, new BigDecimal("1000"));            // 千米/秒: 1000m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KM_H, new BigDecimal("0.2777777778"));    // 千米/时: 1/3.6 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KM_MIN, new BigDecimal("16.666666667"));  // 千米/分: 1000/60 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.M_MIN, new BigDecimal("0.0166666667"));   // 米/分: 1/60 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.CM_MIN, new BigDecimal("0.0001666667"));  // 厘米/分: 0.01/60 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM_MIN, new BigDecimal("0.0000166667"));  // 毫米/分: 0.001/60 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MM_H, new BigDecimal("2.777777778e-7"));  // 毫米/时: 0.001/3600 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MACH, new BigDecimal("343"));               // 马赫: 343m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.LIGHT_SPEED, new BigDecimal("299792458"));          // 光速: 299792458m/s (相对于metric锚点)
+        
+        // 设置FPS为imperial系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.FPS, new BigDecimal("1"));                // 英尺/秒: 作为imperial系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.FPM, new BigDecimal("0.0166666667"));     // 英尺/分: 1/60 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN_S, new BigDecimal("0.0833333333"));    // 英寸/秒: 1/12 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.YD_S, new BigDecimal("3"));               // 码/秒: 3 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MPH, new BigDecimal("1.4666666667"));     // 英里/时: 5280/3600 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MI_S, new BigDecimal("5280"));            // 英里/秒: 5280 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.MI_MIN, new BigDecimal("88"));            // 英里/分: 5280/60 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.IN_H, new BigDecimal("2.314814815e-5"));  // 英寸/时: 1/(12*3600) fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.NMI_H, new BigDecimal("1.6878098571"));   // 海里/时: 6076.12/3600 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.KT, new BigDecimal("1.6878098571"));      // 节: 6076.12/3600 fps (相对于imperial锚点)
     }
     
     private static void initializeAccelerationFactors() {

@@ -125,7 +125,7 @@ public enum UnitEnum {
     YD3("yd3", "volume", "imperial", "立方码", "立方码"),
     
     // 温度单位
-    C("C", "temperature", "metric", "摄氏度", "摄氏度"),
+    C("°C", "temperature", "metric", "摄氏度", "摄氏度"),
     F("F", "temperature", "imperial", "华氏度", "华氏度"),
     K("K", "temperature", "metric", "开尔文", "开尔文"),
     RA("R", "temperature", "imperial", "兰金温标", "兰金温标"),  // 兰金温标 (Rankine)
@@ -188,6 +188,20 @@ public enum UnitEnum {
     IN_H("in/h", "speed", "imperial", "英寸每小时", "英寸每小时"),
     MPH("mph", "speed", "imperial", "英里每小时", "英里每小时"),
     KT("kt", "speed", "imperial", "节", "节"),
+    DM_S("dm/s", "speed", "metric", "分米每秒", "分米每秒"),         // 0.1m/s 中等速度测量
+    DAM_S("dam/s", "speed", "metric", "十米每秒", "十米每秒"),        // 10m/s 较高速度测量
+    HM_S("hm/s", "speed", "metric", "百米每秒", "百米每秒"),         // 100m/s 高速测量
+    KM_MIN("km/min", "speed", "metric", "千米每分", "千米每分"),      // 16.6667m/s 交通运输
+    IN_S("in/s", "speed", "imperial", "英寸每秒", "英寸每秒"),       // 0.0254m/s 精密机械、低速测量
+    YD_S("yd/s", "speed", "imperial", "码每秒", "码每秒"),          // 0.9144m/s 美国工程
+    MI_S("mi/s", "speed", "imperial", "英里每秒", "英里每秒"),       // 1609.344m/s 高速运动
+    MI_MIN("mi/min", "speed", "imperial", "英里每分", "英里每分"),    // 26.8224m/s 高速交通
+    NMI_H("nmi/h", "speed", "imperial", "海里每时", "海里每时"),      // 0.5144m/s 航海航空
+    MACH("Ma", "speed", "metric", "马赫", "马赫"),                    // 343m/s 航空动力学、声速
+    LIGHT_SPEED("c", "speed", "metric", "光速", "光速"),                      // 299792458m/s 物理学、相对论
+    M_MIN("m/min", "speed", "metric", "米每分", "米每分"),          // 0.0167m/s 工业测量
+    CM_MIN("cm/min", "speed", "metric", "厘米每分", "厘米每分"),      // 1.667×10⁻⁴m/s 精密测量
+    MM_MIN("mm/min", "speed", "metric", "毫米每分", "毫米每分"),      // 1.667×10⁻⁵m/s 精密测量
     
     // 加速度单位
     G_FORCE("g-force", "acceleration", "metric", "重力加速度", "重力加速度"),
