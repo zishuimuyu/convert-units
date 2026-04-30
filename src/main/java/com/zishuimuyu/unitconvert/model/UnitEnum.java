@@ -123,6 +123,12 @@ public enum UnitEnum {
     GAL("gal", "volume", "imperial", "加仑", "加仑"),
     FT3("ft3", "volume", "imperial", "立方英尺", "立方英尺"),
     YD3("yd3", "volume", "imperial", "立方码", "立方码"),
+    BBL("bbl", "volume", "imperial", "石油桶", "石油桶"),              // 0.158987m³ 石油工业
+    CU("撮", "volume", "chinese", "市撮", "市撮"),                  // 10⁻⁶m³ 中国传统液体单位
+    SHO("勺", "volume", "chinese", "市勺", "市勺"),                 // 10⁻⁵m³ 中国传统液体单位
+    HE("合", "volume", "chinese", "市合", "市合"),                  // 10⁻⁴m³ 中国传统液体单位
+    TO("斗", "volume", "chinese", "市斗", "市斗"),                  // 10⁻²m³ 中国传统液体单位
+    SEKI("石", "volume", "chinese", "市石", "市石"),                // 10⁻¹m³ 中国传统液体单位
     
     // 温度单位
     C("°C", "temperature", "metric", "摄氏度", "摄氏度"),

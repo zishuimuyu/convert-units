@@ -268,6 +268,14 @@ public class ConversionFactors {
         TO_ANCHOR_FACTORS.put(UnitEnum.GAL, new BigDecimal("128"));
         TO_ANCHOR_FACTORS.put(UnitEnum.FT3, new BigDecimal("957.506"));
         TO_ANCHOR_FACTORS.put(UnitEnum.YD3, new BigDecimal("25852.7"));
+        
+        // 石油及中国传统体积单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.BBL, new BigDecimal("158.987"));          // 石油桶: 158.987 dm³ (相对于锚点单位dm³)
+        TO_ANCHOR_FACTORS.put(UnitEnum.CU, new BigDecimal("0.000001"));          // 市撮: 10⁻⁶ m³ = 0.001 dm³ (相对于锚点单位dm³)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SHO, new BigDecimal("0.00001"));          // 市勺: 10⁻⁵ m³ = 0.01 dm³ (相对于锚点单位dm³)
+        TO_ANCHOR_FACTORS.put(UnitEnum.HE, new BigDecimal("0.0001"));            // 市合: 10⁻⁴ m³ = 0.1 dm³ (相对于锚点单位dm³)
+        TO_ANCHOR_FACTORS.put(UnitEnum.TO, new BigDecimal("0.01"));              // 市斗: 10⁻² m³ = 10 dm³ (相对于锚点单位dm³)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SEKI, new BigDecimal("0.1"));             // 市石: 10⁻¹ m³ = 100 dm³ (相对于锚点单位dm³)
     }
     
     private static void initializeAreaFactors() {
