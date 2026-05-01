@@ -45,7 +45,7 @@ package com.zishuimuyu.unitconvert.model;
  */
 public enum UnitEnum {
     
-    // 长度单位
+    // 1 长度单位
     YM("ym", "length", "metric", "幺米", "幺米"),
     ZM("zm", "length", "metric", "仄米", "仄米"),
     AM("am", "length", "metric", "阿米", "阿米"),
@@ -76,7 +76,7 @@ public enum UnitEnum {
     PARSEC("pc", "length", "astronomical", "秒差距", "秒差距"),
     YM_METRIC("Ym", "length", "metric", "尧米", "尧米"),
     
-    // 质量单位
+    // 2 质量单位
     MCG("mcg", "mass", "metric", "微克", "微克"),
     MG("mg", "mass", "metric", "毫克", "毫克"),
     G("g", "mass", "metric", "克", "克"),
@@ -94,7 +94,7 @@ public enum UnitEnum {
     JIN("jin", "mass", "chinese", "斤", "斤"),
     DAN("dan", "mass", "chinese", "担", "担"),
     
-    // 体积单位
+    // 3、体积单位
     MM3("mm3", "volume", "metric", "立方毫米", "立方毫米"),
     CM3("cm3", "volume", "metric", "立方厘米", "立方厘米"),
     DM3("dm3", "volume", "metric", "立方分米", "立方分米"),
@@ -130,7 +130,7 @@ public enum UnitEnum {
     TO("斗", "volume", "chinese", "市斗", "市斗"),                  // 10⁻²m³ 中国传统液体单位
     SEKI("石", "volume", "chinese", "市石", "市石"),                // 10⁻¹m³ 中国传统液体单位
     
-    // 温度单位
+    // 4、温度单位
     C("°C", "temperature", "metric", "摄氏度", "摄氏度"),
     F("F", "temperature", "imperial", "华氏度", "华氏度"),
     K("K", "temperature", "metric", "开尔文", "开尔文"),
@@ -142,7 +142,7 @@ public enum UnitEnum {
     DE("De", "temperature", "metric", "德氏度", "德氏度"),  // 德氏度 (Delisle)
     PLANCK_TEMP("TP", "temperature", "metric", "普朗克温度", "普朗克温度"), // 普朗克温度
     
-    // 时间单位
+    // 5、时间单位
     YS("ys", "time", "metric", "幺秒", "幺秒"),
     ZS("zs", "time", "metric", "仄秒", "仄秒"),
     AS("as", "time", "metric", "阿秒", "阿秒"),
@@ -169,7 +169,7 @@ public enum UnitEnum {
     MILLENNIUM("millennium", "time", "metric", "千年", "千年"),
     MEGAANNUM("megaannum", "time", "metric", "百万年", "百万年"),
     
-    // 面积单位
+    // 6、面积单位
     MM2("mm2", "area", "metric", "平方毫米", "平方毫米"),
     CM2("cm2", "area", "metric", "平方厘米", "平方厘米"),
     M2("m2", "area", "metric", "平方米", "平方米"),
@@ -182,7 +182,7 @@ public enum UnitEnum {
     ACRE("acre", "area", "imperial", "英亩", "英亩"),
     ROD("rod", "area", "imperial", "杆", "杆"),
     
-    // 速度单位
+    // 7、速度单位
     MM_S("mm/s", "speed", "metric", "毫米每秒", "毫米每秒"),
     CM_S("cm/s", "speed", "metric", "厘米每秒", "厘米每秒"),
     M_S("m/s", "speed", "metric", "米每秒", "米每秒"),
@@ -209,7 +209,7 @@ public enum UnitEnum {
     CM_MIN("cm/min", "speed", "metric", "厘米每分", "厘米每分"),      // 1.667×10⁻⁴m/s 精密测量
     MM_MIN("mm/min", "speed", "metric", "毫米每分", "毫米每分"),      // 1.667×10⁻⁵m/s 精密测量
     
-    // 加速度单位
+    // 8、加速度单位
     G_FORCE("g-force", "acceleration", "metric", "重力加速度", "重力加速度"),
     M_S2("m/s2", "acceleration", "metric", "米每二次方秒", "米每二次方秒"),
     G0("g0", "acceleration", "metric", "标准重力", "标准重力"),
@@ -219,14 +219,14 @@ public enum UnitEnum {
     FT_S2("ft/s²", "acceleration", "imperial", "英尺/秒²", "英尺/秒²"),  // 0.3048m/s² 美国工程、航空
     GAL_ACC("Gal", "acceleration", "cgs", "伽", "伽"),                   // 0.01m/s² 地球物理学、地质勘探、地震学
     
-    // 角度单位
+    // 9、角度单位
     RAD("rad", "angle", "metric", "弧度", "弧度"),
     DEG("deg", "angle", "metric", "度", "度"),
     GRAD("grad", "angle", "metric", "梯度", "梯度"),
     ARCMIN("arcmin", "angle", "metric", "弧分", "弧分"),
     ARCSEC("arcsec", "angle", "metric", "弧秒", "弧秒"),
     
-    // 功率单位
+    // 10、功率单位
     W("W", "power", "metric", "瓦特", "瓦特"),
     MW("mW", "power", "metric", "毫瓦", "毫瓦"),
     KW("kW", "power", "metric", "千瓦", "千瓦"),
@@ -247,7 +247,7 @@ public enum UnitEnum {
     ERG_PER_S("erg/s", "power", "cgs", "尔格/秒", "尔格/秒"),      // 10⁻⁷W 历史物理文献
     TW("TW", "power", "metric", "太瓦", "太瓦"),                   // 10¹²W 一万亿瓦，国家电力、全球能源
     
-    // 压力单位
+    // 11、压强单位
     PA("Pa", "pressure", "metric", "帕斯卡", "帕斯卡"),
     KPA("kPa", "pressure", "metric", "千帕", "千帕"),
     MPA("MPa", "pressure", "metric", "兆帕", "兆帕"),
@@ -265,38 +265,49 @@ public enum UnitEnum {
     KSI("ksi", "pressure", "imperial", "千磅力/平方英寸", "千磅力/平方英寸"),       // ≈ 6.895×10⁶ Pa 材料工程、高强度钢
     PSI("psi", "pressure", "imperial", "磅每平方英寸", "磅每平方英寸"),              // 磅力/平方英寸的别名
     
-    // 数量单位 (each类型)
+    // 12、数量单位 (pieces类型)
+    PCS("pcs", "pieces", "unit", "件", "件"),
     EA("ea", "each", "metric", "每个", "每个"),
     SINGLE("single", "each", "metric", "个", "个"),
     DOZEN("doz", "each", "metric", "打", "打"),
-    
-    // 数量单位 (pieces类型)
-    PCS("pcs", "pieces", "unit", "件", "件"),
     PAIR("pair", "pieces", "unit", "双", "双"),
     SET("set", "pieces", "unit", "套", "套"),
-    
-    // 电荷单位
+    PCS_PIECES("pcs", "pieces", "unit", "件", "件"),
+    BK_DOZ("bk-doz", "pieces", "unit", "烘焙 dozen", "烘焙 dozen"),
+    CP("cp", "pieces", "unit", "对", "对"),
+    DOZ_DOZ("doz-doz", "pieces", "unit", "dozen dozen", "dozen dozen"),
+    DOZ("doz", "pieces", "unit", "dozen", "dozen"),
+    GR_GR("gr-gr", "pieces", "unit", "gross gross", "gross gross"),
+    GROS("gros", "pieces", "unit", "gross", "gross"),
+    HALF_DOZEN("half-dozen", "pieces", "unit", "半打", "半打"),
+    LONG_HUNDRED("long-hundred", "pieces", "unit", "长百", "长百"),
+    REAM("ream", "pieces", "unit", "令", "令"),
+    SCORES("scores", "pieces", "unit", "二十", "二十"),
+    SM_GR("sm-gr", "pieces", "unit", "small gross", "small gross"),
+    TRIO("trio", "pieces", "unit", "三人组", "三人组"),
+
+    // 13、电荷单位,
     COULOMB("C", "charge", "metric", "库仑", "库仑"),
     MC("mC", "charge", "metric", "毫库仑", "毫库仑"),
     UC("μC", "charge", "metric", "微库仑", "微库仑"),
     NC("nC", "charge", "metric", "纳库仑", "纳库仑"),
     PC("pC", "charge", "metric", "皮库仑", "皮库仑"),
-    
-    // 电流单位
+
+    // 14、电流单位
     A("A", "current", "metric", "安培", "安培"),
     MA("mA", "current", "metric", "毫安", "毫安"),
     UA("μA", "current", "metric", "微安", "微安"),
     KA("kA", "current", "metric", "千安", "千安"),
     MA_CURRENT("MA", "current", "metric", "兆安", "兆安"),
 
-    // 电压单位
+    // 15、电压单位
     V("V", "voltage", "metric", "伏特", "伏特"),
     MV_VOLTAGE("mV", "voltage", "metric", "毫伏", "毫伏"),
     UV("μV", "voltage", "metric", "微伏", "微伏"),
     KV("kV", "voltage", "metric", "千伏", "千伏"),
     MV_VOLTAGE_MEGA("MV", "voltage", "metric", "兆伏", "兆伏"),
 
-    // 数字存储单位
+    // 16、数字存储单位
     BIT("bit", "digital", "binary", "比特", "比特"),
     KBIT("kbit", "digital", "binary", "千比特", "千比特"),
     MBIT("Mbit", "digital", "binary", "兆比特", "兆比特"),
@@ -312,7 +323,7 @@ public enum UnitEnum {
     GIBYTE("GiB", "digital", "binary", "吉位字节", "吉位字节"),
     TIBYTE("TiB", "digital", "binary", "太位字节", "太位字节"),
 
-    // 能量单位
+    // 17、能量单位
     WS("Ws", "energy", "SI", "瓦特秒", "瓦特秒"),
     WM("Wm", "energy", "SI", "瓦特分钟", "瓦特分钟"),
     WH("Wh", "energy", "SI", "瓦特小时", "瓦特小时"),
@@ -331,7 +342,7 @@ public enum UnitEnum {
     KGFM("Kgfm", "energy", "metric", "克力·米", "克力·米"),     // 9.80665J 工程技术、机械功
     BTU("Btu", "energy", "imperial", "英热单位", "英热单位"),    // 1055.06J 空调制冷、能源计量
     
-    // 力单位
+    // 18、力单位
     UN("uN", "force", "SI", "微牛顿", "微牛顿"),           // 10⁻⁶N 微观粒子研究、纳米技术、生物分子力测量
     MN_FORCE("mN", "force", "SI", "毫牛顿", "毫牛顿"),      // 10⁻³N 精密仪器、微型机械、生物医学工程
     DYN("dyn", "force", "SI", "达因", "达因"),             // 10⁻⁵N 微观力测量、分子间作用力
@@ -347,7 +358,7 @@ public enum UnitEnum {
     USTF_FORCE("UStf", "force", "imperial", "美吨力", "美吨力"),  // 8896.44N 美国工程标准
     OZF("ozf", "force", "imperial", "盎司力", "盎司力"),    // 0.278014N 轻型机械、精密仪器、美国工程标准
 
-    // 扭矩单位
+    // 19、扭矩单位
     NM("Nm", "torque", "metric", "牛顿米", "牛顿米"),
     CNM("cNm", "torque", "metric", "厘牛顿米", "厘牛顿米"),
     DNM("dNm", "torque", "metric", "分牛顿米", "分牛顿米"),
@@ -357,63 +368,38 @@ public enum UnitEnum {
     LBF_IN("lbf-in", "torque", "imperial", "磅英寸", "磅英寸"),
     OZF_IN("ozf-in", "torque", "imperial", "盎司英寸", "盎司英寸"),
 
-    // 频率单位
-    HZ("Hz", "frequency", "metric", "赫兹", "赫兹"),
-    KHZ("kHz", "frequency", "metric", "千赫", "千赫"),
-    MHZ("MHz", "frequency", "metric", "兆赫", "兆赫"),
-    GHZ("GHz", "frequency", "metric", "吉赫", "吉赫"),
-    THZ("THz", "frequency", "metric", "太赫", "太赫"),
-    RPM("rpm", "frequency", "metric", "转每分钟", "转每分钟"),
-    DEG_S("deg/s", "frequency", "metric", "度/秒", "度/秒"),
-    RAD_S("rad/s", "frequency", "metric", "弧度/秒", "弧度/秒"),
-
-    // 照度单位
+    // 20、照度单位
     LX("lx", "illuminance", "metric", "勒克斯", "勒克斯"),
     FOOTCANDLE("fc", "illuminance", "imperial", "英尺烛光", "英尺烛光"),
 
-    // 视在功率单位
+    // 21、视在功率单位
     VA("VA", "apparentPower", "SI", "伏安", "伏安"),
     MVA("mVA", "apparentPower", "SI", "毫伏安", "毫伏安"),
     KVA("kVA", "apparentPower", "SI", "千伏安", "千伏安"),
     MVA_POWER("MVA", "apparentPower", "SI", "兆伏安", "兆伏安"),
     GVA("GVA", "apparentPower", "SI", "吉伏安", "吉伏安"),
 
-    // 部分浓度单位
-    PPM("ppm", "partsPer", "SI", "百万分率", "百万分率"),
-    PPB("ppb", "partsPer", "SI", "十亿分率", "十亿分率"),
-    PPT("ppt", "partsPer", "SI", "万亿分率", "万亿分率"),
-    PPQ("ppq", "partsPer", "SI", "千万亿分率", "千万亿分率"),
-
-    // 数量单位
-    PCS_PIECES("pcs", "pieces", "unit", "件", "件"),
-    BK_DOZ("bk-doz", "pieces", "unit", "烘焙 dozen", "烘焙 dozen"),
-    CP("cp", "pieces", "unit", "对", "对"),
-    DOZ_DOZ("doz-doz", "pieces", "unit", "dozen dozen", "dozen dozen"),
-    DOZ("doz", "pieces", "unit", "dozen", "dozen"),
-    GR_GR("gr-gr", "pieces", "unit", "gross gross", "gross gross"),
-    GROS("gros", "pieces", "unit", "gross", "gross"),
-    HALF_DOZEN("half-dozen", "pieces", "unit", "半打", "半打"),
-    LONG_HUNDRED("long-hundred", "pieces", "unit", "长百", "长百"),
-    REAM("ream", "pieces", "unit", "令", "令"),
-    SCORES("scores", "pieces", "unit", "二十", "二十"),
-    SM_GR("sm-gr", "pieces", "unit", "small gross", "small gross"),
-    TRIO("trio", "pieces", "unit", "三人组", "三人组"),
-
-    // 无功功率单位
+    // 22、无功功率单位
     VAR("VAR", "reactivePower", "SI", "乏", "乏"),
     MVAR("mVAR", "reactivePower", "SI", "毫乏", "毫乏"),
     KVAR("kVAR", "reactivePower", "SI", "千乏", "千乏"),
     MVAR_POWER("MVAR", "reactivePower", "SI", "兆乏", "兆乏"),
     GVAR("GVAR", "reactivePower", "SI", "吉乏", "吉乏"),
 
-    // 无功能量单位
+    // 23、无功能量单位
     VARH("VARh", "reactiveEnergy", "SI", "乏时", "乏时"),
     MVARH("mVARh", "reactiveEnergy", "SI", "毫乏时", "毫乏时"),
     KVARH("kVARh", "reactiveEnergy", "SI", "千乏时", "千乏时"),
     MVARH_POWER("MVARh", "reactiveEnergy", "SI", "兆乏时", "兆乏时"),
     GVARH("GVARh", "reactiveEnergy", "SI", "吉乏时", "吉乏时"),
 
-    // 质量流量率单位
+    // 24、部分浓度单位
+    PPM("ppm", "partsPer", "SI", "百万分率", "百万分率"),
+    PPB("ppb", "partsPer", "SI", "十亿分率", "十亿分率"),
+    PPT("ppt", "partsPer", "SI", "万亿分率", "万亿分率"),
+    PPQ("ppq", "partsPer", "SI", "千万亿分率", "千万亿分率"),
+
+    // 25、质量流量率单位
     KG_PER_S("kg/s", "massFlowRate", "metric", "千克/秒", "千克/秒"),
     KG_PER_MIN("kg/min", "massFlowRate", "metric", "千克/分钟", "千克/分钟"),
     KG_PER_H("kg/h", "massFlowRate", "metric", "千克/小时", "千克/小时"),
@@ -421,13 +407,14 @@ public enum UnitEnum {
     LB_PER_S("lb/s", "massFlowRate", "imperial", "磅/秒", "磅/秒"),
     LB_PER_H("lb/h", "massFlowRate", "imperial", "磅/小时", "磅/小时"),
 
-    // 步速单位
+
+    // 26、步速单位
     MIN_PER_KM("min/km", "pace", "metric", "分钟/公里", "分钟/公里"),
     S_PER_M("s/m", "pace", "metric", "秒/米", "秒/米"),
     MIN_PER_MI("min/mi", "pace", "imperial", "分钟/英里", "分钟/英里"),
     S_PER_FT("s/ft", "pace", "imperial", "秒/英尺", "秒/英尺"),
 
-    // 体积流量率单位
+    // 27体积流量率单位
     MM3_PER_S("mm3/s", "volumeFlowRate", "metric", "立方毫米/秒", "立方毫米/秒"),
     CM3_PER_S("cm3/s", "volumeFlowRate", "metric", "立方厘米/秒", "立方厘米/秒"),
     DM3_PER_S("dm3/s", "volumeFlowRate", "metric", "立方分米/秒", "立方分米/秒"),
@@ -474,6 +461,16 @@ public enum UnitEnum {
     YD3_PER_S("yd3/s", "volumeFlowRate", "imperial", "立方码/秒", "立方码/秒"),
     YD3_PER_MIN("yd3/min", "volumeFlowRate", "imperial", "立方码/分钟", "立方码/分钟"),
     YD3_PER_H("yd3/h", "volumeFlowRate", "imperial", "立方码/小时", "立方码/小时"),
+
+    // 28、频率单位
+    HZ("Hz", "frequency", "metric", "赫兹", "赫兹"),
+    KHZ("kHz", "frequency", "metric", "千赫", "千赫"),
+    MHZ("MHz", "frequency", "metric", "兆赫", "兆赫"),
+    GHZ("GHz", "frequency", "metric", "吉赫", "吉赫"),
+    THZ("THz", "frequency", "metric", "太赫", "太赫"),
+    RPM("rpm", "frequency", "metric", "转每分钟", "转每分钟"),
+    DEG_S("deg/s", "frequency", "metric", "度/秒", "度/秒"),
+    RAD_S("rad/s", "frequency", "metric", "弧度/秒", "弧度/秒"),
     ;
     
     /**
@@ -543,16 +540,13 @@ public enum UnitEnum {
     
     /**
      * 构造函数，初始化单位枚举项
-     * <P>
      * 详细描述方法的功能、算法逻辑或业务流程
-     * <P>
      * 处理逻辑：
      * <ol>
      *   <li>接收单位的各项属性参数</li>
      *   <li>将参数分别赋值给对应的私有字段</li>
      *   <li>完成枚举项的初始化</li>
      * </ol>
-     * <P>
      * 参数说明：
      * <ul>
      *   <li>abbr: 单位缩写，用于标识单位的简短形式</li>
@@ -561,7 +555,6 @@ public enum UnitEnum {
      *   <li>singular: 单数形式，单位的单数表达形式</li>
      *   <li>plural: 复数形式，单位的复数表达形式</li>
      * </ul>
-     * <P>
      * 返回值说明：
      * <ul>
      *   <li>void: 无返回值，仅初始化对象</li>
