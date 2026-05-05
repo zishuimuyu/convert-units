@@ -34,7 +34,7 @@ public class PerformanceTest {
         
         // 预热
         for (int i = 0; i < 1000; i++) {
-            service.convert(BigDecimal.ONE, UnitEnum.M, UnitEnum.CM);
+            service.convert(BigDecimal.ONE, UnitEnum.LENGTH_M, UnitEnum.LENGTH_CM);
         }
         
         // 性能测试
@@ -42,7 +42,7 @@ public class PerformanceTest {
         long startTime = System.nanoTime();
         
         for (int i = 0; i < iterations; i++) {
-            ConvertResult<BigDecimal> result = service.convert(BigDecimal.ONE, UnitEnum.M, UnitEnum.CM);
+            ConvertResult<BigDecimal> result = service.convert(BigDecimal.ONE, UnitEnum.LENGTH_M, UnitEnum.LENGTH_CM);
             if (i % 10000 == 0) {
                 System.out.println("已完成 " + i + " 次转换");
             }
@@ -82,7 +82,7 @@ public class PerformanceTest {
                     UnitConversionServiceImpl service = services[threadIndex];
                     
                     for (int i = 0; i < iterationsPerThread; i++) {
-                        service.convert(BigDecimal.valueOf(i % 1000 + 1), UnitEnum.M, UnitEnum.CM);
+                        service.convert(BigDecimal.valueOf(i % 1000 + 1), UnitEnum.LENGTH_M, UnitEnum.LENGTH_CM);
                     }
                 } finally {
                     latch.countDown();

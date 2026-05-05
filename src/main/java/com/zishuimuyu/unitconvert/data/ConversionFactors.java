@@ -161,35 +161,35 @@ public class ConversionFactors {
      * - 英制单位通过精确的转换比例计算
      */
     private static void initializeLengthFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.YM, new BigDecimal("1e-24"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ZM, new BigDecimal("1e-21"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.AM, new BigDecimal("1e-18"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FM, new BigDecimal("1e-15"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PM, new BigDecimal("1e-12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.NANOMETER, new BigDecimal("1e-9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.UM, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ANGSTROM, new BigDecimal("1e-10"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CM, new BigDecimal("1e-2"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM, new BigDecimal("1e-1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.M, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KM, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM_METRIC, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GM, new BigDecimal("1e9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MIL, new BigDecimal("1").divide(new BigDecimal("12000"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN, new BigDecimal("1").divide(new BigDecimal("12"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.YD, new BigDecimal("3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FT_US, new BigDecimal("1200").divide(new BigDecimal("3937"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FT, new BigDecimal("1").divide(new BigDecimal("3"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.HAND, new BigDecimal("0.1016"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FATHOM, new BigDecimal("6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FUR, new BigDecimal("201.168"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MI, new BigDecimal("5280"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.NMI, new BigDecimal("1852"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.AU, new BigDecimal("149597870700"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.LY, new BigDecimal("9460730472580800"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PARSEC, new BigDecimal("30856775814913700"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.YM_METRIC, new BigDecimal("1e24"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_YM, new BigDecimal("1e-24"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_ZM, new BigDecimal("1e-21"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_AM, new BigDecimal("1e-18"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_FM, new BigDecimal("1e-15"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_PM, new BigDecimal("1e-12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_NANOMETER, new BigDecimal("1e-9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_UM, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_ANGSTROM, new BigDecimal("1e-10"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_MM, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_CM, new BigDecimal("1e-2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_DM, new BigDecimal("1e-1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_M, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_KM, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_MM_METRIC, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_GM, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_MIL, new BigDecimal("1").divide(new BigDecimal("12000"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_IN, new BigDecimal("1").divide(new BigDecimal("12"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_YD, new BigDecimal("3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_FT_US, new BigDecimal("1200").divide(new BigDecimal("3937"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_FT, new BigDecimal("1").divide(new BigDecimal("3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_HAND, new BigDecimal("0.1016"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_FATHOM, new BigDecimal("6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_FUR, new BigDecimal("201.168"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_MI, new BigDecimal("5280"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_NMI, new BigDecimal("1852"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_AU, new BigDecimal("149597870700"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_LY, new BigDecimal("9460730472580800"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_PARSEC, new BigDecimal("30856775814913700"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.LENGTH_YM_METRIC, new BigDecimal("1e24"));
     }
     
     /**
@@ -206,22 +206,22 @@ public class ConversionFactors {
      * - 英制质量单位使用精确的转换比例
      */
     private static void initializeMassFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.MCG, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MG, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.G, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KG, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.TONNE, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.OZ, new BigDecimal("28.3495"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.LB, new BigDecimal("453.592"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ST, new BigDecimal("6350.29"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GR, new BigDecimal("0.0648"));  // 6.48×10⁻⁵ kg = 0.0648 g
-        TO_ANCHOR_FACTORS.put(UnitEnum.DR, new BigDecimal("1.77"));     // 1.77×10⁻³ kg = 1.77 g
-        TO_ANCHOR_FACTORS.put(UnitEnum.USTF, new BigDecimal("907185")); // 907.185 kg = 907185 g
-        TO_ANCHOR_FACTORS.put(UnitEnum.LT, new BigDecimal("1016047"));  // 1016.047 kg = 1016047 g
-        TO_ANCHOR_FACTORS.put(UnitEnum.QIAN, new BigDecimal("5.0"));    // 5.0×10⁻³ kg = 5.0 g
-        TO_ANCHOR_FACTORS.put(UnitEnum.LIANG, new BigDecimal("50.0"));   // 5.0×10⁻² kg = 50.0 g
-        TO_ANCHOR_FACTORS.put(UnitEnum.JIN, new BigDecimal("500.0"));   // 0.5 kg = 500.0 g
-        TO_ANCHOR_FACTORS.put(UnitEnum.DAN, new BigDecimal("50000.0")); // 50 kg = 50000 g
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_MCG, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_MG, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_G, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_KG, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_TONNE, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_OZ, new BigDecimal("28.3495"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_LB, new BigDecimal("453.592"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_ST, new BigDecimal("6350.29"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_GR, new BigDecimal("0.0648"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_DR, new BigDecimal("1.77"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_USTF, new BigDecimal("907185"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_LT, new BigDecimal("1016047"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_QIAN, new BigDecimal("5.0"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_LIANG, new BigDecimal("50.0"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_JIN, new BigDecimal("500.0"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_DAN, new BigDecimal("50000.0"));
     }
     
     /**
@@ -240,89 +240,82 @@ public class ConversionFactors {
      * - 瑞典单位和英制单位使用特定的转换比例
      */
     private static void initializeVolumeFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM3, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CM3, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM3, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ML, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CL, new BigDecimal("1").divide(new BigDecimal("100"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DL, new BigDecimal("1").divide(new BigDecimal("10"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.L, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KL, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ML_MEGA, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ML_GIGA, new BigDecimal("1e9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.M3, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KM3, new BigDecimal("1e12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KRM, new BigDecimal("0.005"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.TSK, new BigDecimal("0.015"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MSK, new BigDecimal("0.03"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KKP, new BigDecimal("0.15"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GLAS, new BigDecimal("0.2"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KANNA, new BigDecimal("2.617"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.TSP, new BigDecimal("1").divide(new BigDecimal("6"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.TBS, new BigDecimal("1").divide(new BigDecimal("2"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN3, new BigDecimal("0.55411"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FLOZ, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CUP, new BigDecimal("8"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PNT, new BigDecimal("16"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.QT, new BigDecimal("32"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GAL, new BigDecimal("128"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FT3, new BigDecimal("957.506"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.YD3, new BigDecimal("25852.7"));
-        
-        // 石油及中国传统体积单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.BBL, new BigDecimal("158.987"));          // 石油桶: 158.987 dm³ (相对于锚点单位dm³)
-        TO_ANCHOR_FACTORS.put(UnitEnum.CU, new BigDecimal("0.000001"));          // 市撮: 10⁻⁶ m³ = 0.001 dm³ (相对于锚点单位dm³)
-        TO_ANCHOR_FACTORS.put(UnitEnum.SHO, new BigDecimal("0.00001"));          // 市勺: 10⁻⁵ m³ = 0.01 dm³ (相对于锚点单位dm³)
-        TO_ANCHOR_FACTORS.put(UnitEnum.HE, new BigDecimal("0.0001"));            // 市合: 10⁻⁴ m³ = 0.1 dm³ (相对于锚点单位dm³)
-        TO_ANCHOR_FACTORS.put(UnitEnum.TO, new BigDecimal("0.01"));              // 市斗: 10⁻² m³ = 10 dm³ (相对于锚点单位dm³)
-        TO_ANCHOR_FACTORS.put(UnitEnum.SEKI, new BigDecimal("0.1"));             // 市石: 10⁻¹ m³ = 100 dm³ (相对于锚点单位dm³)
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_MM3, new BigDecimal("1").divide(new BigDecimal("1e6"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_CM3, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_DM3, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_ML, new BigDecimal("1").divide(new BigDecimal("1e3"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_CL, new BigDecimal("1").divide(new BigDecimal("100"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_DL, new BigDecimal("1").divide(new BigDecimal("10"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_L, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_KL, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_ML_MEGA, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_ML_GIGA, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_M3, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_KM3, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_KRM, new BigDecimal("0.005"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_TSK, new BigDecimal("0.015"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_MSK, new BigDecimal("0.03"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_KKP, new BigDecimal("0.15"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_GLAS, new BigDecimal("0.2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_KANNA, new BigDecimal("2.617"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_TSP, new BigDecimal("1").divide(new BigDecimal("6"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_TBS, new BigDecimal("1").divide(new BigDecimal("2"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_IN3, new BigDecimal("0.55411"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOZ, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_CUP, new BigDecimal("8"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_PNT, new BigDecimal("16"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_QT, new BigDecimal("32"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_GAL, new BigDecimal("128"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FT3, new BigDecimal("957.506"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_YD3, new BigDecimal("25852.7"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_BBL, new BigDecimal("158.987"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_CU, new BigDecimal("0.000001"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_SHO, new BigDecimal("0.00001"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_HE, new BigDecimal("0.0001"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_TO, new BigDecimal("0.01"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_SEKI, new BigDecimal("0.1"));
     }
     
     private static void initializeAreaFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM2, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CM2, new BigDecimal("1e-4"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.M2, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.HA, new BigDecimal("1e4"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KM2, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN2, new BigDecimal("1").divide(new BigDecimal("144"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FT2, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.YD2, new BigDecimal("9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MI2, new BigDecimal("27878400"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ACRE, new BigDecimal("43560"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ROD, new BigDecimal("272.25"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_MM2, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_CM2, new BigDecimal("1e-4"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_M2, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_HA, new BigDecimal("1e4"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_KM2, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_IN2, new BigDecimal("1").divide(new BigDecimal("144"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_FT2, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_YD2, new BigDecimal("9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_MI2, new BigDecimal("27878400"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_ACRE, new BigDecimal("43560"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.AREA_ROD, new BigDecimal("272.25"));
     }
     
     private static void initializeTimeFactors() {
-        // 极短时间单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.YS, new BigDecimal("1e-24"));  // 1幺秒 = 10^-24秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.ZS, new BigDecimal("1e-21"));  // 1仄秒 = 10^-21秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.AS, new BigDecimal("1e-18"));  // 1阿秒 = 10^-18秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.TP, new BigDecimal("1e12"));   // 1拍秒 = 10^12秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.FS, new BigDecimal("1e-15"));  // 1飞秒 = 10^-15秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.PS, new BigDecimal("1e-12"));  // 1皮秒 = 10^-12秒
-        
-        // 短时间单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.NS, new BigDecimal("1e-9"));   // 1纳秒 = 10^-9秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.US, new BigDecimal("1e-6"));   // 1微秒 = 10^-6秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.MU, new BigDecimal("1e-6"));   // 1微秒 = 10^-6秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.MS, new BigDecimal("1e-3"));   // 1毫秒 = 10^-3秒
-        
-        // 基本时间单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.S, new BigDecimal("1"));       // 1秒 = 1秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.MIN, new BigDecimal("60"));    // 1分钟 = 60秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.H, new BigDecimal("3600"));    // 1小时 = 3600秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.DAY, new BigDecimal("86400")); // 1天 = 86400秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.WEEK, new BigDecimal("604800"));// 1周 = 604800秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.FORTNIGHT, new BigDecimal("1209600")); // 1十四夜 = 14天 = 1209600秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.KE, new BigDecimal("900"));    // 1刻 = 15分钟 = 900秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.SHICHEN, new BigDecimal("7200")); // 1时辰 = 2小时 = 7200秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.LUNARMONTH, new BigDecimal("2551443")); // 1农历月 ≈ 29.53天 ≈ 2551443秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.MONTH, new BigDecimal("2629800")); // 1月 ≈ 30.44天 ≈ 2629800秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.QUARTER, new BigDecimal("7889400")); // 1季度 ≈ 91.31天 ≈ 7889400秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.YEAR, new BigDecimal("31557600")); // 1年 ≈ 365.25天 ≈ 31557600秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.CENTURY, new BigDecimal("3155760000")); // 1世纪 = 100年 ≈ 3155760000秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.MILLENNIUM, new BigDecimal("31557600000")); // 1千年 = 1000年 ≈ 31557600000秒
-        TO_ANCHOR_FACTORS.put(UnitEnum.MEGAANNUM, new BigDecimal("31557600000000")); // 1百万年 = 1000000年 ≈ 31557600000000秒
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_YS, new BigDecimal("1e-24"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_ZS, new BigDecimal("1e-21"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_AS, new BigDecimal("1e-18"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_TP, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_FS, new BigDecimal("1e-15"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_PS, new BigDecimal("1e-12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_NS, new BigDecimal("1e-9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_US, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_MU, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_MS, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_S, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_MIN, new BigDecimal("60"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_H, new BigDecimal("3600"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_DAY, new BigDecimal("86400"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_WEEK, new BigDecimal("604800"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_FORTNIGHT, new BigDecimal("1209600"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_KE, new BigDecimal("900"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_SHICHEN, new BigDecimal("7200"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_LUNARMONTH, new BigDecimal("2551443"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_MONTH, new BigDecimal("2629800"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_QUARTER, new BigDecimal("7889400"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_YEAR, new BigDecimal("31557600"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_CENTURY, new BigDecimal("3155760000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_MILLENNIUM, new BigDecimal("31557600000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.TIME_MEGAANNUM, new BigDecimal("31557600000000"));
     }
     
     private static void initializeTemperatureFactors() {
@@ -333,323 +326,322 @@ public class ConversionFactors {
     
     private static void initializeSpeedFactors() {
         // 设置M_S为metric系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.M_S, new BigDecimal("1"));              // 米/秒: 作为metric系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM_S, new BigDecimal("0.001"));          // 毫米/秒: 0.001m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.CM_S, new BigDecimal("0.01"));           // 厘米/秒: 0.01m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM_S, new BigDecimal("0.1"));            // 分米/秒: 0.1m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.DAM_S, new BigDecimal("10"));            // 十米/秒: 10m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.HM_S, new BigDecimal("100"));             // 百米/秒: 100m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KM_S, new BigDecimal("1000"));            // 千米/秒: 1000m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KM_H, new BigDecimal("0.2777777778"));    // 千米/时: 1/3.6 m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KM_MIN, new BigDecimal("16.666666667"));  // 千米/分: 1000/60 m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.M_MIN, new BigDecimal("0.0166666667"));   // 米/分: 1/60 m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.CM_MIN, new BigDecimal("0.0001666667"));  // 厘米/分: 0.01/60 m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM_MIN, new BigDecimal("0.0000166667"));  // 毫米/分: 0.001/60 m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM_H, new BigDecimal("2.777777778e-7"));  // 毫米/时: 0.001/3600 m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MACH, new BigDecimal("343"));               // 马赫: 343m/s (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.LIGHT_SPEED, new BigDecimal("299792458"));          // 光速: 299792458m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_M_S, new BigDecimal("1"));              // 米/秒: 作为metric系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_MM_S, new BigDecimal("0.001"));          // 毫米/秒: 0.001m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_CM_S, new BigDecimal("0.01"));           // 厘米/秒: 0.01m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_DM_S, new BigDecimal("0.1"));            // 分米/秒: 0.1m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_DAM_S, new BigDecimal("10"));            // 十米/秒: 10m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_HM_S, new BigDecimal("100"));             // 百米/秒: 100m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_KM_S, new BigDecimal("1000"));            // 千米/秒: 1000m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_KM_H, new BigDecimal("0.2777777778"));    // 千米/时: 1/3.6 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_KM_MIN, new BigDecimal("16.666666667"));  // 千米/分: 1000/60 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_M_MIN, new BigDecimal("0.0166666667"));   // 米/分: 1/60 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_CM_MIN, new BigDecimal("0.0001666667"));  // 厘米/分: 0.01/60 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_MM_MIN, new BigDecimal("0.0000166667"));  // 毫米/分: 0.001/60 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_MM_H, new BigDecimal("2.777777778e-7"));  // 毫米/时: 0.001/3600 m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_MACH, new BigDecimal("343"));               // 马赫: 343m/s (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_LIGHT_SPEED, new BigDecimal("299792458"));          // 光速: 299792458m/s (相对于metric锚点)
         
         // 设置FPS为imperial系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.FPS, new BigDecimal("1"));                // 英尺/秒: 作为imperial系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.FPM, new BigDecimal("0.0166666667"));     // 英尺/分: 1/60 fps (相对于imperial锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN_S, new BigDecimal("0.0833333333"));    // 英寸/秒: 1/12 fps (相对于imperial锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.YD_S, new BigDecimal("3"));               // 码/秒: 3 fps (相对于imperial锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MPH, new BigDecimal("1.4666666667"));     // 英里/时: 5280/3600 fps (相对于imperial锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MI_S, new BigDecimal("5280"));            // 英里/秒: 5280 fps (相对于imperial锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MI_MIN, new BigDecimal("88"));            // 英里/分: 5280/60 fps (相对于imperial锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN_H, new BigDecimal("2.314814815e-5"));  // 英寸/时: 1/(12*3600) fps (相对于imperial锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.NMI_H, new BigDecimal("1.6878098571"));   // 海里/时: 6076.12/3600 fps (相对于imperial锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KT, new BigDecimal("1.6878098571"));      // 节: 6076.12/3600 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_FPS, new BigDecimal("1"));                // 英尺/秒: 作为imperial系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_FPM, new BigDecimal("0.0166666667"));     // 英尺/分: 1/60 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_IN_S, new BigDecimal("0.0833333333"));    // 英寸/秒: 1/12 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_YD_S, new BigDecimal("3"));               // 码/秒: 3 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_MPH, new BigDecimal("1.4666666667"));     // 英里/时: 5280/3600 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_MI_S, new BigDecimal("5280"));            // 英里/秒: 5280 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_MI_MIN, new BigDecimal("88"));            // 英里/分: 5280/60 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_IN_H, new BigDecimal("2.314814815e-5"));  // 英寸/时: 1/(12*3600) fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_NMI_H, new BigDecimal("1.6878098571"));   // 海里/时: 6076.12/3600 fps (相对于imperial锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.SPEED_KT, new BigDecimal("1.6878098571"));      // 节: 6076.12/3600 fps (相对于imperial锚点)
     }
     
     private static void initializeAccelerationFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.M_S2, new BigDecimal("1"));              // 米/秒²: 作为metric系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.CM_S2, new BigDecimal("0.01"));          // 厘米/秒²: 0.01m/s² (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM_S2, new BigDecimal("0.001"));          // 毫米/秒²: 0.001m/s² (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN_S2, new BigDecimal("0.0254").divide(new BigDecimal("0.3048"), 10, java.math.RoundingMode.HALF_UP)); // 英寸/秒²: 相对ft/s²的比率 (0.0254/0.3048)
-        TO_ANCHOR_FACTORS.put(UnitEnum.FT_S2, new BigDecimal("1"));              // 英尺/秒²: 作为imperial系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.G_FORCE, new BigDecimal("9.80665"));      // 重力加速度: 9.80665m/s² (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.G0, new BigDecimal("9.80665"));           // 标准重力: 9.80665m/s² (相对于metric锚点)
-        TO_ANCHOR_FACTORS.put(UnitEnum.GAL_ACC, new BigDecimal("0.01"));             // 伽: 0.01m/s² (相对于metric锚点)
+        TO_ANCHOR_FACTORS.put(UnitEnum.ACCELERATION_M_S2, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ACCELERATION_CM_S2, new BigDecimal("0.01"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ACCELERATION_MM_S2, new BigDecimal("0.001"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ACCELERATION_IN_S2, new BigDecimal("0.0254").divide(new BigDecimal("0.3048"), 10, java.math.RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ACCELERATION_FT_S2, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ACCELERATION_G_FORCE, new BigDecimal("9.80665"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ACCELERATION_G0, new BigDecimal("9.80665"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ACCELERATION_GAL_ACC, new BigDecimal("0.01"));
     }
     
     private static void initializeAngleFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.RAD, new BigDecimal("180").divide(new BigDecimal("3.141592653589793"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DEG, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ARCMIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ARCSEC, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GRAD, new BigDecimal("0.9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ANGLE_RAD, new BigDecimal("180").divide(new BigDecimal("3.141592653589793"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ANGLE_DEG, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ANGLE_ARCMIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ANGLE_ARCSEC, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ANGLE_GRAD, new BigDecimal("0.9"));
     }
     
     private static void initializePowerFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.W, new BigDecimal("1"));                  // 瓦特: 1W (基本单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.PW, new BigDecimal("1e-12"));            // 皮瓦: 10⁻¹²W
-        TO_ANCHOR_FACTORS.put(UnitEnum.NW, new BigDecimal("1e-9"));             // 纳瓦: 10⁻⁹W
-        TO_ANCHOR_FACTORS.put(UnitEnum.UW, new BigDecimal("1e-6"));             // 微瓦: 10⁻⁶W
-        TO_ANCHOR_FACTORS.put(UnitEnum.MW, new BigDecimal("1e-3"));             // 毫瓦: 10⁻³W
-        TO_ANCHOR_FACTORS.put(UnitEnum.KW, new BigDecimal("1e3"));              // 千瓦: 10³W
-        TO_ANCHOR_FACTORS.put(UnitEnum.MW_POWER, new BigDecimal("1e6"));        // 兆瓦: 10⁶W
-        TO_ANCHOR_FACTORS.put(UnitEnum.GW, new BigDecimal("1e9"));              // 吉瓦: 10⁹W
-        TO_ANCHOR_FACTORS.put(UnitEnum.TW, new BigDecimal("1e12"));             // 太瓦: 10¹²W
-        TO_ANCHOR_FACTORS.put(UnitEnum.METRIC_HP, new BigDecimal("735.5"));     // 公制马力: 735.5W
-        TO_ANCHOR_FACTORS.put(UnitEnum.HP, new BigDecimal("1"));                // 马力: 作为英制系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.BtuPerS, new BigDecimal("1055.06").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP)); // 英热单位/秒: 相对HP的比率 (1055.06/745.7)
-        TO_ANCHOR_FACTORS.put(UnitEnum.CAL_PER_S, new BigDecimal("4.184"));     // 卡路里/秒: 4.184W
-        TO_ANCHOR_FACTORS.put(UnitEnum.KCAL_PER_H, new BigDecimal("1.163"));    // 千卡/小时: 1.163W
-        TO_ANCHOR_FACTORS.put(UnitEnum.BTU_PER_H, new BigDecimal("0.2931").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP)); // 英热单位/小时: 相对HP的比率 (0.2931/745.7)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KGF_M_PER_S, new BigDecimal("9.80665")); // 公斤力·米/秒: 9.80665W
-        TO_ANCHOR_FACTORS.put(UnitEnum.FTLBF_PER_S, new BigDecimal("1.35582").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP)); // 英尺·磅力/秒: 相对HP的比率 (1.35582/745.7)
-        TO_ANCHOR_FACTORS.put(UnitEnum.FTLBF_PER_MIN, new BigDecimal("0.022597").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP)); // 英尺·磅力/分钟: 相对HP的比率 (0.022597/745.7)
-        TO_ANCHOR_FACTORS.put(UnitEnum.ERG_PER_S, new BigDecimal("1e-7"));      // 尔格/秒: 10⁻⁷W
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_W, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_PW, new BigDecimal("1e-12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_NW, new BigDecimal("1e-9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_UW, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_MW, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_KW, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_MW_POWER, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_GW, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_TW, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_METRIC_HP, new BigDecimal("735.5"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_HP, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_BTU_PER_S, new BigDecimal("1055.06").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_CAL_PER_S, new BigDecimal("4.184"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_KCAL_PER_H, new BigDecimal("1.163"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_BTU_PER_H, new BigDecimal("0.2931").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_KGF_M_PER_S, new BigDecimal("9.80665"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_FTLBF_PER_S, new BigDecimal("1.35582").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_FTLBF_PER_MIN, new BigDecimal("0.022597").divide(new BigDecimal("745.7"), 10, java.math.RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.POWER_ERG_PER_S, new BigDecimal("1e-7"));
     }
     
     private static void initializePressureFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.PA, new BigDecimal("1"));                 // 帕斯卡: 1Pa (基本单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.HPa, new BigDecimal("100"));              // 百帕: 10²Pa (一百帕)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KPA, new BigDecimal("1000"));             // 千帕: 10³Pa (一千帕)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MPA, new BigDecimal("1000000"));          // 兆帕: 10⁶Pa (一百万帕)
-        TO_ANCHOR_FACTORS.put(UnitEnum.GPA, new BigDecimal("1000000000"));       // 吉帕: 10⁹Pa
-        TO_ANCHOR_FACTORS.put(UnitEnum.MBAR, new BigDecimal("100"));             // 毫巴: 10²Pa (百帕)
-        TO_ANCHOR_FACTORS.put(UnitEnum.BAR, new BigDecimal("100000"));           // 巴: 10⁵Pa (十万帕)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MMHG, new BigDecimal("133.322"));        // 毫米汞柱: 133.322Pa
-        TO_ANCHOR_FACTORS.put(UnitEnum.TORR, new BigDecimal("133.32236842105263")); // 托: (101325/760) Pa ≈ 133.322 Pa
-        TO_ANCHOR_FACTORS.put(UnitEnum.ATM, new BigDecimal("101325"));           // 标准大气压: 101325Pa
-        TO_ANCHOR_FACTORS.put(UnitEnum.KGF_PER_M2, new BigDecimal("9.80665"));  // 千克力/平方米: 9.80665Pa
-        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_PER_FT2, new BigDecimal("1").divide(new BigDecimal("144"), 10, java.math.RoundingMode.HALF_UP)); // 磅力/平方英尺: 1/144 psi (因为1 ft² = 144 in²)
-        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_PER_IN2, new BigDecimal("1"));        // 磅力/平方英寸: 作为英制系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.KSI, new BigDecimal("1000"));             // 千磅力/平方英寸: 1000 psi
-        TO_ANCHOR_FACTORS.put(UnitEnum.MH2O, new BigDecimal("9806.65"));        // 米水柱
-        TO_ANCHOR_FACTORS.put(UnitEnum.PSI, new BigDecimal("1"));                // psi (lbf/in²) 作为英制系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_PA, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_HPA, new BigDecimal("100"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_KPA, new BigDecimal("1000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_MPA, new BigDecimal("1000000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_GPA, new BigDecimal("1000000000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_MBAR, new BigDecimal("100"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_BAR, new BigDecimal("100000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_MMHG, new BigDecimal("133.322"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_TORR, new BigDecimal("133.32236842105263"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_ATM, new BigDecimal("101325"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_KGF_PER_M2, new BigDecimal("9.80665"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_LBF_PER_FT2, new BigDecimal("1").divide(new BigDecimal("144"), 10, java.math.RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_LBF_PER_IN2, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_KSI, new BigDecimal("1000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_MH2O, new BigDecimal("9806.65"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PRESSURE_PSI, new BigDecimal("1"));
     }
     
     private static void initializeQuantityFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.EA, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.SINGLE, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DOZEN, new BigDecimal("12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PCS, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PAIR, new BigDecimal("2"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.SET, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_EA, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_SINGLE, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_DOZEN, new BigDecimal("12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_PCS, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_PAIR, new BigDecimal("2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_SET, new BigDecimal("1"));
     }
     
     private static void initializeChargeFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.COULOMB, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MC, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.UC, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.NC, new BigDecimal("1e-9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PC, new BigDecimal("1e-12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CHARGE_COULOMB, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CHARGE_MC, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CHARGE_UC, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CHARGE_NC, new BigDecimal("1e-9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CHARGE_PC, new BigDecimal("1e-12"));
     }
     
     private static void initializeCurrentFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.A, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MA, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.UA, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KA, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MA_CURRENT, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CURRENT_A, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CURRENT_MA, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CURRENT_UA, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CURRENT_KA, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.CURRENT_MA_CURRENT, new BigDecimal("1e6"));
     }
     
     private static void initializeVoltageFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.V, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MV_VOLTAGE, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.UV, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KV, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MV_VOLTAGE_MEGA, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLTAGE_V, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLTAGE_MV_VOLTAGE, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLTAGE_UV, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLTAGE_KV, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLTAGE_MV_VOLTAGE_MEGA, new BigDecimal("1e6"));
     }
     
     private static void initializeDigitalStorageFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.BIT, new BigDecimal("1").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KBIT, new BigDecimal("1000").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MBIT, new BigDecimal("1e6").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GBIT, new BigDecimal("1e9").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.TBIT, new BigDecimal("1e12").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.BYTE, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KBYTE, new BigDecimal("1000"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MBYTE, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GBYTE, new BigDecimal("1e9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.TBYTE, new BigDecimal("1e12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KIBYTE, new BigDecimal("1024"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MIBYTE, new BigDecimal("1024").multiply(new BigDecimal("1024")));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GIBYTE, new BigDecimal("1024").multiply(new BigDecimal("1024")).multiply(new BigDecimal("1024")));
-        TO_ANCHOR_FACTORS.put(UnitEnum.TIBYTE, new BigDecimal("1024").multiply(new BigDecimal("1024")).multiply(new BigDecimal("1024")).multiply(new BigDecimal("1024")));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_BIT, new BigDecimal("1").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_KBIT, new BigDecimal("1000").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_MBIT, new BigDecimal("1e6").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_GBIT, new BigDecimal("1e9").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_TBIT, new BigDecimal("1e12").divide(new BigDecimal("8"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_BYTE, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_KBYTE, new BigDecimal("1000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_MBYTE, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_GBYTE, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_TBYTE, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_KIBYTE, new BigDecimal("1024"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_MIBYTE, new BigDecimal("1024").multiply(new BigDecimal("1024")));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_GIBYTE, new BigDecimal("1024").multiply(new BigDecimal("1024")).multiply(new BigDecimal("1024")));
+        TO_ANCHOR_FACTORS.put(UnitEnum.DIGITAL_TIBYTE, new BigDecimal("1024").multiply(new BigDecimal("1024")).multiply(new BigDecimal("1024")).multiply(new BigDecimal("1024")));
     }
     
     private static void initializeEnergyFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.WS, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.WM, new BigDecimal("60"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.WH, new BigDecimal("3600"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MWH, new BigDecimal("3600"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KWH, new BigDecimal("3600000"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MWH_MEGA, new BigDecimal("3.6e9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GWH, new BigDecimal("3.6e12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.J, new BigDecimal("1"));                  // 焦耳: 1J (基本单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KJ, new BigDecimal("1e3"));               // 千焦: 10³J (一千焦)
-        TO_ANCHOR_FACTORS.put(UnitEnum.MJ, new BigDecimal("1e6"));               // 兆焦: 10⁶J (一百万焦)
-        TO_ANCHOR_FACTORS.put(UnitEnum.GJ, new BigDecimal("1e9"));               // 吉焦: 10⁹J
-        TO_ANCHOR_FACTORS.put(UnitEnum.CAL, new BigDecimal("1"));                // 卡路里: 作为营养学系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.KCAL, new BigDecimal("1000"));            // 千卡: 1000 cal
-        TO_ANCHOR_FACTORS.put(UnitEnum.ERG, new BigDecimal("1"));                // 尔格: 作为CGS系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.FTLBF, new BigDecimal("1").divide(new BigDecimal("778.169"), 10, java.math.RoundingMode.HALF_UP)); // 英尺·磅力: 1/778.169 BTU (因为1 BTU = 778.169 ft·lbf)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KGFM, new BigDecimal("1"));                // 克力·米: 作为metric系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.BTU, new BigDecimal("1"));                // 英热单位: 作为英制系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_WS, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_WM, new BigDecimal("60"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_WH, new BigDecimal("3600"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_MWH, new BigDecimal("3600"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_KWH, new BigDecimal("3600000"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_MWH_MEGA, new BigDecimal("3.6e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_GWH, new BigDecimal("3.6e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_J, new BigDecimal("1"));                  // 焦耳: 1J (基本单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_KJ, new BigDecimal("1e3"));               // 千焦: 10³J (一千焦)
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_MJ, new BigDecimal("1e6"));               // 兆焦: 10⁶J (一百万焦)
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_GJ, new BigDecimal("1e9"));               // 吉焦: 10⁹J
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_CAL, new BigDecimal("1"));                // 卡路里: 作为营养学系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_KCAL, new BigDecimal("1000"));            // 千卡: 1000 cal
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_ERG, new BigDecimal("1"));                // 尔格: 作为CGS系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_FTLBF, new BigDecimal("1").divide(new BigDecimal("778.169"), 10, java.math.RoundingMode.HALF_UP)); // 英尺·磅力: 1/778.169 BTU (因为1 BTU = 778.169 ft·lbf)
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_KGFM, new BigDecimal("1"));                // 克力·米: 作为metric系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.ENERGY_BTU, new BigDecimal("1"));                // 英热单位: 作为英制系统锚点单位
     }
     
     private static void initializeForceFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.UN, new BigDecimal("1e-6"));             // 微牛顿: 10⁻⁶N
-        TO_ANCHOR_FACTORS.put(UnitEnum.MN_FORCE, new BigDecimal("1e-3"));       // 毫牛顿: 10⁻³N
-        TO_ANCHOR_FACTORS.put(UnitEnum.DYN, new BigDecimal("1e-5"));            // 达因: 10⁻⁵N
-        TO_ANCHOR_FACTORS.put(UnitEnum.GF, new BigDecimal("9.80665e-3"));       // 克力: 9.80665×10⁻³N
-        TO_ANCHOR_FACTORS.put(UnitEnum.N, new BigDecimal("1"));                 // 牛顿: 1N (基本单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KN, new BigDecimal("1e3"));              // 千牛: 10³N
-        TO_ANCHOR_FACTORS.put(UnitEnum.MN_FORCE_MEGA, new BigDecimal("1e6"));   // 兆牛顿: 10⁶N
-        TO_ANCHOR_FACTORS.put(UnitEnum.LBF, new BigDecimal("1"));               // 磅力: 作为英制系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.KGF, new BigDecimal("9.80665"));         // 千克力: 9.80665N
-        TO_ANCHOR_FACTORS.put(UnitEnum.KIP, new BigDecimal("1000"));            // 千磅力: 1000lbf
-        TO_ANCHOR_FACTORS.put(UnitEnum.TF, new BigDecimal("1000"));             // 吨力: 1000kgf (近似)
-        TO_ANCHOR_FACTORS.put(UnitEnum.STF, new BigDecimal("2000"));            // 短吨力: 2000lbf
-        TO_ANCHOR_FACTORS.put(UnitEnum.USTF_FORCE, new BigDecimal("2000"));     // 美吨力: 2000lbf
-        TO_ANCHOR_FACTORS.put(UnitEnum.OZF, new BigDecimal("0.0625"));          // 盎司力: 1/16lbf
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_UN, new BigDecimal("1e-6"));             // 微牛顿: 10⁻⁶N
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_MN, new BigDecimal("1e-3"));       // 毫牛顿: 10⁻³N
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_DYN, new BigDecimal("1e-5"));            // 达因: 10⁻⁵N
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_GF, new BigDecimal("9.80665e-3"));       // 克力: 9.80665×10⁻³N
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_N, new BigDecimal("1"));                 // 牛顿: 1N (基本单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_KN, new BigDecimal("1e3"));              // 千牛: 10³N
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_MN_MEGA, new BigDecimal("1e6"));   // 兆牛顿: 10⁶N
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_LBF, new BigDecimal("1"));               // 磅力: 作为英制系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_KGF, new BigDecimal("9.80665"));         // 千克力: 9.80665N
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_KIP, new BigDecimal("1000"));            // 千磅力: 1000lbf
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_TF, new BigDecimal("1000"));             // 吨力: 1000kgf (近似)
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_STF, new BigDecimal("2000"));            // 短吨力: 2000lbf
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_USTF, new BigDecimal("2000"));     // 美吨力: 2000lbf
+        TO_ANCHOR_FACTORS.put(UnitEnum.FORCE_OZF, new BigDecimal("0.0625"));          // 盎司力: 1/16lbf
     }
     
     private static void initializeTorqueFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.NM, new BigDecimal("1"));              // 牛顿米: 作为metric系统锚点单位
-        TO_ANCHOR_FACTORS.put(UnitEnum.CNM, new BigDecimal("0.01"));          // 厘牛顿米: 10⁻² N·m (相对于锚点单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.DNM, new BigDecimal("0.1"));           // 分牛顿米: 10⁻¹ N·m (相对于锚点单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KGM, new BigDecimal("9.807"));         // 千克米: 9.807 N·m (相对于锚点单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.KG_CM, new BigDecimal("0.098"));       // 千克厘米: 0.098 N·m (相对于锚点单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_FT, new BigDecimal("1.356"));      // 磅英尺: 1.356 N·m (相对于锚点单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.LBF_IN, new BigDecimal("0.113"));      // 磅英寸: 0.113 N·m (相对于锚点单位)
-        TO_ANCHOR_FACTORS.put(UnitEnum.OZF_IN, new BigDecimal("0.007062"));   // 盎司英寸: 0.007062 N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORQUE_NM, new BigDecimal("1"));              // 牛顿米: 作为metric系统锚点单位
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORQUE_CNM, new BigDecimal("0.01"));          // 厘牛顿米: 10⁻² N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORQUE_DNM, new BigDecimal("0.1"));           // 分牛顿米: 10⁻¹ N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORQUE_KGM, new BigDecimal("9.807"));         // 千克米: 9.807 N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORQUE_KG_CM, new BigDecimal("0.098"));       // 千克厘米: 0.098 N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORQUE_LBF_FT, new BigDecimal("1.356"));      // 磅英尺: 1.356 N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORQUE_LBF_IN, new BigDecimal("0.113"));      // 磅英寸: 0.113 N·m (相对于锚点单位)
+        TO_ANCHOR_FACTORS.put(UnitEnum.TORQUE_OZF_IN, new BigDecimal("0.007062"));   // 盎司英寸: 0.007062 N·m (相对于锚点单位)
     }
     
     private static void initializeFrequencyFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.HZ, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KHZ, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MHZ, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GHZ, new BigDecimal("1e9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.THZ, new BigDecimal("1e12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.RPM, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DEG_S, new BigDecimal("1").divide(new BigDecimal("360"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.RAD_S, new BigDecimal("1").divide(new BigDecimal("6.283185307179586"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FREQUENCY_HZ, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FREQUENCY_KHZ, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FREQUENCY_MHZ, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FREQUENCY_GHZ, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FREQUENCY_THZ, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FREQUENCY_RPM, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FREQUENCY_DEG_S, new BigDecimal("1").divide(new BigDecimal("360"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.FREQUENCY_RAD_S, new BigDecimal("1").divide(new BigDecimal("6.283185307179586"), 10, RoundingMode.HALF_UP));
     }
     
     private static void initializeIlluminanceFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.LX, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FOOTCANDLE, new BigDecimal("10.764"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ILLUMINANCE_LX, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.ILLUMINANCE_FOOTCANDLE, new BigDecimal("10.764"));
     }
     
     private static void initializeApparentPowerFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.VA, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MVA, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KVA, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MVA_POWER, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GVA, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.APPARENT_POWER_VA, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.APPARENT_POWER_MVA, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.APPARENT_POWER_KVA, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.APPARENT_POWER_MVA_MEGA, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.APPARENT_POWER_GVA, new BigDecimal("1e9"));
     }
     
     private static void initializeConcentrationFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.PPM, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PPB, new BigDecimal("1e-9"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PPT, new BigDecimal("1e-12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PPQ, new BigDecimal("1e-15"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PARTS_PER_PPM, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PARTS_PER_PPB, new BigDecimal("1e-9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PARTS_PER_PPT, new BigDecimal("1e-12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PARTS_PER_PPQ, new BigDecimal("1e-15"));
     }
     
     private static void initializePiecesFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.PCS_PIECES, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.BK_DOZ, new BigDecimal("12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CP, new BigDecimal("2"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DOZ_DOZ, new BigDecimal("144"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DOZ, new BigDecimal("12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GR_GR, new BigDecimal("20736"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GROS, new BigDecimal("144"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.HALF_DOZEN, new BigDecimal("6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.LONG_HUNDRED, new BigDecimal("120"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.REAM, new BigDecimal("500"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.SCORES, new BigDecimal("20"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.SM_GR, new BigDecimal("120"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.TRIO, new BigDecimal("3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_PCS_PIECES, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_BK_DOZ, new BigDecimal("12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_CP, new BigDecimal("2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_DOZ_DOZ, new BigDecimal("144"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_DOZ, new BigDecimal("12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_GR_GR, new BigDecimal("20736"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_GROS, new BigDecimal("144"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_HALF_DOZEN, new BigDecimal("6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_LONG_HUNDRED, new BigDecimal("120"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_REAM, new BigDecimal("500"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_SCORES, new BigDecimal("20"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_SM_GR, new BigDecimal("120"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PIECES_TRIO, new BigDecimal("3"));
     }
     
     private static void initializeReactivePowerFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.VAR, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MVAR, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KVAR, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MVAR_POWER, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GVAR, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_POWER_VAR, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_POWER_MVAR, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_POWER_KVAR, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_POWER_MVAR_MEGA, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_POWER_GVAR, new BigDecimal("1e9"));
     }
     
     private static void initializeReactiveEnergyFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.VARH, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MVARH, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KVARH, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MVARH_POWER, new BigDecimal("1e6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GVARH, new BigDecimal("1e9"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_ENERGY_VARH, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_ENERGY_MVARH, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_ENERGY_KVARH, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_ENERGY_MVARH_MEGA, new BigDecimal("1e6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.REACTIVE_ENERGY_GVARH, new BigDecimal("1e9"));
     }
     
     private static void initializeMassFlowRateFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.KG_PER_S, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KG_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KG_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MT_PER_H, new BigDecimal("1000").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.LB_PER_S, new BigDecimal("0.453592"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.LB_PER_H, new BigDecimal("0.453592").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_FLOW_RATE_KG_PER_S, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_FLOW_RATE_KG_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_FLOW_RATE_KG_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_FLOW_RATE_MT_PER_H, new BigDecimal("1000").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_FLOW_RATE_LB_PER_S, new BigDecimal("0.453592"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.MASS_FLOW_RATE_LB_PER_H, new BigDecimal("0.453592").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
     }
     
     private static void initializePaceFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.S_PER_M, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MIN_PER_KM, new BigDecimal("60").divide(new BigDecimal("1000"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.S_PER_FT, new BigDecimal("1").divide(new BigDecimal("0.3048"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.MIN_PER_MI, new BigDecimal("60").divide(new BigDecimal("1609.34"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PACE_S_PER_M, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PACE_MIN_PER_KM, new BigDecimal("60").divide(new BigDecimal("1000"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PACE_S_PER_FT, new BigDecimal("1").divide(new BigDecimal("0.3048"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.PACE_MIN_PER_MI, new BigDecimal("60").divide(new BigDecimal("1609.34"), 10, RoundingMode.HALF_UP));
     }
     
     private static void initializeVolumeFlowRateFactors() {
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_S, new BigDecimal("1")); // 锚点单位(=1 L/s)
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_DM3_PER_S, new BigDecimal("1")); // 锚点单位(=1 L/s)
         
         // metric volume flow rates
-        TO_ANCHOR_FACTORS.put(UnitEnum.MM3_PER_S, new BigDecimal("1e-6"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CM3_PER_S, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_S, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KM3_PER_S, new BigDecimal("1e12"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.ML_PER_S, new BigDecimal("1e-3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CL_PER_S, new BigDecimal("1e-2"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DL_PER_S, new BigDecimal("1e-1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_S, new BigDecimal("1"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_S, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_D, new BigDecimal("1").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.L_PER_A, new BigDecimal("1").divide(new BigDecimal("31536000"), 10, RoundingMode.HALF_UP)); // 365*24*3600
-        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_MIN, new BigDecimal("1e3").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_H, new BigDecimal("1e3").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.KL_PER_S, new BigDecimal("1e3"));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_D, new BigDecimal("1").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.DM3_PER_A, new BigDecimal("1").divide(new BigDecimal("31536000"), 10, RoundingMode.HALF_UP)); // 365*24*3600
-        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_MIN, new BigDecimal("1e3").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_H, new BigDecimal("1e3").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_D, new BigDecimal("1e3").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.M3_PER_A, new BigDecimal("1e3").divide(new BigDecimal("31536000"), 10, RoundingMode.HALF_UP)); // 365*24*3600
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_MM3_PER_S, new BigDecimal("1e-6"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_CM3_PER_S, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_M3_PER_S, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_KM3_PER_S, new BigDecimal("1e12"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_ML_PER_S, new BigDecimal("1e-3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_CL_PER_S, new BigDecimal("1e-2"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_DL_PER_S, new BigDecimal("1e-1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_L_PER_S, new BigDecimal("1"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_KL_PER_S, new BigDecimal("1e3"));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_L_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_L_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_L_PER_D, new BigDecimal("1").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_L_PER_A, new BigDecimal("1").divide(new BigDecimal("31536000"), 10, RoundingMode.HALF_UP)); // 365*24*3600
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_KL_PER_MIN, new BigDecimal("1e3").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_KL_PER_H, new BigDecimal("1e3").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_DM3_PER_MIN, new BigDecimal("1").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_DM3_PER_H, new BigDecimal("1").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_DM3_PER_D, new BigDecimal("1").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_DM3_PER_A, new BigDecimal("1").divide(new BigDecimal("31536000"), 10, RoundingMode.HALF_UP)); // 365*24*3600
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_M3_PER_MIN, new BigDecimal("1e3").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_M3_PER_H, new BigDecimal("1e3").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_M3_PER_D, new BigDecimal("1e3").divide(new BigDecimal("86400"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_M3_PER_A, new BigDecimal("1e3").divide(new BigDecimal("31536000"), 10, RoundingMode.HALF_UP)); // 365*24*3600
         
         // imperial volume flow rates
-        TO_ANCHOR_FACTORS.put(UnitEnum.TSP_PER_S, new BigDecimal("0.00492892")); // 1 tsp = 4.92892 ml
-        TO_ANCHOR_FACTORS.put(UnitEnum.TBS_PER_S, new BigDecimal("0.0147868")); // 1 tbsp = 3 tsp = 14.7868 ml
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN3_PER_S, new BigDecimal("0.0163871")); // 1 in³ = 16.3871 ml
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN3_PER_MIN, new BigDecimal("0.0163871").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.IN3_PER_H, new BigDecimal("0.0163871").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FLOZ_PER_S, new BigDecimal("0.0295735")); // 1 fl oz = 29.5735 ml
-        TO_ANCHOR_FACTORS.put(UnitEnum.FLOZ_PER_MIN, new BigDecimal("0.0295735").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FLOZ_PER_H, new BigDecimal("0.0295735").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.CUP_PER_S, new BigDecimal("0.236588")); // 1 cup = 8 fl oz = 236.588 ml
-        TO_ANCHOR_FACTORS.put(UnitEnum.PNT_PER_S, new BigDecimal("0.473176")); // 1 pint = 2 cups = 473.176 ml
-        TO_ANCHOR_FACTORS.put(UnitEnum.PNT_PER_MIN, new BigDecimal("0.473176").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.PNT_PER_H, new BigDecimal("0.473176").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.QT_PER_S, new BigDecimal("0.946353")); // 1 quart = 2 pints = 946.353 ml
-        TO_ANCHOR_FACTORS.put(UnitEnum.GAL_PER_S, new BigDecimal("3.78541")); // 1 gallon = 4 quarts = 3785.41 ml
-        TO_ANCHOR_FACTORS.put(UnitEnum.GAL_PER_MIN, new BigDecimal("3.78541").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.GAL_PER_H, new BigDecimal("3.78541").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_S, new BigDecimal("28.3168")); // 1 ft³ = 28.3168 L
-        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_MIN, new BigDecimal("28.3168").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.FT3_PER_H, new BigDecimal("28.3168").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.YD3_PER_S, new BigDecimal("764.555")); // 1 yd³ = 27 ft³ = 764.555 L
-        TO_ANCHOR_FACTORS.put(UnitEnum.YD3_PER_MIN, new BigDecimal("764.555").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
-        TO_ANCHOR_FACTORS.put(UnitEnum.YD3_PER_H, new BigDecimal("764.555").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_TSP_PER_S, new BigDecimal("0.00492892")); // 1 tsp = 4.92892 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_TBS_PER_S, new BigDecimal("0.0147868")); // 1 tbsp = 3 tsp = 14.7868 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_IN3_PER_S, new BigDecimal("0.0163871")); // 1 in³ = 16.3871 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_IN3_PER_MIN, new BigDecimal("0.0163871").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_IN3_PER_H, new BigDecimal("0.0163871").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_FLOZ_PER_S, new BigDecimal("0.0295735")); // 1 fl oz = 29.5735 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_FLOZ_PER_MIN, new BigDecimal("0.0295735").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_FLOZ_PER_H, new BigDecimal("0.0295735").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_CUP_PER_S, new BigDecimal("0.236588")); // 1 cup = 8 fl oz = 236.588 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_PNT_PER_S, new BigDecimal("0.473176")); // 1 pint = 2 cups = 473.176 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_PNT_PER_MIN, new BigDecimal("0.473176").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_PNT_PER_H, new BigDecimal("0.473176").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_QT_PER_S, new BigDecimal("0.946353")); // 1 quart = 2 pints = 946.353 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_GAL_PER_S, new BigDecimal("3.78541")); // 1 gallon = 4 quarts = 3785.41 ml
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_GAL_PER_MIN, new BigDecimal("3.78541").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_GAL_PER_H, new BigDecimal("3.78541").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_FT3_PER_S, new BigDecimal("28.3168")); // 1 ft³ = 28.3168 L
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_FT3_PER_MIN, new BigDecimal("28.3168").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_FT3_PER_H, new BigDecimal("28.3168").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_YD3_PER_S, new BigDecimal("764.555")); // 1 yd³ = 27 ft³ = 764.555 L
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_YD3_PER_MIN, new BigDecimal("764.555").divide(new BigDecimal("60"), 10, RoundingMode.HALF_UP));
+        TO_ANCHOR_FACTORS.put(UnitEnum.VOLUME_FLOW_RATE_YD3_PER_H, new BigDecimal("764.555").divide(new BigDecimal("3600"), 10, RoundingMode.HALF_UP));
     }
 }

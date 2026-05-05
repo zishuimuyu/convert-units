@@ -51,14 +51,14 @@ public class OptimizedDemo {
 
         // 预热
         for (int i = 0; i < 1000; i++) {
-            service.convert(BigDecimal.ONE, UnitEnum.M, UnitEnum.CM);
+            service.convert(BigDecimal.ONE, UnitEnum.LENGTH_M, UnitEnum.LENGTH_CM);
         }
 
         // 性能测试
         int iterations = 10000;
         long startTime = System.nanoTime();
         for (int i = 0; i < iterations; i++) {
-            service.convert(BigDecimal.ONE, UnitEnum.M, UnitEnum.CM);
+            service.convert(BigDecimal.ONE, UnitEnum.LENGTH_M, UnitEnum.LENGTH_CM);
         }
         long endTime = System.nanoTime();
         double avgTime = (endTime - startTime) / 1_000_000.0 / iterations;
@@ -77,7 +77,7 @@ public class OptimizedDemo {
         CompletableFuture<?>[] futures = new CompletableFuture[5];
         for (int i = 0; i < 5; i++) {
             final int index = i;
-            futures[i] = service.convertAsync(BigDecimal.valueOf(i + 1), UnitEnum.M, UnitEnum.CM)
+            futures[i] = service.convertAsync(BigDecimal.valueOf(i + 1), UnitEnum.LENGTH_M, UnitEnum.LENGTH_CM)
                 .thenAccept(result -> System.out.printf("异步转换 %d米 = %s厘米\n", index + 1, result.getFormattedValue()));
         }
 
@@ -102,7 +102,7 @@ public class OptimizedDemo {
         );
 
         List<com.zishuimuyu.unitconvert.model.ConvertResult<BigDecimal>> results = 
-            service.convertBatch(values, UnitEnum.KM, UnitEnum.M);
+            service.convertBatch(values, UnitEnum.LENGTH_KM, UnitEnum.LENGTH_M);
 
         for (int i = 0; i < results.size(); i++) {
             System.out.printf("%.0f公里 = %s米\n", values.get(i), results.get(i).getFormattedValue());
@@ -119,13 +119,13 @@ public class OptimizedDemo {
 
         // 使用扩展功能进行复杂转换
         List<ExtendedUnitConversionService.ValueUnitPair> pairs = Arrays.asList(
-            new ExtendedUnitConversionService.ValueUnitPair(BigDecimal.valueOf(1000), UnitEnum.MM),
-            new ExtendedUnitConversionService.ValueUnitPair(BigDecimal.valueOf(1), UnitEnum.M),
-            new ExtendedUnitConversionService.ValueUnitPair(BigDecimal.valueOf(0.001), UnitEnum.KM)
+            new ExtendedUnitConversionService.ValueUnitPair(BigDecimal.valueOf(1000), UnitEnum.LENGTH_MM),
+            new ExtendedUnitConversionService.ValueUnitPair(BigDecimal.valueOf(1), UnitEnum.LENGTH_M),
+            new ExtendedUnitConversionService.ValueUnitPair(BigDecimal.valueOf(0.001), UnitEnum.LENGTH_KM)
         );
 
         List<com.zishuimuyu.unitconvert.model.ConvertResult<BigDecimal>> results = 
-            service.convertGroup(pairs, UnitEnum.CM);
+            service.convertGroup(pairs, UnitEnum.LENGTH_CM);
 
         for (int i = 0; i < results.size(); i++) {
             ExtendedUnitConversionService.ValueUnitPair pair = pairs.get(i);

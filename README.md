@@ -27,13 +27,13 @@
 ```java
 // 基础转换
 UnitConversionService service = new UnitConversionServiceImpl();
-ConvertResult result = service.convert(UnitEnum.M, UnitEnum.KM, BigDecimal.valueOf(1000));
+ConvertResult result = service.convert(UnitEnum.LENGTH_KM, UnitEnum.LENGTH_M, BigDecimal.valueOf(1000));
 System.out.println(result.getValue()); // 输出: 1
 
 // 使用构建器
 ConvertResult result = ConversionBuilder.create()
-    .from(UnitEnum.KG)
-    .to(UnitEnum.G)
+    .from(UnitEnum.MASS_KG)
+    .to(UnitEnum.MASS_G)
     .value("1000")
     .build()
     .convert();
