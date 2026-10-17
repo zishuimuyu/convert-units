@@ -1,6 +1,7 @@
 package com.zishuimuyu.unitconvert.service;
 
 import com.zishuimuyu.unitconvert.builder.ConversionBuilder;
+import com.zishuimuyu.unitconvert.chain.ChainConversionContext;
 import com.zishuimuyu.unitconvert.config.UnitConversionConfig;
 import com.zishuimuyu.unitconvert.converter.BestUnitFinder;
 import com.zishuimuyu.unitconvert.model.ConvertResult;
@@ -449,7 +450,7 @@ public class UnitConversionServiceImpl implements IUnitConversionService {
      */
     @Override
     public IUnitConversionService from(BigDecimal value, UnitEnum fromUnit) {
-        return new com.zishuimuyu.unitconvert.chain.ChainConversionContext(this, value, fromUnit);
+        return new ChainConversionContext(this, value, fromUnit);
     }
 
     /**
